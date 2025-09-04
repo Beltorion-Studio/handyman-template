@@ -1,0 +1,99 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import Button from '@components/ui/Button.astro'
+import Heading from '@components/ui/Heading.astro'
+import Badge from '../ui/Badge.astro'
+import { formatText } from '@lib/utils/textFormatting'
+import type { SectionWithIconsContent } from '@schemas/section'
+
+type Props = {
+  content: SectionWithIconsContent
+}
+
+const { content } = Astro.props
+---
+
+<section class="py-10" aria-label="Section with icons container">
+  <div class="container">
+    <div class="desktop:grid-cols-2 grid items-center gap-20">
+      <div
+        class={`desktop:items-start h-full desktop:text-left flex flex-col items-center text-center ${
+          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${content.reverse ? 'order-2' : 'order-1'}`}
+      >
+        {
+          content.badge && (
+            <Badge intent="primary" roundness="full">
+              {content.badge}
+            </Badge>
+          )
+        }
+
+        <Heading tag="h2">{content.title}</Heading>
+        <div class="mb-8 flex flex-col">
+          {
+            Object.entries(content.paragraphs).map(([key, text]) => {
+              void key
+              return <p class="mt-4 text-gray-700" set:html={formatText(text)} />
+            })
+          }
+        </div>
+
+        {
+          content.iconItems.length > 0 && (
+            <div class="mb-8 w-full">
+              <div class="desktop:text-left space-y-4 text-center">
+                {content.iconItems.map((item) => (
+                  <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0 pt-0.5">
+                      <Icon name={item.icon} class="text-primary-600 h-12 w-12" />
+                    </div>
+                    <span class="text-gray-700">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          content.buttons && (
+            <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
+              {content.buttons.primary && (
+                <Button
+                  intent="primary"
+                  size="medium"
+                  borderRadius="full"
+                  href={content.buttons.primary.href}
+                >
+                  {content.buttons.primary.text}
+                </Button>
+              )}
+              {content.buttons.secondary && (
+                <Button
+                  intent="outlined"
+                  size="medium"
+                  borderRadius="full"
+                  textTransform="uppercase"
+                  href={content.buttons.secondary.href}
+                >
+                  {content.buttons.secondary.text}
+                </Button>
+              )}
+            </div>
+          )
+        }
+      </div>
+      <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+        <Image
+          src={content.image.src}
+          alt={content.image.alt}
+          class={`w-full rounded-md object-cover ${
+            content.image.size ? `aspect-${content.image.size}` : 'h-full'
+          } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+        />
+      </div>
+    </div>
+  </div>
+</section>

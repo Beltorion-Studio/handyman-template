@@ -1,0 +1,159 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import Button from '@components/ui/Button.astro'
+import Link from '@components/ui/Link.astro'
+
+import { navigationConfig, siteConfig } from '@config'
+
+/*
+You can add these classes to the nav to make it sticky
+sticky top-0
+
+for the mobile menu:
+You need add the 'fixed classes to the mobile menu
+*/
+---
+
+<header class="z-40 w-full bg-slate-200 py-6" za-elements="main-nav1">
+  <div class="container">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <Link href="/" intent="primary" class="flex items-center gap-2" ariaLabel="Go to homepage">
+        <Image src={siteConfig.logo} alt={siteConfig.name} class="h-auto w-40" />
+      </Link>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Main navigation" class="desktop:block hidden">
+        <ul class="flex items-center gap-6" role="menubar">
+          {
+            navigationConfig.main.map((item) => (
+              <li class="relative">
+                {'items' in item ? (
+                  <div
+                    class="group relative z-60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                    role="button"
+                    tabindex="0"
+                    aria-label={item.ariaLabel}
+                  >
+                    <span class="flex cursor-pointer items-center gap-1 font-bold">
+                      {item.text}
+                      <Icon name="quill:chevron-down" class="h-4 w-4 text-black" />
+                    </span>
+                    <div class="pointer-events-none absolute top-full right-0 w-48 rounded-md bg-white py-2 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
+                      {item.items.map((subItem: any) => (
+                        <Link
+                          href={subItem.href}
+                          display="block"
+                          intent="tertiary"
+                          paddingX="medium"
+                          paddingY="medium"
+                          hoverStyle="background"
+                          ariaLabel={subItem.ariaLabel}
+                        >
+                          {subItem.text}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    size="xlarge"
+                    fontWeight="bold"
+                    hoverStyle="underline"
+                    ariaLabel={item.ariaLabel}
+                  >
+                    {item.text}
+                  </Link>
+                )}
+              </li>
+            ))
+          }
+          <li>
+            <Button href={navigationConfig.cta.primary.href} intent="primary" size="small">
+              {navigationConfig.cta.primary.text}
+            </Button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Hamburger Menu Button -->
+      <div class="desktop:hidden">
+        <div
+          za-elements="menu-button"
+          class="w-6 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+        >
+          <span class="block h-[2px] w-full rounded-sm bg-black"></span>
+          <span class="mt-1 block h-[2px] w-full rounded-sm bg-black"></span>
+          <span class="mt-1 block h-[2px] w-full rounded-sm bg-black"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+  </div>
+
+  <!-- Move mobile menu here, inside the main nav div -->
+  <div
+    za-elements="mobile-menu"
+    class="desktop:hidden inset-0 top-[65px] overflow-y-auto bg-white"
+    style="opacity: 0; visibility: hidden;"
+    role="dialog"
+    aria-label="Mobile menu"
+  >
+    <nav class="container py-6" aria-label="Mobile navigation">
+      <ul class="flex flex-col gap-4" role="menu">
+        {
+          navigationConfig.main.map((item) => (
+            <li role="none">
+              {'items' in item ? (
+                <div class="flex flex-col gap-2">
+                  <span class="text-lg font-bold" role="menuitem">
+                    {item.text}
+                  </span>
+                  <ul class="ml-2 flex flex-col gap-2" role="menu">
+                    {item.items.map((subItem: any) => (
+                      <li role="none">
+                        <Link
+                          href={subItem.href}
+                          intent="tertiary"
+                          size="large"
+                          hoverStyle="color"
+                          role="menuitem"
+                          ariaLabel={subItem.ariaLabel}
+                        >
+                          {subItem.text}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <Link
+                  href={item.href}
+                  size="large"
+                  fontWeight="bold"
+                  hoverStyle="color"
+                  role="menuitem"
+                  ariaLabel={item.ariaLabel}
+                >
+                  {item.text}
+                </Link>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <Button href={navigationConfig.cta.primary.href} intent="primary" size="small">
+      {navigationConfig.cta.primary.text}
+    </Button>
+  </div>
+</header>
+<script>
+  import { MobileNavAnimation } from '@lib/MobileNavAnimation'
+
+  // Initialize mobile navigation
+  new MobileNavAnimation('[za-elements="main-nav1"]')
+</script>

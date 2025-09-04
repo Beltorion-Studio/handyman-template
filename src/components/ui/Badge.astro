@@ -1,0 +1,88 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cva, type VariantProps } from 'cva'
+
+const badge = cva(['inline-flex', 'items-center', 'transition', 'duration-300'], {
+  variants: {
+    defaults: {
+      default: ['text-base', 'font-medium', 'w-fit', 'mb-4'],
+    },
+    intent: {
+      primary: ['bg-black', 'text-white'],
+      secondary: ['bg-white', 'text-black', 'border', 'border-gray-200'],
+      success: ['bg-green-100', 'text-green-800', 'border', 'border-green-200'],
+      warning: ['bg-yellow-100', 'text-yellow-800', 'border', 'border-yellow-200'],
+      danger: ['bg-red-100', 'text-red-800', 'border', 'border-red-200'],
+      info: ['bg-blue-100', 'text-blue-800', 'border', 'border-blue-200'],
+      outlined: ['bg-transparent', 'text-gray-700', 'border', 'border-gray-300'],
+      ghost: ['bg-gray-100', 'text-gray-700', 'hover:bg-gray-200'],
+    },
+    size: {
+      sm: ['text-base', 'px-2', 'py-1'],
+      md: ['text-md', 'px-3', 'py-1.5'],
+      lg: ['text-lg', 'px-4', 'py-2'],
+    },
+    roundness: {
+      full: ['rounded-full'],
+      lg: ['rounded-lg'],
+      md: ['rounded-md'],
+      sm: ['rounded-sm'],
+    },
+    textTransform: {
+      upper: 'uppercase',
+      lower: 'lowercase',
+      capital: 'capitalize',
+    },
+    weight: {
+      normal: 'font-normal',
+      medium: 'font-medium',
+      semibold: 'font-semibold',
+      bold: 'font-bold',
+    },
+    interactive: {
+      true: ['cursor-pointer', 'hover:opacity-80'],
+    },
+  },
+  compoundVariants: [
+    {
+      intent: 'primary',
+      size: 'md',
+      class: 'font-medium',
+    },
+  ],
+  defaultVariants: {
+    intent: 'primary',
+    size: 'md',
+    roundness: 'full',
+    defaults: 'default',
+  },
+})
+
+export type Props = HTMLAttributes<'span'> & VariantProps<typeof badge>
+
+const {
+  intent = 'primary',
+  size = 'md',
+  roundness = 'full',
+  textTransform,
+  weight,
+  interactive,
+  defaults = 'default',
+} = Astro.props as Props
+---
+
+<span
+  class:list={[
+    badge({
+      intent,
+      size,
+      roundness,
+      textTransform,
+      weight,
+      interactive,
+      defaults,
+    }),
+  ]}
+>
+  <slot />
+</span>

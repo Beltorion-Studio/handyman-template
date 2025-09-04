@@ -1,0 +1,70 @@
+---
+import { cva, type VariantProps } from 'cva'
+
+const socialLink = cva(
+  'inline-flex items-center justify-center rounded-full transition duration-300',
+  {
+    variants: {
+      defaults: {
+        default: [
+          'focus:outline-hidden',
+          'focus-visible:ring-2',
+          'focus-visible:ring-black',
+          'focus-visible:ring-offset-2',
+          'focus-visible:ring-offset-white',
+        ],
+      },
+      intent: {
+        light: ['bg-black', 'hover:bg-gray-700'],
+        dark: ['bg-white', 'hover:bg-gray-300'],
+      },
+      size: {
+        small: ['h-6', 'w-6'],
+        medium: ['h-8', 'w-8'],
+        large: ['h-10', 'w-10'],
+      },
+    },
+    compoundVariants: [
+      { intent: 'light', size: 'medium' },
+      { intent: 'dark', size: 'medium' },
+    ],
+  }
+)
+
+type AnyProps = { [key: string]: unknown }
+
+export type Props = VariantProps<typeof socialLink> & {
+  href: string
+  platform: string
+  external?: boolean
+  target?: string
+  rel?: string
+} & AnyProps
+
+const {
+  intent = 'light',
+  size = 'medium',
+  defaults = 'default',
+  href,
+  platform,
+  external = false,
+  target,
+  rel,
+  ...rest
+} = Astro.props as Props
+
+const finalTarget = external ? '_blank' : target
+const finalRel = external ? 'noopener noreferrer' : rel
+const finalAriaLabel = `${platform} profile`
+---
+
+<a
+  {...rest}
+  href={href}
+  target={finalTarget}
+  rel={finalRel}
+  aria-label={finalAriaLabel}
+  class:list={[socialLink({ intent, size, defaults }), 'm-0']}
+>
+  <slot />
+</a>

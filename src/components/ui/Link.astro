@@ -1,0 +1,135 @@
+---
+import { cva, type VariantProps } from 'cva'
+
+const link = cva('block', {
+  variants: {
+    defaults: {
+      default: [
+        'transition',
+        'duration-300',
+        'm-0',
+        'cursor-pointer',
+        'focus:outline-hidden',
+        'focus-visible:ring-2',
+        'focus-visible:ring-black',
+        'focus-visible:ring-offset-2',
+        'focus-visible:ring-offset-white',
+      ],
+    },
+    intent: {
+      primary: [
+        'text-black',
+        'hover:text-gray-700',
+        'hover:underline',
+        'hover:decoration-gray-700',
+        'hover:underline-offset-4',
+      ],
+      secondary: [
+        'text-white',
+        'hover:text-gray-300',
+        'hover:underline',
+        'hover:decoration-gray-300',
+        'hover:underline-offset-4',
+      ],
+      tertiary: ['text-gray-700', 'hover:text-black'],
+    },
+    size: {
+      xsmall: ['text-sm'],
+      small: ['text-base'],
+      medium: ['text-lg'],
+      large: ['text-xl'],
+      xlarge: ['text-2xl'],
+    },
+    fontWeight: {
+      normal: ['font-normal'],
+      semibold: ['font-semibold'],
+      bold: ['font-bold'],
+    },
+    display: {
+      inline: ['inline-block'],
+      block: ['block'],
+    },
+    paddingX: {
+      none: [],
+      small: ['px-2'],
+      medium: ['px-4'],
+      large: ['px-6'],
+    },
+    paddingY: {
+      none: [],
+      small: ['py-1'],
+      medium: ['py-2'],
+      large: ['py-3'],
+    },
+    underline: {
+      true: ['hover:underline'],
+      false: ['hover:no-underline'],
+    },
+    hoverStyle: {
+      underline: ['hover:underline'],
+      background: ['hover:bg-gray-100'],
+      color: ['hover:text-black'],
+      none: ['hover:no-underline'],
+    },
+  },
+  compoundVariants: [
+    { intent: 'primary', size: 'small', fontWeight: 'semibold' },
+    { intent: 'secondary', size: 'small', fontWeight: 'semibold' },
+  ],
+})
+
+type AnyProps = { [key: string]: unknown }
+
+export type Props = VariantProps<typeof link> & {
+  href: string
+  external?: boolean
+  ariaLabel?: string
+  target?: string
+  rel?: string
+} & AnyProps
+
+const {
+  intent = 'primary',
+  size = 'medium',
+  fontWeight = 'normal',
+  display = 'inline',
+  paddingX = 'none',
+  paddingY = 'none',
+  underline = false,
+  hoverStyle = 'underline',
+  defaults = 'default',
+  href,
+  external = false,
+  ariaLabel,
+  target,
+  rel,
+  ...rest
+} = Astro.props as Props
+
+const finalTarget = external ? '_blank' : target
+const finalRel = external ? 'noopener noreferrer' : rel
+const finalAriaLabel = ariaLabel || (external ? 'Opens in new tab' : undefined)
+---
+
+<a
+  {...rest}
+  href={href}
+  target={finalTarget}
+  rel={finalRel}
+  aria-label={finalAriaLabel}
+  class:list={[
+    link({
+      intent,
+      size,
+      fontWeight,
+      display,
+      paddingX,
+      paddingY,
+      hoverStyle,
+      defaults,
+    }),
+    'm-0',
+  ]}
+>
+  <slot />
+</a>

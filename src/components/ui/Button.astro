@@ -1,0 +1,141 @@
+---
+import { cva, type VariantProps } from 'cva'
+
+const button = cva('inline-block', {
+  variants: {
+    defaults: {
+      default: [
+        'transition',
+        'duration-300',
+        'm-0',
+        'focus:outline-hidden',
+        'focus-visible:ring-2',
+        'focus-visible:ring-black',
+        'focus-visible:ring-offset-2',
+        'focus-visible:ring-offset-white',
+      ],
+    },
+    intent: {
+      primary: [
+        'bg-black',
+        'text-white',
+        'border-transparent',
+        'hover:bg-gray-700',
+        'hover:shadow-lg',
+        'disabled:opacity-50',
+        'disabled:cursor-not-allowed',
+        'disabled:hover:bg-black',
+      ],
+      secondary: [
+        'bg-white',
+        'text-black',
+        'hover:bg-black',
+        'hover:text-white',
+        'disabled:opacity-50',
+        'disabled:cursor-not-allowed',
+        'disabled:hover:bg-white',
+        'disabled:hover:text-black',
+      ],
+      outlined: ['bg-white', 'text-gray-700', 'border', 'border-black', 'hover:bg-gray-100'],
+      blured: [
+        'text-white',
+        'backdrop-blur-md',
+        'hover:backdrop-blur-xl',
+        'border',
+        'border-white',
+      ],
+      outlineWhite: ['bg-transparent', 'text-white', 'border', 'border-white', 'hover:bg-gray-700'],
+    },
+    size: {
+      small: ['text-base', 'py-2', 'px-4'],
+      medium: ['text-xl', 'py-4', 'px-6'],
+      large: ['text-xl', 'py-5', 'px-8'],
+    },
+    borderRadius: {
+      full: ['rounded-full'],
+      corner: ['rounded-md'],
+    },
+    textTransform: {
+      uppercase: 'uppercase',
+    },
+    loading: {
+      true: ['opacity-75', 'cursor-wait'],
+    },
+  },
+  compoundVariants: [{ intent: 'primary', size: 'medium' }],
+})
+
+type AnyProps = { [key: string]: unknown }
+
+/**
+ * Props for `Button` component.
+ * - Combines visual variants with common HTML props via index signature
+ */
+export type Props = VariantProps<typeof button> & {
+  href?: string
+  type?: 'submit' | 'button' | 'reset'
+  disabled?: boolean
+  loading?: boolean
+  name?: string
+  value?: string
+  form?: string
+  ariaLabel?: string
+} & AnyProps
+
+const {
+  intent = 'primary',
+  size = 'medium',
+  borderRadius = 'full',
+  textTransform,
+  defaults = 'default',
+  href,
+  type = 'button',
+  disabled = false,
+  loading = false,
+  ariaLabel,
+  ...rest
+} = Astro.props as Props
+
+const Element = href ? 'a' : 'button'
+
+/*
+As a button
+<Button intent="primary">Click me</Button>
+
+As a link 
+<Button href="/some-page" intent="primary">Go to page</Button>
+*/
+---
+
+<Element
+  {...rest}
+  {...href ? { href } : { type }}
+  disabled={disabled || loading}
+  aria-disabled={disabled || loading}
+  aria-label={ariaLabel}
+  class:list={[button({ intent, size, borderRadius, textTransform, defaults, loading }), 'm-0']}
+>
+  {
+    loading && (
+      <span class="mr-2 inline-block animate-spin">
+        <svg class="h-4 w-4" viewBox="0 0 24 24">
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+            fill="none"
+          />
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          />
+        </svg>
+      </span>
+    )
+  }
+  <slot />
+</Element>

@@ -1,0 +1,47 @@
+---
+import type { HTMLTag } from 'astro/types'
+import { headingVariants, type HeadingVariants } from '@lib/heading.variants'
+import { cn } from '@lib/utils'
+
+export type Props = HeadingVariants & {
+  tag: HTMLTag
+  class?: string
+  id?: string
+}
+
+const {
+  tag,
+  size,
+  variant,
+  weight,
+  align,
+  bottomSpacing,
+  lineHeight,
+  class: className,
+  id,
+  ...props
+} = Astro.props as Props
+
+// If size is not provided, default to the tag name as size
+const headingSize = size || (tag as HeadingVariants['size'])
+
+const Tag = tag
+---
+
+<Tag
+  {...props}
+  id={id}
+  class={cn(
+    headingVariants({
+      variant,
+      size: headingSize,
+      weight,
+      align,
+      bottomSpacing,
+      lineHeight,
+    }),
+    className
+  )}
+>
+  <slot />
+</Tag>
