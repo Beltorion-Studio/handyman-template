@@ -30,7 +30,7 @@ const {
 } = PropsSchema.parse(Astro.props)
 
 // Import background image
-import heroBg from '@assets/images/blog-placeholder-about.jpg'
+import heroBg from '@assets/images/installer-holding-shelf-w2000.jpg'
 ---
 
 <section
@@ -50,10 +50,10 @@ import heroBg from '@assets/images/blog-placeholder-about.jpg'
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-4 py-16">
+  <div class="relative z-10 container mx-auto px-4 py-40">
     <div class="flex flex-col items-start justify-start gap-16">
       <!-- Hero Content -->
-      <div class="mx-auto flex w-full max-w-[600px] items-center justify-center gap-16">
+      <div class="flex w-full max-w-[600px] items-center justify-center gap-16">
         <div class="flex w-full flex-col items-start justify-center gap-8">
           <!-- Hero Title -->
           <div class="flex w-full flex-col items-start justify-start gap-6">
@@ -79,6 +79,7 @@ import heroBg from '@assets/images/blog-placeholder-about.jpg'
                       href={primaryButtonHref}
                       intent="secondary"
                       size="large"
+                      borderRadius="corner"
                       ariaLabel={primaryButtonText}
                     >
                       {primaryButtonText}
@@ -89,6 +90,7 @@ import heroBg from '@assets/images/blog-placeholder-about.jpg'
                       href={secondaryButtonHref}
                       intent="primary"
                       size="large"
+                      borderRadius="corner"
                       ariaLabel={secondaryButtonText}
                     >
                       {secondaryButtonText}
