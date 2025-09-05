@@ -7,15 +7,15 @@ import SocialLink from '@components/ui/SocialLink.astro'
 import { navigationConfig, socialConfig, siteConfig } from '@config'
 ---
 
-<footer class="bg-black">
-  <div class="border-b border-gray-500">
+<footer class="bg-sky-700">
+  <div class="border-b border-white">
     <div class="container">
       <div
         class="desktop:grid-cols-3 desktop:gap-0 grid grid-cols-1 justify-items-center gap-10 py-10"
       >
         <!-- Logo -->
         <Link href="/" intent="secondary" class="desktop:justify-self-start justify-self-center">
-          <Image src={siteConfig.logo} alt={siteConfig.name} class="h-auto w-40 invert" />
+          <Image src={siteConfig.logo} alt={siteConfig.name} class="h-auto w-40" />
         </Link>
 
         <div
