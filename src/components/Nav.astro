@@ -15,7 +15,7 @@ You need add the 'fixed classes to the mobile menu
 */
 ---
 
-<header class="z-40 w-full bg-slate-200 py-6" za-elements="main-nav1">
+<header class="z-40 w-full bg-transparent py-6" za-elements="main-nav1">
   <div class="container">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -59,7 +59,7 @@ You need add the 'fixed classes to the mobile menu
                 ) : (
                   <Link
                     href={item.href}
-                    size="xlarge"
+                    size="medium"
                     fontWeight="bold"
                     hoverStyle="underline"
                     ariaLabel={item.ariaLabel}
@@ -71,7 +71,7 @@ You need add the 'fixed classes to the mobile menu
             ))
           }
           <li>
-            <Button href={navigationConfig.cta.primary.href} intent="primary" size="small">
+            <Button href={navigationConfig.cta.primary.href} intent="secondary" size="small" borderRadius="corner">
               {navigationConfig.cta.primary.text}
             </Button>
           </li>
