@@ -1,12 +1,89 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import { headingVariants, type HeadingVariants } from '@lib/heading.variants'
-import { cn } from '@lib/utils'
+import { cva, type VariantProps } from 'cva'
+import { formatText, type TextStyle } from '@lib/utils/textFormatting'
 
-export type Props = HeadingVariants & {
+const headingVariants = cva(
+  // Base styles applied to all headings
+  'font-bold text-pretty mb-6',
+  {
+    variants: {
+      variant: {
+        default: 'text-black',
+        primary: 'text-white',
+        secondary: 'text-gray-700',
+        gradient: 'bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent',
+      },
+      size: {
+        h1: 'text-3xl/snug tablet:text-5xl/snug',
+        h2: 'text-2xl/snug tablet:text-4xl/snug',
+        h3: 'text-xl/snug tablet:text-3xl/snug',
+        h4: 'text-lg/snug tablet:text-2xl/snug',
+        h5: 'text-base/snug tablet:text-xl/snug',
+        h6: 'text-sm/snug tablet:text-lg/snug',
+      },
+      weight: {
+        normal: 'font-normal',
+        medium: 'font-medium',
+        bold: 'font-bold',
+      },
+      align: {
+        left: 'text-left',
+        center: 'text-center',
+        right: 'text-right',
+        leftCenter: 'text-center tablet:text-left',
+      },
+      lineHeight: {
+        none: '!leading-none',
+        tight: '!leading-tight',
+        snug: '!leading-snug',
+        normal: '!leading-normal',
+        relaxed: '!leading-relaxed',
+        loose: '!leading-loose',
+      },
+      bottomSpacing: {
+        none: 'mb-0',
+        tight: 'mb-2',
+        normal: 'mb-4',
+        relaxed: 'mb-6',
+        loose: 'mb-8',
+        custom: 'mb-10 mt-4',
+      },
+      maxWidth: {
+        'none': '',
+        'xs': 'max-w-xs',
+        'sm': 'max-w-sm',
+        'md': 'max-w-md',
+        'lg': 'max-w-lg',
+        'xl': 'max-w-xl',
+        '2xl': 'max-w-2xl',
+        '3xl': 'max-w-3xl',
+        '4xl': 'max-w-4xl',
+        '5xl': 'max-w-5xl',
+        '6xl': 'max-w-6xl',
+        '7xl': 'max-w-7xl',
+        'prose': 'max-w-prose',
+        'prose-sm': 'max-w-prose-sm',
+        'prose-lg': 'max-w-prose-lg',
+        'prose-xl': 'max-w-prose-xl',
+        'prose-2xl': 'max-w-prose-2xl',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      weight: 'bold',
+      align: 'left',
+    },
+  }
+)
+
+export type Props = VariantProps<typeof headingVariants> & {
   tag: HTMLTag
   class?: string
   id?: string
+  text?: string
+  textStyles?: TextStyle
+  enableTextFormatting?: boolean
 }
 
 const {
@@ -17,21 +94,28 @@ const {
   align,
   bottomSpacing,
   lineHeight,
+  maxWidth,
   class: className,
   id,
+  text,
+  textStyles,
+  enableTextFormatting = true,
   ...props
 } = Astro.props as Props
 
 // If size is not provided, default to the tag name as size
-const headingSize = size || (tag as HeadingVariants['size'])
+const headingSize = size || (tag as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6')
 
 const Tag = tag
+
+// Process text formatting if enabled and text is provided
+const processedText = text && enableTextFormatting ? formatText(text, textStyles) : text
 ---
 
 <Tag
   {...props}
   id={id}
-  class={cn(
+  class:list={[
     headingVariants({
       variant,
       size: headingSize,
@@ -39,9 +123,11 @@ const Tag = tag
       align,
       bottomSpacing,
       lineHeight,
+      maxWidth,
     }),
-    className
-  )}
+    className,
+  ]}
+  set:html={processedText}
 >
-  <slot />
+  {!text && <slot />}
 </Tag>

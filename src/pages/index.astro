@@ -3,67 +3,26 @@ import Layout from '@layouts/Layout.astro'
 import Card from '@components/ui/Card.astro'
 import CTA from '@components/CTA.astro'
 import TrustStats from '@components/TrustStats.astro'
-import { ICONS } from '@lib/icons'
 import ContactUs from '@components/ContactUs.astro'
 import Hero from '@components/sections/Hero.astro'
-import heroImage from '@assets/images/blog-placeholder-about.jpg'
+import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
+import { getCollection } from 'astro:content'
 
-// Services data
-const services = [
-  {
-    title: 'Carpentry Services',
-    description:
-      'Professional woodworking and furniture repair. From custom cabinets to door installations, we handle all your carpentry needs with precision and craftsmanship.',
-    icon: ICONS.CARPENTRY.HAMMER_CARPENTRY,
-    iconAlt: 'Carpentry hammer icon',
-  },
-  {
-    title: 'Plumbing Services',
-    description:
-      'Expert plumbing repairs and installations. We fix leaks, install fixtures, and ensure your plumbing system works perfectly for years to come.',
-    icon: ICONS.CARPENTRY.WOODEN_CABINET,
-    iconAlt: 'Plumber wrench icon',
-  },
-  {
-    title: 'Home Repairs',
-    description:
-      'General home maintenance and repairs. From electrical work to drywall repairs, we keep your home in perfect condition with professional service.',
-    icon: ICONS.HOME_REPAIR.DRILL,
-    iconAlt: 'Home repair drill icon',
-  },
-  {
-    title: 'Energy Solutions',
-    description:
-      'Electrical and energy efficiency services. We install lighting, upgrade electrical systems, and help you save on energy costs.',
-    icon: ICONS.ENERGY.BATTERY,
-    iconAlt: 'Energy battery icon',
-  },
-  {
-    title: 'Gardening Services',
-    description:
-      'Landscaping and garden maintenance. We help you create and maintain beautiful outdoor spaces with professional gardening services.',
-    icon: ICONS.GARDENING.TOOLS,
-    iconAlt: 'Gardening tools icon',
-  },
-  {
-    title: 'Security Systems',
-    description:
-      'Advanced security systems and monitoring. Protect your home and family with our comprehensive security solutions and 24/7 monitoring.',
-    icon: ICONS.SECURITY.SHIELD,
-    iconAlt: 'Security shield icon',
-  },
-]
+// Get all services from content collection
+const allServices = await getCollection('services')
+const services = allServices.filter((service) => service.data.featured)
 ---
 
 <Layout title="Home">
   <Hero
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
-    title="Your Trusted Handyman Service"
-    description="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
+    title="@@Reliable Help@@ for Every Task"
+    subheading="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
     primaryButtonText="Get a Free Quote"
     primaryButtonHref="#contact"
     secondaryButtonText="Learn More"
     secondaryButtonHref="#about"
+    className="h-screen"
   />
   <TrustStats
     sectionId="trust-stats"
@@ -81,10 +40,10 @@ const services = [
       {
         services.map((service) => (
           <Card
-            title={service.title}
-            description={service.description}
-            icon={service.icon}
-            iconAlt={service.iconAlt}
+            title={service.data.title}
+            description={service.data.shortDescription || service.data.description}
+            icon={service.data.icon}
+            iconAlt={`${service.data.title} icon`}
           />
         ))
       }

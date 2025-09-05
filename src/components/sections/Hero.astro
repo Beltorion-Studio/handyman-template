@@ -2,6 +2,7 @@
 import { z } from 'zod'
 import { Image, type ImageMetadata } from 'astro:assets'
 import Button from '@components/ui/Button.astro'
+import Heading from '@components/ui/Heading.astro'
 
 const PropsSchema = z.object({
   sectionId: z.string().optional(),
@@ -11,7 +12,6 @@ const PropsSchema = z.object({
   }),
   title: z.string(),
   subheading: z.string().optional(),
-  description: z.string().optional(),
   primaryButtonText: z.string().optional(),
   primaryButtonHref: z.string().optional(),
   secondaryButtonText: z.string().optional(),
@@ -26,7 +26,6 @@ const {
   heroImage,
   title,
   subheading,
-  description,
   primaryButtonText,
   primaryButtonHref,
   secondaryButtonText,
@@ -34,8 +33,6 @@ const {
   className = '',
 } = PropsSchema.parse(Astro.props)
 
-// Import background image
-import heroBg from '@assets/images/blog-placeholder-about.jpg'
 ---
 
 <section
@@ -48,32 +45,32 @@ import heroBg from '@assets/images/blog-placeholder-about.jpg'
     <Image
       src={heroImage.src}
       alt={heroImage.alt}
-      class="h-full w-full rounded-br-[96px] rounded-bl-[96px] object-cover"
+      class="h-full w-full rounded-br-[96px] rounded-bl-[96px] object-cover object-center"
       loading="eager"
     />
     <div class="absolute inset-0 rounded-br-[96px] rounded-bl-[96px] bg-black/60"></div>
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-4 py-40">
+  <div class="relative z-10 container mx-auto px-4 py-20">
     <div class="flex flex-col items-start justify-start gap-16">
       <!-- Hero Content -->
-      <div class="flex w-full max-w-[600px] items-center justify-center gap-16">
+      <div class="flex w-full max-w-3xl items-center justify-center gap-16">
         <div class="flex w-full flex-col items-start justify-center gap-8">
           <!-- Hero Title -->
-          <div class="flex w-full flex-col items-start justify-start gap-6">
-            <h1 class="w-full text-7xl leading-normal font-bold text-white">
-              {title}
-            </h1>
+          <div class="max-w-2xl flex-col items-start justify-start gap-6">
+            <Heading
+              tag="h1"
+              size="h1"
+              variant="primary"
+              text={title}
+              align="left"
+            />
           </div>
 
           <!-- Hero Text and Actions -->
           <div class="flex w-full flex-col items-start justify-start gap-6">
-            {
-              description && (
-                <p class="text-2xl leading-[1.4] font-bold text-white">{description}</p>
-              )
-            }
+            {subheading && <p class="text-2xl/snug font-bold text-white">{subheading}</p>}
 
             <!-- Action Buttons -->
             {

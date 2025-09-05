@@ -1,0 +1,67 @@
+---
+// Example usage of the enhanced Heading component
+import Heading from './ui/Heading.astro'
+---
+
+<!-- Basic heading with slot content -->
+<Heading tag="h1" size="h1" variant="default" align="center"> Welcome to Our Service </Heading>
+
+<!-- Heading with text prop and formatting -->
+<Heading
+  tag="h2"
+  size="h2"
+  variant="primary"
+  text="Get **professional** @@handyman services@@ for your home"
+  textStyles={{ bold: true, brandColor: true }}
+  align="center"
+  maxWidth="2xl"
+/>
+
+<!-- Heading with custom styling and formatting -->
+<Heading
+  tag="h3"
+  size="h3"
+  variant="gradient"
+  text="Why choose us? *Quality* work, __guaranteed__ results, and @@affordable@@ prices"
+  textStyles={{ italic: true, underline: true, brandColor: true }}
+  weight="bold"
+  align="left"
+  bottomSpacing="relaxed"
+  maxWidth="lg"
+/>
+
+<!-- Heading with different sizes and variants -->
+<Heading
+  tag="h4"
+  size="h4"
+  variant="secondary"
+  text="Our **@@specialized@@** services include:"
+  textStyles={{ bold: true, brandColor: true }}
+  align="left"
+  bottomSpacing="normal"
+  maxWidth="md"
+/>
+
+<!-- Large heading with custom line height -->
+<Heading
+  tag="h1"
+  size="h1"
+  variant="default"
+  text="Transform Your Space Today"
+  align="center"
+  lineHeight="tight"
+  bottomSpacing="loose"
+  maxWidth="4xl"
+  class="tracking-wider uppercase"
+/>
+
+<!-- Heading with disabled text formatting -->
+<Heading
+  tag="h2"
+  size="h2"
+  variant="primary"
+  text="This text won't be formatted: **bold** @@brand@@ __underline__"
+  enableTextFormatting={false}
+  align="center"
+  maxWidth="xl"
+/>
