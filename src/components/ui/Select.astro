@@ -1,0 +1,108 @@
+---
+import { z } from 'zod'
+
+const OptionSchema = z.object({
+  value: z.string(),
+  label: z.string(),
+  disabled: z.boolean().optional().default(false),
+})
+
+const PropsSchema = z.object({
+  name: z.string(),
+  id: z.string().optional(),
+  required: z.boolean().optional().default(false),
+  disabled: z.boolean().optional().default(false),
+  value: z.string().optional(),
+  label: z.string().optional(),
+  error: z.string().optional(),
+  className: z.string().optional(),
+  placeholder: z.string().optional().default('Select one...'),
+  options: z.array(OptionSchema).default([]),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+export type Option = z.infer<typeof OptionSchema>
+
+const {
+  name,
+  id,
+  required = false,
+  disabled = false,
+  value,
+  label,
+  error,
+  className = '',
+  placeholder = 'Select one...',
+  options = [],
+} = PropsSchema.parse(Astro.props)
+
+const selectId = id || name
+const hasError = Boolean(error)
+---
+
+<div class={`flex flex-col gap-2 ${className}`}>
+  {
+    label && (
+      <label for={selectId} class="text-base leading-[1.4] font-bold text-white">
+        {label}
+        {required && <span class="ml-1 text-red-400">*</span>}
+      </label>
+    )
+  }
+
+  <div class="relative">
+    <select
+      id={selectId}
+      name={name}
+      required={required}
+      disabled={disabled}
+      value={value}
+      class={`
+        w-full px-3 py-3 bg-white rounded border-2 transition-colors duration-200
+        text-base text-sky-900 appearance-none cursor-pointer
+        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-transparent
+        disabled:opacity-50 disabled:cursor-not-allowed
+        ${hasError ? 'border-red-500 focus:ring-red-300' : 'border-sky-600 focus:border-sky-600'}
+      `}
+      aria-invalid={hasError}
+      aria-describedby={hasError ? `${selectId}-error` : undefined}
+    >
+      <option value="" disabled selected={!value}>
+        {placeholder}
+      </option>
+      {
+        options.map((option: Option) => (
+          <option value={option.value} disabled={option.disabled} selected={value === option.value}>
+            {option.label}
+          </option>
+        ))
+      }
+    </select>
+
+    <!-- Custom dropdown arrow -->
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+      <svg
+        class="h-5 w-5 text-sky-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
+        ></path>
+      </svg>
+    </div>
+
+    {
+      hasError && (
+        <div
+          id={`${selectId}-error`}
+          class="absolute -bottom-6 left-0 text-sm text-red-400"
+          role="alert"
+        >
+          {error}
+        </div>
+      )
+    }
+  </div>
+</div>

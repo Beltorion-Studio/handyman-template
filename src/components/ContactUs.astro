@@ -1,0 +1,59 @@
+---
+import { z } from 'zod'
+import ContactForm from '@components/ContactForm.astro'
+import { Image } from 'astro:assets'
+
+const PropsSchema = z.object({
+  sectionId: z.string(),
+  title: z.string(),
+  subtitle: z.string().optional(),
+  className: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const {
+  sectionId = 'contact-us',
+  title = "Let's Talk About Your Needs",
+  subtitle = 'Contact Us',
+  className = '',
+} = PropsSchema.parse(Astro.props)
+
+// Import background image
+import handymanBg from '@assets/images/blog-placeholder-about.jpg'
+---
+
+<section id={sectionId} class={`relative py-20 ${className}`} aria-label="Contact us section">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={handymanBg}
+      alt="Handyman working background"
+      class="h-full w-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/55"></div>
+  </div>
+  <!-- Content -->
+  <div class="relative z-10 container mx-auto px-4">
+    <div class="flex flex-col items-start justify-start gap-16">
+      <!-- Section Heading -->
+      <div class="mx-auto flex w-full max-w-4xl flex-col items-center justify-start gap-6">
+        <h2
+          class="text-center text-base leading-normal font-semibold tracking-[2px] text-cyan-300 uppercase"
+        >
+          {subtitle}
+        </h2>
+
+        <h3 class="text-center text-4xl leading-normal font-bold text-white">
+          {title}
+        </h3>
+      </div>
+
+      <!-- Contact Form Container -->
+      <div class="mx-auto w-full max-w-3xl">
+        <ContactForm formId="contact-form" />
+      </div>
+    </div>
+  </div>
+</section>

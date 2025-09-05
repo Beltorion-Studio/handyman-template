@@ -1,0 +1,119 @@
+---
+import { z } from 'zod'
+import Input from '@components/ui/Input.astro'
+import Textarea from '@components/ui/Textarea.astro'
+import Select from '@components/ui/Select.astro'
+import Checkbox from '@components/ui/Checkbox.astro'
+import Button from '@components/ui/Button.astro'
+
+const PropsSchema = z.object({
+  formId: z.string(),
+  className: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const { className = '', formId = 'contact-form' } = PropsSchema.parse(Astro.props)
+
+// Service options for the select dropdown
+const serviceOptions = [
+  { value: 'plumbing', label: 'Plumbing' },
+  { value: 'electrical', label: 'Electrical' },
+  { value: 'carpentry', label: 'Carpentry' },
+  { value: 'painting', label: 'Painting' },
+  { value: 'hvac', label: 'HVAC' },
+  { value: 'general', label: 'General Handyman' },
+  { value: 'emergency', label: 'Emergency Service' },
+  { value: 'other', label: 'Other' },
+]
+---
+
+<form
+  id={formId}
+  class={`backdrop-blur backdrop-filter bg-black/25 p-8 rounded-xl flex flex-col gap-4 ${className}`}
+  method="POST"
+  action="/contact"
+  aria-label="Contact form"
+>
+  <!-- Full Name Field -->
+  <div class="w-full">
+    <Input
+      type="text"
+      name="fullName"
+      label="Full name"
+      placeholder="Your full name"
+      required={true}
+    />
+  </div>
+
+  <!-- Phone and Email Row -->
+  <div class="flex w-full gap-4">
+    <div class="flex-1">
+      <Input
+        type="tel"
+        name="phone"
+        label="Phone"
+        placeholder="Your phone number"
+        required={true}
+      />
+    </div>
+    <div class="flex-1">
+      <Input
+        type="email"
+        name="email"
+        label="Email"
+        placeholder="Your email address"
+        required={true}
+      />
+    </div>
+  </div>
+
+  <!-- Location Field -->
+  <div class="w-full">
+    <Input
+      type="text"
+      name="location"
+      label="Location"
+      placeholder="Your location"
+      required={true}
+    />
+  </div>
+
+  <!-- Service Selection -->
+  <div class="w-full">
+    <Select
+      name="service"
+      label="Select service"
+      placeholder="Select one..."
+      options={serviceOptions}
+      required={true}
+    />
+  </div>
+
+  <!-- Message Field -->
+  <div class="w-full">
+    <Textarea
+      name="message"
+      label="Message"
+      placeholder="Type your message..."
+      rows={6}
+      required={true}
+    />
+  </div>
+
+  <!-- Terms Checkbox -->
+  <div class="pb-4">
+    <Checkbox name="acceptTerms" label="I accept the Terms" required={true} />
+  </div>
+
+  <!-- Submit Button -->
+  <Button
+    type="submit"
+    intent="secondary"
+    size="large"
+    class="w-full"
+    ariaLabel="Submit contact form"
+  >
+    Submit
+  </Button>
+</form>

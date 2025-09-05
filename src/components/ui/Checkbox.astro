@@ -1,0 +1,94 @@
+---
+import { z } from 'zod'
+
+const PropsSchema = z.object({
+  name: z.string(),
+  id: z.string().optional(),
+  required: z.boolean().optional().default(false),
+  disabled: z.boolean().optional().default(false),
+  checked: z.boolean().optional().default(false),
+  value: z.string().optional().default('on'),
+  label: z.string().optional(),
+  error: z.string().optional(),
+  className: z.string().optional(),
+  labelClassName: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const {
+  name,
+  id,
+  required = false,
+  disabled = false,
+  checked = false,
+  value = 'on',
+  label,
+  error,
+  className = '',
+  labelClassName = '',
+} = PropsSchema.parse(Astro.props)
+
+const checkboxId = id || name
+const hasError = Boolean(error)
+---
+
+<div class={`flex items-start gap-2 ${className}`}>
+  <div class="relative flex-shrink-0">
+    <input
+      type="checkbox"
+      id={checkboxId}
+      name={name}
+      value={value}
+      required={required}
+      disabled={disabled}
+      checked={checked}
+      class={`
+        w-[18px] h-[18px] rounded border-2 transition-colors duration-200
+        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2
+        disabled:opacity-50 disabled:cursor-not-allowed
+        ${hasError ? 'border-red-500 focus:ring-red-300' : 'border-sky-600 focus:border-sky-600'}
+        checked:bg-sky-600 checked:border-sky-600
+        checked:focus:bg-sky-600 checked:focus:border-sky-600
+      `}
+      aria-invalid={hasError}
+      aria-describedby={hasError ? `${checkboxId}-error` : undefined}
+    />
+
+    <!-- Custom checkmark -->
+    <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
+      <svg
+        class="h-3 w-3 text-white opacity-0 transition-opacity duration-200"
+        style={checked ? 'opacity: 1' : 'opacity: 0'}
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </div>
+  </div>
+
+  {
+    label && (
+      <label
+        for={checkboxId}
+        class={`cursor-pointer text-sm leading-[1.4] text-white select-none ${labelClassName}`}
+      >
+        {label}
+        {required && <span class="ml-1 text-red-400">*</span>}
+      </label>
+    )
+  }
+
+  {
+    hasError && (
+      <div id={`${checkboxId}-error`} class="mt-1 text-sm text-red-400" role="alert">
+        {error}
+      </div>
+    )
+  }
+</div>
