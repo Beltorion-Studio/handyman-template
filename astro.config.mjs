@@ -10,7 +10,13 @@ import tailwindcss from '@tailwindcss/vite'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), icon()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    icon({
+      iconDir: 'src/assets/icons',
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],

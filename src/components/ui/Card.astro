@@ -1,6 +1,8 @@
 ---
-import { cva, type VariantProps } from 'cva'
+import { cva } from 'cva'
 import { z } from 'zod'
+import { Icon } from 'astro-icon/components'
+import type { IconName } from '@lib/icons'
 
 const card = cva('bg-white relative rounded-3xl size-full', {
   variants: {
@@ -19,19 +21,19 @@ const card = cva('bg-white relative rounded-3xl size-full', {
       primary: ['border-primary-dark'],
       secondary: ['border-secondary'],
     },
-    size: {
-      small: ['p-4'],
-      medium: ['p-6'],
-      large: ['p-8'],
+    padding: {
+      small: ['p-6'],
+      medium: ['p-8'],
+      large: ['p-10'],
     },
   },
-  compoundVariants: [{ intent: 'default', size: 'medium' }],
+  compoundVariants: [{ intent: 'default', padding: 'medium' }],
 })
 
 const PropsSchema = z
   .object({
     intent: z.enum(['default', 'primary', 'secondary']).optional(),
-    size: z.enum(['small', 'medium', 'large']).optional(),
+    padding: z.enum(['small', 'medium', 'large']).optional(),
     defaults: z.enum(['default']).optional(),
     title: z.string().optional(),
     description: z.string().optional(),
@@ -46,7 +48,7 @@ export type Props = z.infer<typeof PropsSchema>
 
 const {
   intent = 'default',
-  size = 'medium',
+  padding = 'medium',
   defaults = 'default',
   title,
   description,
@@ -64,31 +66,29 @@ const Element = href ? 'a' : 'div'
   {...rest}
   {...href ? { href } : {}}
   aria-label={ariaLabel}
-  class:list={[card({ intent, size, defaults }), 'm-0']}
+  class:list={[card({ intent, padding, defaults }), 'm-0']}
 >
   <div
     class="relative flex size-full flex-col content-stretch items-start justify-start overflow-clip"
   >
     <!-- Icon Section -->
-    <div
-      class="relative box-border flex w-full shrink-0 content-stretch items-start justify-start overflow-clip p-6"
-    >
-      <div class="relative size-16 shrink-0">
-        {
-          icon && (
-            <img
-              alt={iconAlt || title || 'Card icon'}
-              src={icon}
-              class="block size-full max-w-none object-contain"
+    {
+      icon && (
+        <div class="relative box-border flex w-full shrink-0 content-stretch items-start justify-start overflow-clip">
+          <div class="relative size-16 shrink-0">
+            <Icon
+              name={icon}
+              title={iconAlt || title || 'Card icon'}
+              class="block size-full text-current"
             />
-          )
-        }
-      </div>
-    </div>
+          </div>
+        </div>
+      )
+    }
 
     <!-- Content Section -->
     <div
-      class="text-text-primary relative box-border flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-4 px-6 pt-0 pb-6 leading-[0]"
+      class="text-text-primary relative box-border flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-4 leading-[0]"
     >
       {
         title && (

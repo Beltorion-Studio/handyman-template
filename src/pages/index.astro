@@ -3,44 +3,82 @@ import Layout from '@layouts/Layout.astro'
 import Card from '@components/ui/Card.astro'
 import CTA from '@components/CTA.astro'
 import TrustStats from '@components/TrustStats.astro'
+import { ICONS } from '@lib/icons'
+
+// Services data
+const services = [
+  {
+    title: 'Carpentry Services',
+    description:
+      'Professional woodworking and furniture repair. From custom cabinets to door installations, we handle all your carpentry needs with precision and craftsmanship.',
+    icon: ICONS.CARPENTRY.HAMMER_CARPENTRY,
+    iconAlt: 'Carpentry hammer icon',
+  },
+  {
+    title: 'Plumbing Services',
+    description:
+      'Expert plumbing repairs and installations. We fix leaks, install fixtures, and ensure your plumbing system works perfectly for years to come.',
+    icon: ICONS.PLUMBER.WRENCH,
+    iconAlt: 'Plumber wrench icon',
+  },
+  {
+    title: 'Home Repairs',
+    description:
+      'General home maintenance and repairs. From electrical work to drywall repairs, we keep your home in perfect condition with professional service.',
+    icon: ICONS.HOME_REPAIR.DRILL,
+    iconAlt: 'Home repair drill icon',
+  },
+  {
+    title: 'Energy Solutions',
+    description:
+      'Electrical and energy efficiency services. We install lighting, upgrade electrical systems, and help you save on energy costs.',
+    icon: ICONS.ENERGY.BATTERY,
+    iconAlt: 'Energy battery icon',
+  },
+  {
+    title: 'Gardening Services',
+    description:
+      'Landscaping and garden maintenance. We help you create and maintain beautiful outdoor spaces with professional gardening services.',
+    icon: ICONS.GARDENING.TOOLS,
+    iconAlt: 'Gardening tools icon',
+  },
+  {
+    title: 'Security Systems',
+    description:
+      'Advanced security systems and monitoring. Protect your home and family with our comprehensive security solutions and 24/7 monitoring.',
+    icon: ICONS.SECURITY.SHIELD,
+    iconAlt: 'Security shield icon',
+  },
+]
 ---
 
 <Layout title="Home">
   <div class="container mx-auto py-10">
     <h1 class="text-brand mb-10 text-center text-4xl font-bold">Our Services</h1>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <Card
-        title="Gutter Cleaning"
-        description="Protect your home from water damage with thorough gutter cleaning. We remove debris, check for blockages, and make sure your gutters stay functional all year long."
-        icon="/favicon.svg"
-        iconAlt="Gutter cleaning service"
-      />
-
-      <Card
-        title="Pressure Washing"
-        description="Restore your home's exterior beauty with professional pressure washing services. We clean driveways, siding, decks, and patios to make them look brand new."
-        icon="/favicon.svg"
-        iconAlt="Pressure washing service"
-      />
-
-      <Card
-        title="Window Cleaning"
-        description="Crystal clear windows that let in maximum light and enhance your home's curb appeal. Professional window cleaning for both interior and exterior surfaces."
-        icon="/favicon.svg"
-        iconAlt="Window cleaning service"
-      />
+    <div class="text-brand grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service) => (
+          <Card
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+            iconAlt={service.iconAlt}
+          />
+        ))
+      }
     </div>
   </div>
-  <TrustStats sectionId="trust-stats" 
-  stats={[
-    { value: '98%', label: 'Customer satisfaction rate' },
-    { value: '250+', label: 'Completed projects' },
-    { value: '15+', label: 'Years of trade experience' },
-    { value: '24/7', label: 'Emergency support available' },
-  ]}
+  <TrustStats
+    sectionId="trust-stats"
+    stats={[
+      { value: '98%', label: 'Customer satisfaction rate' },
+      { value: '250+', label: 'Completed projects' },
+      { value: '15+', label: 'Years of trade experience' },
+      { value: '24/7', label: 'Emergency support available' },
+    ]}
   />
-  <CTA 
+  <CTA
     sectionId="Call to action"
     title="Ready to Fix It Today?"
     description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."

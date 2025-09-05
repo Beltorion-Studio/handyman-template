@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="grid grid-cols-2 gap-6 p-6 md:grid-cols-4">
+  <!-- Carpentry Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="carpentry-hammer-carpentry" class="h-12 w-12 text-amber-600" />
+    <span class="text-sm font-medium">Carpentry</span>
+  </div>
+
+  <!-- Energy Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="energy-battery" class="h-12 w-12 text-green-600" />
+    <span class="text-sm font-medium">Energy</span>
+  </div>
+
+  <!-- Gardening Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="gardening-tools" class="h-12 w-12 text-emerald-600" />
+    <span class="text-sm font-medium">Gardening</span>
+  </div>
+
+  <!-- Home Repair Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="home-repair-drill" class="h-12 w-12 text-blue-600" />
+    <span class="text-sm font-medium">Home Repair</span>
+  </div>
+
+  <!-- Plumbing Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="plumber-wrench" class="h-12 w-12 text-cyan-600" />
+    <span class="text-sm font-medium">Plumbing</span>
+  </div>
+
+  <!-- Repair Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="repair-toolbox" class="h-12 w-12 text-orange-600" />
+    <span class="text-sm font-medium">Repair</span>
+  </div>
+
+  <!-- Security Icons -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="security-shield" class="h-12 w-12 text-red-600" />
+    <span class="text-sm font-medium">Security</span>
+  </div>
+
+  <!-- More examples -->
+  <div class="flex flex-col items-center space-y-2">
+    <Icon name="carpentry-circular-saw" class="h-12 w-12 text-gray-600" />
+    <span class="text-sm font-medium">Circular Saw</span>
+  </div>
+</div>
+
+<style>
+  /* Ensure icons inherit color properly */
+  [data-icon] {
+    fill: currentColor;
+  }
+</style>
