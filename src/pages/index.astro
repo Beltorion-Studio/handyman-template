@@ -6,6 +6,7 @@ import TrustStats from '@components/TrustStats.astro'
 import { ICONS } from '@lib/icons'
 import ContactUs from '@components/ContactUs.astro'
 import Hero from '@components/sections/Hero.astro'
+import heroImage from '@assets/images/blog-placeholder-about.jpg'
 
 // Services data
 const services = [
@@ -20,7 +21,7 @@ const services = [
     title: 'Plumbing Services',
     description:
       'Expert plumbing repairs and installations. We fix leaks, install fixtures, and ensure your plumbing system works perfectly for years to come.',
-    icon: ICONS.PLUMBER.WRENCH,
+    icon: ICONS.CARPENTRY.WOODEN_CABINET,
     iconAlt: 'Plumber wrench icon',
   },
   {
@@ -56,6 +57,7 @@ const services = [
 
 <Layout title="Home">
   <Hero
+    heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="Your Trusted Handyman Service"
     description="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
     primaryButtonText="Get a Free Quote"
@@ -64,14 +66,14 @@ const services = [
     secondaryButtonHref="#about"
   />
   <TrustStats
-  sectionId="trust-stats"
-  stats={[
-    { value: '98%', label: 'Customer satisfaction rate' },
-    { value: '250+', label: 'Completed projects' },
-    { value: '15+', label: 'Years of trade experience' },
-    { value: '24/7', label: 'Emergency support available' },
-  ]}
-/>
+    sectionId="trust-stats"
+    stats={[
+      { value: '98%', label: 'Customer satisfaction rate' },
+      { value: '250+', label: 'Completed projects' },
+      { value: '15+', label: 'Years of trade experience' },
+      { value: '24/7', label: 'Emergency support available' },
+    ]}
+  />
   <div class="container mx-auto py-10">
     <h1 class="text-brand mb-10 text-center text-4xl font-bold">Our Services</h1>
 
@@ -88,7 +90,7 @@ const services = [
       }
     </div>
   </div>
- 
+
   <CTA
     sectionId="Call to action"
     title="Ready to Fix It Today?"
