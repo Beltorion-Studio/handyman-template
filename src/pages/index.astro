@@ -1,10 +1,10 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Card from '@components/ui/Card.astro'
 import CTA from '@components/CTA.astro'
 import TrustStats from '@components/TrustStats.astro'
 import ContactUs from '@components/ContactUs.astro'
 import Hero from '@components/sections/Hero.astro'
+import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
 
@@ -33,22 +33,8 @@ const services = allServices.filter((service) => service.data.featured)
       { value: '24/7', label: 'Emergency support available' },
     ]}
   />
-  <div class="container mx-auto py-10">
-    <h1 class="text-brand mb-10 text-center text-4xl font-bold">Our Services</h1>
 
-    <div class="text-brand grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {
-        services.map((service) => (
-          <Card
-            title={service.data.title}
-            description={service.data.shortDescription || service.data.description}
-            icon={service.data.icon}
-            iconAlt={`${service.data.title} icon`}
-          />
-        ))
-      }
-    </div>
-  </div>
+  <Services sectionId="services" title="Our Services" services={services} />
 
   <CTA
     sectionId="Call to action"

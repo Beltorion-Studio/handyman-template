@@ -1,0 +1,51 @@
+---
+import Card from '@components/ui/Card.astro'
+import Heading from '@components/ui/Heading.astro'
+
+export type Props = {
+  sectionId?: string
+  title?: string
+  services?: Array<{
+    data: {
+      title: string
+      description: string
+      shortDescription?: string
+      icon: string
+    }
+  }>
+  className?: string
+}
+
+const {
+  sectionId = 'services',
+  title = 'Our Services',
+  services = [],
+  className = '',
+} = Astro.props as Props
+---
+
+<section class={`pb-44 pt-10 ${className}`} id={sectionId}>
+  <div class="container mx-auto">
+    <Heading
+      tag="h2"
+      size="h2"
+      variant="default"
+      text={title}
+      align="center"
+      class="text-brand mb-10 text-4xl font-bold"
+    />
+
+    <div class="text-brand grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service) => (
+          <Card
+            title={service.data.title}
+            description={service.data.shortDescription || service.data.description}
+            icon={service.data.icon}
+            iconAlt={`${service.data.title} icon`}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
