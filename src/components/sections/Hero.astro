@@ -1,0 +1,108 @@
+---
+import { z } from 'zod'
+import { Image } from 'astro:assets'
+import Button from '@components/ui/Button.astro'
+
+const PropsSchema = z.object({
+  sectionId: z.string().optional(),
+  title: z.string(),
+  subheading: z.string().optional(),
+  description: z.string().optional(),
+  primaryButtonText: z.string().optional(),
+  primaryButtonHref: z.string().optional(),
+  secondaryButtonText: z.string().optional(),
+  secondaryButtonHref: z.string().optional(),
+  className: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const {
+  sectionId = 'hero',
+  title,
+  subheading,
+  description,
+  primaryButtonText,
+  primaryButtonHref,
+  secondaryButtonText,
+  secondaryButtonHref,
+  className = '',
+} = PropsSchema.parse(Astro.props)
+
+// Import background image
+import heroBg from '@assets/images/blog-placeholder-about.jpg'
+---
+
+<section
+  id={sectionId}
+  class={`relative bg-black/60 rounded-bl-[96px] rounded-br-[96px] ${className}`}
+  aria-label="Hero section"
+>
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={heroBg}
+      alt="Hero background"
+      class="h-full w-full rounded-br-[96px] rounded-bl-[96px] object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 rounded-br-[96px] rounded-bl-[96px] bg-black/60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 container mx-auto px-4 py-16">
+    <div class="flex flex-col items-start justify-start gap-16">
+      <!-- Hero Content -->
+      <div class="mx-auto flex w-full max-w-[600px] items-center justify-center gap-16">
+        <div class="flex w-full flex-col items-start justify-center gap-8">
+          <!-- Hero Title -->
+          <div class="flex w-full flex-col items-start justify-start gap-6">
+            <h1 class="w-full text-7xl leading-normal font-bold text-white">
+              {title}
+            </h1>
+          </div>
+
+          <!-- Hero Text and Actions -->
+          <div class="flex w-full flex-col items-start justify-start gap-6">
+            {
+              description && (
+                <p class="text-2xl leading-[1.4] font-bold text-white">{description}</p>
+              )
+            }
+
+            <!-- Action Buttons -->
+            {
+              (primaryButtonText || secondaryButtonText) && (
+                <div class="flex items-center justify-center gap-8">
+                  {primaryButtonText && (
+                    <Button
+                      href={primaryButtonHref}
+                      intent="secondary"
+                      size="large"
+                      ariaLabel={primaryButtonText}
+                    >
+                      {primaryButtonText}
+                    </Button>
+                  )}
+                  {secondaryButtonText && (
+                    <Button
+                      href={secondaryButtonHref}
+                      intent="primary"
+                      size="large"
+                      ariaLabel={secondaryButtonText}
+                    >
+                      {secondaryButtonText}
+                    </Button>
+                  )}
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Stats Card -->
+
+</section>

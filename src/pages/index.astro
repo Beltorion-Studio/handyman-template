@@ -5,6 +5,7 @@ import CTA from '@components/CTA.astro'
 import TrustStats from '@components/TrustStats.astro'
 import { ICONS } from '@lib/icons'
 import ContactUs from '@components/ContactUs.astro'
+import Hero from '@components/sections/Hero.astro'
 
 // Services data
 const services = [
@@ -54,6 +55,14 @@ const services = [
 ---
 
 <Layout title="Home">
+  <Hero
+    title="Your Trusted Handyman Service"
+    description="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
+    primaryButtonText="Get a Free Quote"
+    primaryButtonHref="#contact"
+    secondaryButtonText="Learn More"
+    secondaryButtonHref="#about"
+  />
   <div class="container mx-auto py-10">
     <h1 class="text-brand mb-10 text-center text-4xl font-bold">Our Services</h1>
 
