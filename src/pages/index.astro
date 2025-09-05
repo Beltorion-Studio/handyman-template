@@ -6,6 +6,7 @@ import TrustStats from '@components/TrustStats.astro'
 import { ICONS } from '@lib/icons'
 import ContactUs from '@components/ContactUs.astro'
 import Hero from '@components/sections/Hero.astro'
+import Section1 from '@components/sections/Section1.astro'
 
 // Services data
 const services = [
@@ -88,14 +89,15 @@ const services = [
       }
     </div>
   </div>
- 
   <CTA
     sectionId="Call to action"
     title="Ready to Fix It Today?"
     description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
     buttonText="Get Your Free Quote"
     buttonHref="#contact"
-    backgroundClass="bg-gradient-to-r from-brand to-primary-dark"
+    primaryButtonText="Get Your Free Quote"
+    primaryButtonHref="#contact"
+    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
 </Layout>

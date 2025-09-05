@@ -18,7 +18,7 @@ const { sectionId, stats } = PropsSchema.parse(Astro.props)
 
 <section id={sectionId}>
   <div
-    class="border-brand relative box-border flex size-full content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8"
+    class="border-brand max-w-6xl mx-auto -translate-y-1/2 relative box-border flex size-full content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8"
   >
     {
       stats.map((stat: { value: string; label: string }) => (

@@ -5,14 +5,14 @@
   --breakpoint-wide: 90rem;
 
   /* Custom Colors from Figma */
-  --color-brand: oklch(0.45 0.15 240); /* blue-600 */
-  --color-primary-dark: oklch(0.25 0.02 240); /* slate-800 */
+  --color-brand: oklch(.5 .134 242.749); /* sky-700 */
+  --color-primary-dark: oklch(.293 .066 243.157); /* sky-950 */
   --color-primary-light: oklch(0.85 0.08 200); /* sky-200 */
-  --color-secondary: oklch(0.7 0.15 200); /* cyan-400 */
+  --color-secondary: oklch(.865 .127 207.078); /* cyan-300 */
   --color-light: oklch(0.5 0.01 0); /* gray-500 */
   --color-lightest: oklch(0.95 0.01 0); /* gray-100 */
   --color-text-primary: oklch(0.2 0.01 0); /* gray-900 */
-  --color-text-secondary: oklch(0.45 0.15 240); /* blue-600 */
-  --color-text-secondary-light: oklch(0.7 0.15 200); /* cyan-400 */
-  --color-text-light: oklch(0.35 0.12 240); /* blue-800 */
+  --color-text-secondary: oklch(.5 .134 242.749); /* sky-700 */
+  --color-text-secondary-light: oklch(.865 .127 207.078); /* cyan-300 */
+  --color-text-light: oklch(.391 .09 240.876); /* sky-900 */
 }
