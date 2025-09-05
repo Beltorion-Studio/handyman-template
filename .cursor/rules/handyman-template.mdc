@@ -65,6 +65,16 @@ const {
 - Implement accessibility features on interactive elements
 - Include tabindex="0", aria-label, on:click, and on:keydown attributes
 - Ensure proper semantic HTML structure
+- **All sections must have proper heading and id for accessibility**:
+  ```html
+  <section>
+    <h2 id="section-description">Section Title</h2>
+    <!-- Section content -->
+  </section>
+  ```
+- Use proper heading hierarchy (h1, h2, h3, etc.)
+- Include alt text for all images
+- Ensure keyboard navigation works properly
 
 ### Styling Guidelines
 
@@ -126,29 +136,87 @@ const {
 ### Astro Component Structure
 
 - Always use the standard Astro component pattern with frontmatter
-- Define Props type in the frontmatter section
+- **Always use Zod schemas** for component props validation
 - Use destructuring with default values for all props
 - Follow this exact structure:
 
 ```astro
 ---
-export type Props = {
-  // Define all props as optional with proper types
-  title?: string
-  description?: string
-  // ... other props
-}
+import { z } from 'zod'
+
+const PropsSchema = z.object({
+  // Define all props with validation
+  title: z.string().optional(),
+  description: z.string().optional(),
+  sectionId: z.string().optional(),
+  // ... other props with appropriate validation
+})
+
+export type Props = z.infer<typeof PropsSchema>
 
 const {
   // Destructure with meaningful defaults
   title = 'Default Title',
   description = 'Default description',
+  sectionId = 'section-description',
   // ... other destructured props
-} = Astro.props
+} = PropsSchema.parse(Astro.props)
 ---
 
 <!-- Component HTML/JSX here -->
 ```
+
+### Component Validation with Zod
+
+- **Always use Zod schemas** for component props validation
+- **Benefits**: Runtime validation, better error messages, consistency, future-proofing
+- **Pattern for all components**:
+
+  ```typescript
+  import { z } from 'zod'
+
+  const PropsSchema = z.object({
+    // Define all props with appropriate validation
+    title: z.string().optional(),
+    description: z.string().optional(),
+    sectionId: z.string().optional(),
+    // Complex validation examples:
+    stats: z
+      .array(
+        z.object({
+          value: z.string(),
+          label: z.string(),
+        })
+      )
+      .min(3)
+      .max(4),
+    href: z.string().url().optional(),
+  })
+
+  export type Props = z.infer<typeof PropsSchema>
+  const props = PropsSchema.parse(Astro.props)
+  ```
+
+### Component Accessibility Pattern
+
+- **All components must include accessibility props**:
+  ```typescript
+  export type Props = {
+    // Content props
+    title?: string
+    description?: string
+    // Accessibility props
+    sectionId?: string
+  }
+  ```
+- **Use accessibility props in component structure**:
+  ```html
+  <section>
+    <h2 id="{sectionId}">{title}</h2>
+    <p>{description}</p>
+    <!-- Component content -->
+  </section>
+  ```
 
 ### Build and Commands
 

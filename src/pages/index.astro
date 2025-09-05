@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro'
 import Card from '@components/ui/Card.astro'
 import CTA from '@components/CTA.astro'
+import TrustStats from '@components/TrustStats.astro'
 ---
 
 <Layout title="Home">
@@ -31,5 +32,20 @@ import CTA from '@components/CTA.astro'
       />
     </div>
   </div>
-  <CTA />
+  <TrustStats sectionId="trust-stats" 
+  stats={[
+    { value: '98%', label: 'Customer satisfaction rate' },
+    { value: '250+', label: 'Completed projects' },
+    { value: '15+', label: 'Years of trade experience' },
+    { value: '24/7', label: 'Emergency support available' },
+  ]}
+  />
+  <CTA 
+    sectionId="Call to action"
+    title="Ready to Fix It Today?"
+    description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
+    buttonText="Get Your Free Quote"
+    buttonHref="#contact"
+    backgroundClass="bg-gradient-to-r from-brand to-primary-dark"
+  />
 </Layout>

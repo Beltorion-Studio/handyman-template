@@ -1,23 +1,21 @@
 ---
-export interface Props {
-  image?: string
-  imageAlt?: string
-  date?: string
-  title?: string
-  description?: string
-  readMoreText?: string
-  href?: string
-}
+import { z } from 'zod'
 
-const {
-  image = '/placeholder-blog.jpg',
-  imageAlt = 'Blog post image',
-  date = '21 May 2025',
-  title = 'The Secret to Stress-Free Furniture Assembly',
-  description = 'Flat-pack furniture can be intimidating. This post reveals tricks, tools, and handyman tips to turn Ikea boxes into finished furniture without frustration or wasted hours.',
-  readMoreText = 'Read more',
-  href = '#',
-} = Astro.props
+const PropsSchema = z.object({
+  image: z.string().optional(),
+  imageAlt: z.string().optional(),
+  date: z.string().optional(),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  readMoreText: z.string().optional(),
+  href: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const { image, imageAlt, date, title, description, readMoreText, href } = PropsSchema.parse(
+  Astro.props
+)
 ---
 
 <div class="border-brand relative size-full rounded-3xl border border-solid bg-white">

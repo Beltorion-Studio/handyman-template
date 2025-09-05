@@ -1,34 +1,36 @@
 ---
-export interface Props {
-  stats?: Array<{
-    value: string
-    label: string
-  }>
-}
+import { z } from 'zod'
 
-const {
-  stats = [
-    { value: '98%', label: 'Customer satisfaction rate' },
-    { value: '250+', label: 'Completed projects' },
-    { value: '15+', label: 'Years of trade experience' },
-    { value: '24/7', label: 'Emergency support available' },
-  ],
-} = Astro.props
+const StatsSchema = z.object({
+  value: z.string(),
+  label: z.string(),
+})
+
+const PropsSchema = z.object({
+  sectionId: z.string(),
+  stats: z.array(StatsSchema).min(3).max(4),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const { sectionId, stats } = PropsSchema.parse(Astro.props)
 ---
 
-<div
-  class="border-brand relative box-border flex size-full content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8"
->
-  {
-    stats.map((stat) => (
-      <div class="relative flex min-h-px min-w-px shrink-0 grow basis-0 flex-col content-stretch items-center justify-start overflow-clip text-center leading-0">
-        <div class="text-brand relative w-full shrink-0 text-6xl font-bold">
-          <p class="leading-normal">{stat.value}</p>
+<section id={sectionId}>
+  <div
+    class="border-brand relative box-border flex size-full content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8"
+  >
+    {
+      stats.map((stat: { value: string; label: string }) => (
+        <div class="relative flex min-h-px min-w-px shrink-0 grow basis-0 flex-col content-stretch items-center justify-start overflow-clip text-center leading-0">
+          <div class="text-brand relative w-full shrink-0 text-6xl font-bold">
+            <p class="leading-normal">{stat.value}</p>
+          </div>
+          <div class="text-text-primary relative w-full shrink-0 text-lg font-normal">
+            <p class="leading-[1.4]">{stat.label}</p>
+          </div>
         </div>
-        <div class="text-text-primary relative w-full shrink-0 text-lg font-normal">
-          <p class="leading-[1.4]">{stat.label}</p>
-        </div>
-      </div>
-    ))
-  }
-</div>
+      ))
+    }
+  </div>
+</section>

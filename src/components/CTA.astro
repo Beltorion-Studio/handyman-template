@@ -1,23 +1,30 @@
 ---
-export interface Props {
-  title?: string
-  description?: string
-  buttonText?: string
-  buttonHref?: string
-  backgroundClass?: string
-}
+import { z } from 'zod'
+
+const PropsSchema = z.object({
+  sectionId: z.string(),
+  title: z.string(),
+  description: z.string(),
+  buttonText: z.string().optional(),
+  buttonHref: z.string().optional(),
+  backgroundClass: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
 
 const {
-  title = 'Ready to Fix It Today?',
-  description = "Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free.",
+  sectionId,
+  title,
+  description,
   buttonText = 'Get Your Free Quote',
   buttonHref = '#contact',
   backgroundClass = 'bg-gradient-to-r from-brand to-primary-dark',
-} = Astro.props
+} = PropsSchema.parse(Astro.props)
 ---
 
 <section
   class={`content-stretch flex gap-2.5 items-start justify-center relative size-full ${backgroundClass}`}
+  id={sectionId}
 >
   <div
     class="relative box-border flex w-full max-w-5xl shrink-0 flex-col content-stretch items-center justify-start gap-16 px-4 py-20"
