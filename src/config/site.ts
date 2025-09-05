@@ -1,12 +1,12 @@
 import Logo from '@assets/images/logo.svg'
 
 export const siteConfig = {
-  name: 'ZenAstro',
+  name: 'Handyman',
   description: 'Professional web development and design services',
-  url: 'https://zenastro.com',
+  url: 'https://handyman.com',
   logo: Logo,
   favicon: '/favicon.svg',
-  copyright: `© ${new Date().getFullYear()} ZenAstro. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Handyman. All rights reserved.`,
   language: 'en',
   locale: 'en_US',
 } as const

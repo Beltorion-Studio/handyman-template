@@ -1,6 +1,6 @@
 export const contactConfig = {
   company: {
-    name: 'ZenAstro',
+    name: 'HandyMan',
     address: {
       street: '123 Innovation Drive',
       city: 'Tech City',
@@ -15,10 +15,10 @@ export const contactConfig = {
       fax: '+1 (555) 123-4568',
     },
     email: {
-      general: 'hello@zenastro.com',
-      support: 'support@zenastro.com',
-      sales: 'sales@zenastro.com',
-      careers: 'careers@zenastro.com',
+      general: 'hello@handyman.com',
+      support: 'support@handyman.com',
+      sales: 'sales@handyman.com',
+      careers: 'careers@handyman.com',
     },
     businessHours: {
       monday: { open: '9:00 AM', close: '6:00 PM', closed: false },

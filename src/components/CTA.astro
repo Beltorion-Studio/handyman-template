@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title?: string
+  description?: string
+  buttonText?: string
+  buttonHref?: string
+  backgroundClass?: string
+}
+
+const {
+  title = 'Ready to Fix It Today?',
+  description = "Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free.",
+  buttonText = 'Get Your Free Quote',
+  buttonHref = '#contact',
+  backgroundClass = 'bg-gradient-to-r from-brand to-primary-dark',
+} = Astro.props
+---
+
+<section
+  class={`content-stretch flex gap-2.5 items-start justify-center relative size-full ${backgroundClass}`}
+>
+  <div
+    class="relative box-border flex w-full max-w-5xl shrink-0 flex-col content-stretch items-center justify-start gap-16 px-4 py-20"
+  >
+    <div
+      class="relative flex w-full max-w-3xl shrink-0 flex-col content-stretch items-center justify-start gap-8"
+    >
+      <div
+        class="relative flex w-full shrink-0 flex-col content-stretch items-center justify-start gap-6"
+      >
+        <div
+          class="relative w-full shrink-0 text-center text-6xl leading-0 font-bold text-white md:text-7xl"
+        >
+          <h2 class="leading-normal">{title}</h2>
+        </div>
+      </div>
+      <div
+        class="relative min-w-full shrink-0 text-center text-lg leading-0 font-semibold text-white md:text-xl"
+      >
+        <p class="leading-[1.4]">{description}</p>
+      </div>
+      <a
+        href={buttonHref}
+        class="bg-secondary border-primary-dark hover:bg-secondary/90 relative box-border flex shrink-0 flex-col content-stretch items-center justify-center gap-2 rounded border border-solid px-8 py-4 transition-colors duration-300"
+      >
+        <div
+          class="text-light relative shrink-0 text-lg leading-0 font-bold tracking-wide text-nowrap"
+        >
+          <span class="leading-none whitespace-pre">{buttonText}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,95 @@
+# Cursor Rules for Handyman Template Project
+
+## Project Overview
+
+This is a handyman service website template built with Astro, TypeScript, and Tailwind CSS.
+
+## Technology Stack
+
+- **Framework**: Astro
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Package Manager**: pnpm (not npm)
+- **Editor**: Cursor (not VS Code)
+
+## Code Style Guidelines
+
+### General Principles
+
+- Follow DRY principle (Don't Repeat Yourself)
+- Write clean, readable, and maintainable code
+- Use early returns for better readability
+- Prefer descriptive variable and function names
+- Use const instead of functions where possible
+- Use Types instead of interfaces
+- Use named functions instead of arrow functions
+
+### Event Handling
+
+- Event functions should be named with "handle" prefix
+- Example: `handleClick` for onClick, `handleKeyDown` for onKeyDown
+
+### Accessibility
+
+- Implement accessibility features on interactive elements
+- Include tabindex="0", aria-label, on:click, and on:keydown attributes
+- Ensure proper semantic HTML structure
+
+### Styling Guidelines
+
+- Use Tailwind CSS utility classes
+- Prefer Tailwind color utility class names over hex codes
+- Use "class:" instead of ternary operators in class tags when possible
+- Minimum font size should be text-base, prefer text-lg for better readability
+- Avoid xs or small font sizes unless specifically requested
+
+### Import Paths
+
+- Use '~/...' import paths instead of relative '../../...' paths
+- Example: `import { Button } from '~/components/ui/Button'`
+
+### Comments
+
+- Minimize comments - only comment complex functions
+- Do not comment HTML and CSS
+- Avoid generic or redundant information
+
+### Animations
+
+- Use GSAP for animations when needed
+- Avoid random shortcuts - study the theme carefully before making changes
+
+### File Structure
+
+- Components go in `src/components/`
+- UI components go in `src/components/ui/`
+- Styles go in `src/styles/`
+- Configuration goes in `src/config/`
+- Utilities go in `src/lib/`
+
+### Build and Commands
+
+- Do not suggest or run build commands automatically
+- Provide commands without executing them - user will run manually
+- Do not suggest installing packages globally
+
+### Design Consistency
+
+- Do not change the design when implementing features
+- Maintain existing design patterns and styling
+
+## Project-Specific Notes
+
+- This is a handyman service template
+- Uses Astro's component-based architecture
+- Includes blog functionality with MDX support
+- Has responsive design with mobile-first approach
+- Includes trust stats, CTA sections, and social links
+
+## Code Quality
+
+- Write bug-free, fully functional code
+- Leave no TODOs, placeholders, or missing pieces
+- Ensure all imports are included
+- Verify code is complete and finalized
+- Focus on readability over performance

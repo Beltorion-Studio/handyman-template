@@ -1,7 +1,35 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro'
+import Card from '@components/ui/Card.astro'
+import CTA from '@components/CTA.astro'
 ---
 
 <Layout title="Home">
-  <h1>Home</h1>
+  <div class="container mx-auto py-10">
+    <h1 class="text-brand mb-10 text-center text-4xl font-bold">Our Services</h1>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Card
+        title="Gutter Cleaning"
+        description="Protect your home from water damage with thorough gutter cleaning. We remove debris, check for blockages, and make sure your gutters stay functional all year long."
+        icon="/favicon.svg"
+        iconAlt="Gutter cleaning service"
+      />
+
+      <Card
+        title="Pressure Washing"
+        description="Restore your home's exterior beauty with professional pressure washing services. We clean driveways, siding, decks, and patios to make them look brand new."
+        icon="/favicon.svg"
+        iconAlt="Pressure washing service"
+      />
+
+      <Card
+        title="Window Cleaning"
+        description="Crystal clear windows that let in maximum light and enhance your home's curb appeal. Professional window cleaning for both interior and exterior surfaces."
+        icon="/favicon.svg"
+        iconAlt="Window cleaning service"
+      />
+    </div>
+  </div>
+  <CTA />
 </Layout>

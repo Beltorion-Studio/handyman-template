@@ -1,0 +1,103 @@
+---
+import { cva, type VariantProps } from 'cva'
+
+const card = cva('bg-white relative rounded-3xl size-full', {
+  variants: {
+    defaults: {
+      default: [
+        'transition',
+        'duration-300',
+        'hover:shadow-lg',
+        'border',
+        'border-brand',
+        'border-solid',
+      ],
+    },
+    intent: {
+      default: ['border-brand'],
+      primary: ['border-primary-dark'],
+      secondary: ['border-secondary'],
+    },
+    size: {
+      small: ['p-4'],
+      medium: ['p-6'],
+      large: ['p-8'],
+    },
+  },
+  compoundVariants: [{ intent: 'default', size: 'medium' }],
+})
+
+type AnyProps = { [key: string]: unknown }
+
+export type Props = VariantProps<typeof card> & {
+  title?: string
+  description?: string
+  icon?: string
+  iconAlt?: string
+  href?: string
+  ariaLabel?: string
+} & AnyProps
+
+const {
+  intent = 'default',
+  size = 'medium',
+  defaults = 'default',
+  title,
+  description,
+  icon,
+  iconAlt,
+  href,
+  ariaLabel,
+  ...rest
+} = Astro.props as Props
+
+const Element = href ? 'a' : 'div'
+---
+
+<Element
+  {...rest}
+  {...href ? { href } : {}}
+  aria-label={ariaLabel}
+  class:list={[card({ intent, size, defaults }), 'm-0']}
+>
+  <div
+    class="relative flex size-full flex-col content-stretch items-start justify-start overflow-clip"
+  >
+    <!-- Icon Section -->
+    <div
+      class="relative box-border flex w-full shrink-0 content-stretch items-start justify-start overflow-clip p-6"
+    >
+      <div class="relative size-16 shrink-0">
+        {
+          icon && (
+            <img
+              alt={iconAlt || title || 'Card icon'}
+              src={icon}
+              class="block size-full max-w-none object-contain"
+            />
+          )
+        }
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div
+      class="text-text-primary relative box-border flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-4 px-6 pt-0 pb-6 leading-[0]"
+    >
+      {
+        title && (
+          <div class="relative w-full shrink-0 text-2xl font-bold">
+            <p class="leading-normal">{title}</p>
+          </div>
+        )
+      }
+      {
+        description && (
+          <div class="relative w-full shrink-0 overflow-hidden text-base font-normal overflow-ellipsis">
+            <p class="leading-[1.4]">{description}</p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Element>

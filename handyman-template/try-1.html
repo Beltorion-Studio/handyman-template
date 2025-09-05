@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Handyman4You</title>
+    <meta
+      name="description"
+      content="Professional home maintenance services in Brussels – Handyman4You"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              archivo: ['Archivo', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              brand: '#ff6900',
+              brandDark: '#f54a00',
+              brandLight: '#ffd230',
+              textPrimary: '#1b1718',
+              textLight: '#52525c',
+              lightest: '#f5f4f4',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-feature-settings: 'liga' 1, 'kern' 1;
+      }
+    </style>
+  </head>
+  <body class="font-archivo text-textPrimary bg-white">
+    <!-- Nav -->
+    <header
+      class="absolute left-0 top-0 w-full z-20"
+      aria-label="Primary Navigation"
+    >
+      <nav
+        class="mx-auto flex w-full max-w-[1200px] items-center justify-between px-4 py-2"
+      >
+        <a
+          href="#top"
+          class="rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          aria-label="Handyman4You Home"
+          tabindex="0"
+        >
+          <img
+            src="http://localhost:3845/assets/a3871bee6b5fa58b06d2b533417d8aa637688b5b.png"
+            alt="Handyman4You logo"
+            class="h-20 w-20 object-cover"
+          />
+        </a>
+        <div class="flex items-center gap-12">
+          <a
+            href="#services"
+            class="text-white text-lg font-bold underline tracking-[0.36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            tabindex="0"
+            >Services</a
+          >
+          <a
+            href="#reviews"
+            class="text-white text-lg font-bold underline tracking-[0.36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            tabindex="0"
+            >Reviews</a
+          >
+          <a
+            href="#works"
+            class="text-white text-lg font-bold underline tracking-[0.36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            tabindex="0"
+            >Works</a
+          >
+          <a
+            href="#about"
+            class="text-white text-lg font-bold underline tracking-[0.36px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            tabindex="0"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="relative rounded bg-brand px-3 py-2 text-white text-base font-bold tracking-[0.32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brandDark focus-visible:ring-offset-2"
+            tabindex="0"
+          >
+            <span>Contact</span>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded border border-brandDark shadow-[2px_2px_0_0_#f54a00]"
+            ></span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section
+      id="top"
+      class="relative isolate overflow-hidden"
+      aria-label="Hero"
+    >
+      <div
+        class="relative flex h-[900px] w-full items-center justify-center bg-[url('http://localhost:3845/assets/dfd864c4eafda75995342558deebda496b50c557.png')] bg-[length:auto,100%_216.22%] bg-[position:0%_0%,_0%_17.05%]"
+      >
+        <div class="absolute inset-0 bg-black/55"></div>
+        <div
+          class="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-16 px-4 py-16"
+        >
+          <div
+            class="mx-auto flex w-full max-w-[900px] items-center justify-center"
+          >
+            <div class="flex w-full flex-col items-center justify-center gap-8">
+              <div
+                class="flex w-full flex-col items-center justify-center gap-6 text-center text-white"
+              >
+                <p class="text-base font-semibold tracking-[0.32px]">
+                  Handyman4You
+                </p>
+                <h1 class="text-[72px] font-bold leading-none">
+                  Professional
+                  <span class="text-brand">home maintenance</span> services
+                </h1>
+              </div>
+              <div
+                class="flex w-full flex-col items-center justify-start gap-6"
+              >
+                <p
+                  class="mx-auto max-w-[900px] text-center text-2xl font-bold text-white leading-[1.4]"
+                >
+                  We undertake urgent handyman jobs within a 25 km radius of the
+                  capital city of Brussels. I undertake small jobs that
+                  companies or contractors do not usually deal with or do not
+                  undertake at all.
+                </p>
+                <a
+                  href="#contact"
+                  class="relative inline-flex items-center justify-center rounded bg-brand px-6 py-3 text-base font-bold text-white tracking-[0.32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brandDark focus-visible:ring-offset-2"
+                  tabindex="0"
+                  aria-label="Get in touch"
+                >
+                  <span>Get in touch</span>
+                  <span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 rounded border border-brandDark shadow-[4px_4px_0_0_#f54a00]"
+                  ></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section
+      id="services"
+      class="relative overflow-hidden"
+      aria-label="Services"
+    >
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div
+          class="mx-auto flex w-full max-w-[1168px] flex-col items-center gap-6 text-center"
+        >
+          <p class="text-brand text-base font-semibold tracking-[0.32px]">
+            Services
+          </p>
+          <h2 class="text-[36px] font-bold text-textPrimary">
+            We are offering the following
+            <span class="text-textPrimary">services</span>
+          </h2>
+        </div>
+
+        <div class="relative mt-16">
+          <img
+            src="http://localhost:3845/assets/7f9a858ae3b0256ba7fdf2d872b0405b5c51aa3c.svg"
+            alt="Decorative outline"
+            class="pointer-events-none absolute left-[134px] top-[156px] h-[400px] w-[900px]"
+          />
+
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <!-- Card 1 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/dfd864c4eafda75995342558deebda496b50c557.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Plumbing works</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/772d6c65b6558199ab85817b4f5965ba272e6aba.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">
+                    Ikea Installation & Transport
+                  </h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/ec8931af82f4e7ce371ea4520e485f8306b62745.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Heating Works</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/e39465b404095a94728a15b5f2be5260b8f185b9.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">
+                    Clocked Pipe Cleaning Works
+                  </h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/b044e2958dbd978e13cf4bd0723cbb4c1757bcd9.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Gardening Works</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/01f9db7c75f234351f3eae245ea1a01a3fa83d63.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Remodeling</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/a1d293197cadd2de2cc594bfa49f7044f05a87d6.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Gutter Cleaning Services</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="relative rounded-xl bg-white">
+              <div class="overflow-hidden rounded-xl">
+                <div
+                  class="h-60 w-full bg-cover bg-center"
+                  style="
+                    background-image: url('http://localhost:3845/assets/39cd82a2aadf1e21044cf6937f46654c6822c669.png');
+                  "
+                  aria-hidden="true"
+                ></div>
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold">Satellite Installation</h3>
+                </div>
+              </div>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+              ></span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA 1 -->
+    <section
+      class="relative overflow-hidden"
+      aria-label="Do you need a handyman?"
+    >
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20 text-center">
+        <h2 class="text-white text-[72px] font-bold">
+          Do you need a handyman?
+        </h2>
+        <p
+          class="mx-auto mt-8 max-w-[760px] text-white text-[20px] font-semibold leading-[1.4]"
+        >
+          Is your drain clogged? Do you need to assemble new furniture? Does
+          your garden need tidying up? Feel free to contact us. Flexible working
+          hours, excellent result.
+        </p>
+        <a
+          href="#contact"
+          class="relative mt-10 inline-flex items-center justify-center rounded bg-white px-6 py-3 text-base font-bold text-brand tracking-[0.32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brandLight focus-visible:ring-offset-2"
+        >
+          <span>Request a quote</span>
+          <span
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[4px_4px_0_0_#ffd230]"
+          ></span>
+        </a>
+      </div>
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-0 -z-10 bg-transparent"
+      ></div>
+    </section>
+
+    <!-- Offer list -->
+    <section class="relative overflow-hidden" aria-label="Offer">
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div
+          class="mx-auto flex w-full max-w-[1168px] flex-col items-center gap-6 text-center"
+        >
+          <p class="text-brand text-base font-semibold tracking-[0.32px]">
+            Offer
+          </p>
+          <h2 class="text-[36px] font-bold">
+            We can help immediately in the following cases
+          </h2>
+          <p class="text-[20px] font-semibold">
+            Available immediately – or at a late evening or weekend time that
+            suits you:
+          </p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-16 md:grid-cols-2">
+          <ul class="flex flex-col gap-4 text-left text-[18px]">
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span>Camera drain cleaning.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >In the event of an electrical short circuit or fault, we will
+                repair the fault on site and replace any electrical components
+                that need to be replaced or are causing the fault.</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Urgent water, gas, and heating repairs (in the event of an
+                urgent water or gas leak, we will take the necessary steps and
+                replace the faulty appliance or pipe).</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Elimination of blockages and malfunctions in radiators,
+                flushing of the entire system with a magnetic pump that filters
+                out metal particles, cleaning of the system with air.</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Cleaning and inspection of sewer systems, and removal of
+                blockages.</span
+              >
+            </li>
+          </ul>
+          <ul class="flex flex-col gap-4 text-left text-[18px]">
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Lock replacement and, in typical cases of “I locked myself out
+                because I left the key in the door...”, opening the door without
+                breaking the lock mechanism.</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Elimination of boiler leaks or limescale deposits: boiler
+                maintenance is required every two years, at which time the anode
+                and rubber seals are replaced and the pressure control system is
+                checked.</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Setting up a satellite dish: in the event of a storm, return
+                the dish to its original position; if it has come loose,
+                reinstall it.</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span
+                class="mt-1 inline-block h-4 w-4 rounded-full bg-brand"
+              ></span>
+              <span
+                >Any urgent work related to the apartment that requires
+                professional intervention.</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="relative overflow-hidden" aria-label="Reviews">
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+          <!-- Review 1 -->
+          <article class="relative rounded-xl bg-white p-8">
+            <div
+              class="pointer-events-none absolute left-3 top-16 text-[128px] font-black leading-none text-lightest"
+            >
+              “
+            </div>
+            <div class="flex items-center gap-4">
+              <div
+                class="relative h-12 w-12 overflow-hidden rounded-full bg-center bg-cover"
+                style="
+                  background-image: url('http://localhost:3845/assets/39cd82a2aadf1e21044cf6937f46654c6822c669.png');
+                "
+              >
+                <span
+                  class="pointer-events-none absolute inset-0 rounded-full border border-brand"
+                ></span>
+              </div>
+              <h3 class="text-2xl font-bold">Joel Hirv</h3>
+            </div>
+            <p class="mt-4 text-base leading-[1.4]">
+              Having moved recently, I needed help with the electricity,
+              plumbing and heating and Attila was there for all of those tasks.
+              He came promptly, did the job thoroughly and charged reasonably. I
+              am particularly grateful that he also explained, what was wrong,
+              and advised, how to maintain those systems.
+            </p>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+            ></span>
+          </article>
+
+          <!-- Review 2 -->
+          <article class="relative rounded-xl bg-white p-8">
+            <div
+              class="pointer-events-none absolute left-3 top-16 text-[128px] font-black leading-none text-lightest"
+            >
+              “
+            </div>
+            <div class="flex items-center gap-4">
+              <div
+                class="relative h-12 w-12 overflow-hidden rounded-full bg-center bg-cover"
+                style="
+                  background-image: url('http://localhost:3845/assets/fc81b3f7531af7abd910fee43697ec486ce04e02.png');
+                "
+              >
+                <span
+                  class="pointer-events-none absolute inset-0 rounded-full border border-brand"
+                ></span>
+              </div>
+              <h3 class="text-2xl font-bold">Peter Salyi</h3>
+            </div>
+            <p class="mt-4 text-2xl leading-[1.4]">
+              Awesome. Very prompt, very serious. Came to our place fast and did
+              a great work. Highly recommended!
+            </p>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+            ></span>
+          </article>
+
+          <!-- Review 3 -->
+          <article class="relative rounded-xl bg-white p-8">
+            <div
+              class="pointer-events-none absolute left-3 top-16 text-[128px] font-black leading-none text-lightest"
+            >
+              “
+            </div>
+            <div class="flex items-center gap-4">
+              <div
+                class="relative h-12 w-12 overflow-hidden rounded-full bg-center bg-cover"
+                style="
+                  background-image: url('http://localhost:3845/assets/ca45907f2c1fbc1f6210c99ab51fbe9ef644aaaa.png');
+                "
+              >
+                <span
+                  class="pointer-events-none absolute inset-0 rounded-full border border-brand"
+                ></span>
+              </div>
+              <h3 class="text-2xl font-bold">Adri Henzel</h3>
+            </div>
+            <p class="mt-4 text-base leading-[1.4]">
+              Attila évek óta segít nekünk javítás /szerelés/felújítás és más
+              egyéb felmerülő probléma kapcsán. Ha sürgős dologról van szó (pl.
+              duguláselhárítás), mindig gyorsan szakít rá időt. Hatékonyan
+              dolgozik, és mindig az egyszerű és költségtakarékos megoldást
+              keresi. Csak ajánlani tudom!
+            </p>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded-xl border border-brand shadow-[8px_8px_0_0_#ff6900]"
+            ></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Project -->
+    <section
+      class="relative overflow-hidden bg-white"
+      aria-label="Latest Project"
+    >
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-2 text-left">
+              <p class="text-brand text-base font-semibold tracking-[0.32px]">
+                Our Latest Project
+              </p>
+              <div>
+                <h2 class="text-[36px] font-bold">Theatre of Operations</h2>
+                <p class="text-sm text-black">October 1 — December 1</p>
+              </div>
+            </div>
+            <div class="text-[18px] leading-[1.4]">
+              <p class="mb-4">
+                Aenean massa. Cum sociis natoque penatibus et magnis dis
+                parturient montes, nascetur ridiculus mus. Donec quam felis,
+                ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                consequat massa quis enim. Donec pede justo, fringilla vel,
+                aliquet nec, vulputate eget, arcu.
+              </p>
+              <p>
+                Aenean massa. Cum sociis natoque penatibus et magnis dis
+                parturient montes, nascetur ridiculus mus. Donec quam felis,
+                ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+                consequat massa quis enim. Donec pede justo, fringilla vel,
+                aliquet nec, vulputate eget, arcu.
+              </p>
+            </div>
+          </div>
+          <div
+            class="relative h-[600px] rounded-xl bg-cover bg-center shadow-[8px_8px_0_0_#ff6900]"
+            style="
+              background-image: url('http://localhost:3845/assets/11eed851544c342ec60bd4760428b6c61a661342.png');
+            "
+            aria-label="Project image"
+          ></div>
+        </div>
+
+        <!-- Image cards row -->
+        <div class="mt-16 flex flex-wrap gap-8">
+          <div
+            class="relative h-[400px] w-[268px] overflow-hidden rounded-xl bg-cover bg-center"
+            style="
+              background-image: url('http://localhost:3845/assets/51bc3788c0b9114ab7f437528c638355e82f3fa6.png');
+            "
+          >
+            <span
+              class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+              >Badge</span
+            >
+          </div>
+          <div
+            class="relative h-[400px] w-[268px] overflow-hidden rounded-xl bg-cover bg-center"
+            style="
+              background-image: url('http://localhost:3845/assets/c2160dc9a7f9c2b892e5386195984b8c3cd1deb3.png');
+            "
+          >
+            <span
+              class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+              >Badge</span
+            >
+          </div>
+          <div
+            class="relative h-[400px] w-[268px] overflow-hidden rounded-xl bg-cover bg-center"
+            style="
+              background-image: url('http://localhost:3845/assets/f908bd697d0ceba3ccba5ca95e1853105beac463.png');
+            "
+          >
+            <span
+              class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+              >Badge</span
+            >
+          </div>
+          <div
+            class="relative h-[400px] w-[268px] overflow-hidden rounded-xl bg-cover bg-center"
+            style="
+              background-image: url('http://localhost:3845/assets/11b5d9c5d9e0f7d08d7635d6ce6e0f4a9217913c.png');
+            "
+          >
+            <span
+              class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+              >Badge</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA 2 -->
+    <section
+      id="works"
+      class="relative overflow-hidden"
+      aria-label="Check out our last project"
+    >
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20 text-center">
+        <h2 class="text-white text-[72px] font-bold">
+          Check out our last project
+        </h2>
+        <a
+          href="#contact"
+          class="relative mt-10 inline-flex items-center justify-center rounded bg-white px-6 py-3 text-base font-bold text-brand tracking-[0.32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brandLight focus-visible:ring-offset-2"
+        >
+          <span>Join our Facebook Group</span>
+          <span
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[4px_4px_0_0_#ffd230]"
+          ></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="relative overflow-hidden" aria-label="Gallery">
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div
+          class="mx-auto flex w-full max-w-[1168px] flex-col items-center gap-6 text-center"
+        >
+          <p class="text-brand text-base font-semibold tracking-[0.32px]">
+            Gallery
+          </p>
+          <h2 class="text-[36px] font-bold">Our featured works in photos</h2>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <!-- Column 1 -->
+          <div class="flex flex-col gap-8">
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/51bc3788c0b9114ab7f437528c638355e82f3fa6.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Remodeling</span
+              >
+            </div>
+            <div
+              class="relative flex h-[400px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/1e82d65e108893b88d28fb36615959e7d6a1e6df.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Satellite installation</span
+              >
+            </div>
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-[368px] bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/f908bd697d0ceba3ccba5ca95e1853105beac463.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Parquet flooring</span
+              >
+            </div>
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/b044e2958dbd978e13cf4bd0723cbb4c1757bcd9.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Gardening works</span
+              >
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="flex flex-col gap-8">
+            <div
+              class="relative flex h-[400px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-[368px] bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/11eed851544c342ec60bd4760428b6c61a661342.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Remodeling</span
+              >
+            </div>
+            <div
+              class="relative flex h-[760px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/c2160dc9a7f9c2b892e5386195984b8c3cd1deb3.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Ikea installation</span
+              >
+            </div>
+            <div
+              class="relative flex h-[400px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-[368px] bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/e39465b404095a94728a15b5f2be5260b8f185b9.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Pipe cleaning</span
+              >
+            </div>
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-[368px] bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/f908bd697d0ceba3ccba5ca95e1853105beac463.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Parquet flooring</span
+              >
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="flex flex-col gap-8">
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/b044e2958dbd978e13cf4bd0723cbb4c1757bcd9.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Gardening works</span
+              >
+            </div>
+            <div
+              class="relative flex h-[400px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/11b5d9c5d9e0f7d08d7635d6ce6e0f4a9217913c.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Lighting installation</span
+              >
+            </div>
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/01f9db7c75f234351f3eae245ea1a01a3fa83d63.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Remodeling</span
+              >
+            </div>
+            <div
+              class="relative flex h-[600px] w-full overflow-hidden rounded-xl"
+            >
+              <div
+                class="h-full w-full bg-cover bg-center"
+                style="
+                  background-image: url('http://localhost:3845/assets/51bc3788c0b9114ab7f437528c638355e82f3fa6.png');
+                "
+              ></div>
+              <span
+                class="absolute bottom-6 right-6 rounded-lg px-3 py-1 text-white backdrop-blur-sm"
+                >Remodeling</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section
+      id="about"
+      class="relative overflow-hidden bg-white"
+      aria-label="About"
+    >
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+          <div
+            class="relative h-[600px] rounded-xl bg-cover bg-center shadow-[8px_8px_0_0_#ff6900]"
+            style="
+              background-image: url('http://localhost:3845/assets/759402b30bf62bc4e3d26f36751349b51b8e8a0e.png');
+            "
+            aria-label="About image"
+          ></div>
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-6 text-left">
+              <p class="text-brand text-base font-semibold tracking-[0.32px]">
+                About
+              </p>
+              <h2 class="text-[36px] font-bold">Attila Bányai the Handyman</h2>
+            </div>
+            <div class="text-[18px] leading-[1.4]">
+              <p class="mb-4">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+                penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim.
+              </p>
+              <p>
+                Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+                justo. Nullam dictum felis eu pede mollis pretium. Integer
+                tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+                vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
+                consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus
+                in, viverra quis, feugiat a, tellus.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative overflow-hidden" aria-label="Contact">
+      <div class="mx-auto w-full max-w-[1200px] px-4 py-20">
+        <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+          <div class="flex flex-col gap-8">
+            <div class="flex flex-col gap-6 text-left">
+              <p class="text-brand text-base font-semibold tracking-[0.32px]">
+                Contact Us
+              </p>
+              <h2 class="text-[36px] font-bold leading-none">
+                Request a quote
+              </h2>
+              <h3 class="text-[36px] font-bold leading-none">
+                or send us your inquiry.
+              </h3>
+            </div>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex h-8 w-8 items-center justify-center"
+                  ><img
+                    src="http://localhost:3845/assets/b8b34d721bbe8c131788718aca6d598b93e9b42d.svg"
+                    alt="Envelope icon"
+                    class="h-8 w-8"
+                /></span>
+                <a
+                  href="mailto:info@handyman4you.be"
+                  class="text-[18px] font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >info@handyman4you.be</a
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="inline-flex h-8 w-8 items-center justify-center"
+                  ><img
+                    src="http://localhost:3845/assets/7ddb8474fe014ad64723349e0e66a22a3147bce5.svg"
+                    alt="Phone icon"
+                    class="h-8 w-8"
+                /></span>
+                <a
+                  href="tel:+32473120077"
+                  class="text-[18px] font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >+32473120077</a
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="inline-flex h-8 w-8 items-center justify-center"
+                  ><img
+                    src="http://localhost:3845/assets/a053f95a6d1a74b83af179fbe2a7a50fbf84eaf2.svg"
+                    alt="Facebook icon"
+                    class="h-8 w-8"
+                /></span>
+                <a
+                  href="#"
+                  class="text-[18px] font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                  >Handyman4you</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="relative rounded-xl bg-brand p-0">
+            <form
+              class="relative flex flex-col gap-4 p-8"
+              aria-label="Request a quote form"
+            >
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <label class="flex flex-col gap-2">
+                  <span class="text-white text-base font-bold">Full name</span>
+                  <div class="relative">
+                    <input
+                      type="text"
+                      name="full_name"
+                      autocomplete="name"
+                      placeholder="Your full name"
+                      class="w-full rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                      required
+                      aria-required="true"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                    ></span>
+                  </div>
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-white text-base font-bold">Phone</span>
+                  <div class="relative">
+                    <input
+                      type="tel"
+                      name="phone"
+                      autocomplete="tel"
+                      placeholder="Your phone number"
+                      class="w-full rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                      required
+                      aria-required="true"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                    ></span>
+                  </div>
+                </label>
+              </div>
+              <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <label class="flex flex-col gap-2">
+                  <span class="text-white text-base">Email</span>
+                  <div class="relative">
+                    <input
+                      type="email"
+                      name="email"
+                      autocomplete="email"
+                      placeholder="Your email address"
+                      class="w-full rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                      required
+                      aria-required="true"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                    ></span>
+                  </div>
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-white text-base font-bold">Location</span>
+                  <div class="relative">
+                    <input
+                      type="text"
+                      name="location"
+                      placeholder="Your location"
+                      class="w-full rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                      required
+                      aria-required="true"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                    ></span>
+                  </div>
+                </label>
+              </div>
+              <label class="flex flex-col gap-2">
+                <span class="text-white text-base font-bold"
+                  >Select service</span
+                >
+                <div class="relative">
+                  <select
+                    name="service"
+                    class="w-full appearance-none rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                  >
+                    <option>Select one...</option>
+                    <option>Plumbing works</option>
+                    <option>Ikea Installation & Transport</option>
+                    <option>Heating Works</option>
+                    <option>Clocked Pipe Cleaning Works</option>
+                    <option>Gardening Works</option>
+                    <option>Remodeling</option>
+                    <option>Gutter Cleaning Services</option>
+                    <option>Satellite Installation</option>
+                  </select>
+                  <span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                  ></span>
+                  <span
+                    class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2"
+                    ><img
+                      src="http://localhost:3845/assets/060c805508145171603ea5e3a64610729f9a4359.svg"
+                      alt=""
+                      class="h-6 w-6"
+                  /></span>
+                </div>
+              </label>
+              <label class="flex flex-col gap-2">
+                <span class="text-white text-base font-bold">Message</span>
+                <div class="relative">
+                  <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Type your message..."
+                    class="w-full rounded bg-white p-3 text-[16px] text-textLight outline-none"
+                  ></textarea>
+                  <span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[2px_2px_0_0_#ffd230]"
+                  ></span>
+                </div>
+              </label>
+              <label class="flex items-center gap-2 pb-4">
+                <input
+                  type="checkbox"
+                  name="terms"
+                  class="h-[18px] w-[18px] appearance-none rounded border border-brandLight bg-white align-middle"
+                  aria-label="Accept Terms"
+                  required
+                />
+                <span class="text-white text-sm"
+                  >I accept the <span class="text-lightest">Terms</span></span
+                >
+              </label>
+              <button
+                type="submit"
+                class="relative inline-flex items-center justify-center rounded bg-white px-6 py-3 text-base font-bold text-brand tracking-[0.32px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brandLight focus-visible:ring-offset-2"
+              >
+                <span>Submit</span>
+                <span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute inset-0 rounded border border-brandLight shadow-[4px_4px_0_0_#ffd230]"
+                ></span>
+              </button>
+            </form>
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 rounded-xl border border-brandDark shadow-[8px_8px_0_0_#f54a00]"
+            ></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative w-full bg-brand" aria-label="Footer">
+      <div
+        class="mx-auto flex w-full max-w-[1168px] items-center justify-between px-4 py-8 text-left"
+      >
+        <p class="text-white text-2xl font-bold">© 2025 HANDYMAN4YOU</p>
+        <p class="text-lightest text-sm">
+          Designed &amp; Developed by Beltorion
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-28 right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand text-brand bg-white opacity-0 pointer-events-none transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+      aria-label="Back to top"
+      tabindex="0"
+    >
+      <img
+        src="http://localhost:3845/assets/9eb68782a7d49dbba7e82e185aac1044c11b4da1.svg"
+        alt="Chevron up"
+        class="h-6 w-6"
+      />
+    </button>
+
+    <script>
+      function handleScroll() {
+        const btn = document.getElementById('backToTop')
+        if (!btn) return
+        if (window.scrollY > 600) {
+          btn.classList.remove('opacity-0', 'pointer-events-none')
+          btn.classList.add('opacity-100')
+        } else {
+          btn.classList.add('opacity-0', 'pointer-events-none')
+          btn.classList.remove('opacity-100')
+        }
+      }
+      function handleBackToTopClick() {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      document
+        .getElementById('backToTop')
+        ?.addEventListener('click', handleBackToTopClick)
+      document
+        .getElementById('backToTop')
+        ?.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            handleBackToTopClick()
+          }
+        })
+    </script>
+  </body>
+  <!-- Hero and CTA sections rely on the page background overlay color to match the design exactly. -->
+  <style>
+    /* Background color overlays for full-width colored sections matching Figma */
+    section[aria-label='Do you need a handyman?'],
+    section[aria-label='Check out our last project'] {
+      background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.55)
+        ),
+        url('http://localhost:3845/assets/dfd864c4eafda75995342558deebda496b50c557.png')
+          center/cover no-repeat;
+    }
+  </style>
+</html>
