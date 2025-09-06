@@ -11,8 +11,12 @@
   --color-secondary: oklch(.865 .127 207.078); /* cyan-300 */
   --color-light: oklch(0.5 0.01 0); /* gray-500 */
   --color-lightest: oklch(0.95 0.01 0); /* gray-100 */
+
   --color-text-primary: oklch(0.2 0.01 0); /* gray-900 */
-  --color-text-secondary: oklch(.5 .134 242.749); /* sky-700 */
-  --color-text-secondary-light: oklch(.865 .127 207.078); /* cyan-300 */
+  --color-text-secondary: oklch(.865 .127 207.078); /* cyan-300 */
+  --color-text-brand: oklch(.5 .134 242.749); /* sky-700 */
   --color-text-light: oklch(.391 .09 240.876); /* sky-900 */
+  --color-text-white: oklch(1 0 0); /* white */
+  --color-text-black: oklch(0 0 0); /* black */
+  --color-text-gradient: oklch(.5 .134 242.749); /* sky-700 */
 }

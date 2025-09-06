@@ -16,21 +16,23 @@ export type Props = z.infer<typeof PropsSchema>
 const { sectionId, stats } = PropsSchema.parse(Astro.props)
 ---
 
-<section id={sectionId}>
+<div id={sectionId} class="absolute bottom-0  flex w-full translate-y-1/2 justify-center">
+  <div class="container mx-auto">
   <div
-    class="border-brand max-w-6xl mx-auto -translate-y-1/2 relative box-border flex size-full content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8"
+    class="border-brand mx-auto box-border flex  content-stretch items-start justify-start gap-8 rounded-3xl border border-solid bg-white p-8 w-full"
   >
     {
       stats.map((stat: { value: string; label: string }) => (
-        <div class="relative flex min-h-px min-w-px shrink-0 grow basis-0 flex-col content-stretch items-center justify-start overflow-clip text-center leading-0">
-          <div class="text-brand relative w-full shrink-0 text-6xl font-bold">
+        <div class="flex min-h-px min-w-px shrink-0 grow basis-0 flex-col content-stretch items-center justify-start overflow-clip text-center leading-0">
+          <div class="text-brand w-full shrink-0 text-6xl font-bold">
             <p class="leading-normal">{stat.value}</p>
           </div>
-          <div class="text-text-primary relative w-full shrink-0 text-lg font-normal">
+          <div class="text-text-primary w-full shrink-0 text-lg font-normal">
             <p class="leading-[1.4]">{stat.label}</p>
           </div>
         </div>
       ))
     }
   </div>
-</section>
+  </div>
+</div>

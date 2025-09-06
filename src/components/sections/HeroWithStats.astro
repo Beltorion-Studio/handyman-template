@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { Image, type ImageMetadata } from 'astro:assets'
 import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
+import TrustStats from '@components/TrustStats.astro'
 
 const PropsSchema = z.object({
   sectionId: z.string().optional(),
@@ -36,7 +37,7 @@ const {
 
 <section
   id={sectionId}
-  class={`relative bg-black/60 rounded-bl-[96px] rounded-br-[96px] ${className}`}
+  class={`relative bg-black/60 rounded-bl-[96px] rounded-br-[96px]  mb-40 ${className}`}
   aria-label="Hero section"
 >
   <!-- Background Image -->
@@ -51,7 +52,7 @@ const {
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-4 py-32">
+  <div class="relative z-10 container mx-auto px-4 py-32 pb-40">
     <div class="flex flex-col items-start justify-start gap-16">
       <!-- Hero Content -->
       <div class="flex w-full max-w-3xl items-center justify-center">
@@ -61,7 +62,7 @@ const {
           <Heading tag="h1" size="h1" variant="white" text={title} align="left" />
 
           <!-- Hero Text and Actions -->
-          <div class="flex w-full flex-col items-start justify-start gap-6 ">
+          <div class="flex w-full flex-col items-start justify-start gap-6">
             {subheading && <p class="text-2xl/snug font-bold text-white">{subheading}</p>}
 
             <!-- Action Buttons -->
@@ -98,6 +99,15 @@ const {
       </div>
     </div>
   </div>
+  <TrustStats
+    sectionId="trust-stats"
+    stats={[
+      { value: '98%', label: 'Customer satisfaction rate' },
+      { value: '250+', label: 'Completed projects' },
+      { value: '15+', label: 'Years of trade experience' },
+      { value: '24/7', label: 'Emergency support available' },
+    ]}
+  />
 
   <!-- Trust Stats Card -->
 </section>

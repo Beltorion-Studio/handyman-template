@@ -3,10 +3,10 @@ import Layout from '@layouts/Layout.astro'
 import CTA from '@components/CTA.astro'
 import TrustStats from '@components/TrustStats.astro'
 import ContactUs from '@components/ContactUs.astro'
-import Hero from '@components/sections/Hero.astro'
 import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
+import HeroWithStats from '@components/sections/HeroWithStats.astro'
 
 // Get all services from content collection
 const allServices = await getCollection('services')
@@ -14,7 +14,7 @@ const services = allServices.filter((service) => service.data.featured)
 ---
 
 <Layout title="Home">
-  <Hero
+  <HeroWithStats
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="@@Reliable Help@@ for Every Task"
     subheading="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
@@ -22,17 +22,8 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
     secondaryButtonText="Learn More"
     secondaryButtonHref="#about"
-    className="h-screen"
   />
-  <TrustStats
-    sectionId="trust-stats"
-    stats={[
-      { value: '98%', label: 'Customer satisfaction rate' },
-      { value: '250+', label: 'Completed projects' },
-      { value: '15+', label: 'Years of trade experience' },
-      { value: '24/7', label: 'Emergency support available' },
-    ]}
-  />
+
 
   <Services sectionId="services" title="Our Services" services={services} />
 

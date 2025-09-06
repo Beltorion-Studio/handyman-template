@@ -9,18 +9,20 @@ const headingVariants = cva(
   {
     variants: {
       variant: {
-        default: 'text-black',
-        primary: 'text-white',
-        secondary: 'text-gray-700',
+        primary: 'text-primary',
+        secondary: 'text-secondary',
+        brand: 'text-brand',
+        white: 'text-white',
+        black: 'text-black',
         gradient: 'bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent',
       },
       size: {
-        h1: 'text-3xl/snug tablet:text-5xl/snug',
+        h1: 'text-3xl/tight tablet:text-7xl/tight',
         h2: 'text-2xl/snug tablet:text-4xl/snug',
-        h3: 'text-xl/snug tablet:text-3xl/snug',
-        h4: 'text-lg/snug tablet:text-2xl/snug',
-        h5: 'text-base/snug tablet:text-xl/snug',
-        h6: 'text-sm/snug tablet:text-lg/snug',
+        h3: 'text-xl/snug tablet:text-2xl/snug',
+        h4: 'text-lg/snug tablet:text-xl/snug',
+        h5: 'text-lg/snug tablet:text-lg/snug',
+        h6: 'text-base/snug tablet:text-base/snug',
       },
       weight: {
         normal: 'font-normal',
@@ -70,7 +72,7 @@ const headingVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       weight: 'bold',
       align: 'left',
     },

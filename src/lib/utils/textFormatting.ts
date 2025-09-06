@@ -22,7 +22,7 @@ function formatUnderline(text: string, styles?: TextStyle): string {
 
 function formatBrandColor(text: string, styles?: TextStyle): string {
   if (styles?.brandColor === false) return text
-  return text.replace(/@@(.*?)@@/g, '<span class="text-brand">$1</span>')
+  return text.replace(/@@(.*?)@@/g, '<span class="text-secondary">$1</span>')
 }
 
 export function formatText(text: string, styles?: TextStyle): string {
