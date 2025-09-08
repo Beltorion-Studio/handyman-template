@@ -2,7 +2,6 @@
 import Layout from '@layouts/Layout.astro'
 import CTA from '@components/CTA.astro'
 import ContactUs from '@components/ContactUs.astro'
-import Section1 from '@components/sections/Section1.astro'
 import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
@@ -39,6 +38,7 @@ const services = allServices.filter((service) => service.data.featured)
   />
   <Section1
       content={{
+        sectionId: 'offer',
         badge: 'Offer',
         title: 'Why Homeowners Trust Us',
         paragraphs: {
@@ -59,6 +59,7 @@ const services = allServices.filter((service) => service.data.featured)
     />
     <Section1
       content={{
+        sectionId: 'Our Latest Project',
         badge: 'Our Latest Project',
         title: 'University Library',
         paragraphs: {

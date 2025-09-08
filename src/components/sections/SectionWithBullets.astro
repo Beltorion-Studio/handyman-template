@@ -13,7 +13,7 @@ type Props = {
 const { content } = Astro.props
 ---
 
-<section class="py-10" aria-label="Section with bullets container">
+<section class="py-20" aria-label="Section with bullets container" id={content.sectionId}>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
