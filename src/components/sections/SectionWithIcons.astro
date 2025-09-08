@@ -24,7 +24,7 @@ const { content } = Astro.props
       >
         {
           content.badge && (
-            <Badge intent="primary" roundness="full">
+            <Badge intent="primary" roundness="corner">
               {content.badge}
             </Badge>
           )
@@ -35,7 +35,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-gray-700" set:html={formatText(text)} />
+              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
             })
           }
         </div>
@@ -47,9 +47,9 @@ const { content } = Astro.props
                 {content.iconItems.map((item) => (
                   <div class="flex items-start gap-3">
                     <div class="flex-shrink-0 pt-0.5">
-                      <Icon name={item.icon} class="text-primary-600 h-12 w-12" />
+                      <Icon name={item.icon} class="text-text-brand h-12 w-12" />
                     </div>
-                    <span class="text-gray-700">{item.text}</span>
+                    <span class="text-text-primary">{item.text}</span>
                   </div>
                 ))}
               </div>
@@ -64,7 +64,7 @@ const { content } = Astro.props
                 <Button
                   intent="primary"
                   size="medium"
-                  borderRadius="full"
+                  borderRadius="corner"
                   href={content.buttons.primary.href}
                 >
                   {content.buttons.primary.text}
@@ -74,8 +74,7 @@ const { content } = Astro.props
                 <Button
                   intent="outlined"
                   size="medium"
-                  borderRadius="full"
-                  textTransform="uppercase"
+                  borderRadius="corner"
                   href={content.buttons.secondary.href}
                 >
                   {content.buttons.secondary.text}

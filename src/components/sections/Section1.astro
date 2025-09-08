@@ -13,7 +13,7 @@ type Props = {
 const { content } = Astro.props
 ---
 
-<section class="py-10" aria-label="Hero section container">
+<section class="py-20" aria-label="Hero section container">
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -23,7 +23,7 @@ const { content } = Astro.props
       >
         {
           content.badge && (
-            <Badge intent="primary" roundness="full">
+            <Badge intent="primary" roundness="sm" size="base">
               {content.badge}
             </Badge>
           )
@@ -34,7 +34,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-gray-700" set:html={formatText(text)} />
+              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
             })
           }
         </div>
@@ -45,21 +45,10 @@ const { content } = Astro.props
                 <Button
                   intent="primary"
                   size="medium"
-                  borderRadius="full"
+                  borderRadius="corner"
                   href={content.buttons.primary.href}
                 >
                   {content.buttons.primary.text}
-                </Button>
-              )}
-              {content.buttons.secondary && (
-                <Button
-                  intent="outlined"
-                  size="medium"
-                  borderRadius="full"
-                  textTransform="uppercase"
-                  href={content.buttons.secondary.href}
-                >
-                  {content.buttons.secondary.text}
                 </Button>
               )}
             </div>
@@ -70,7 +59,7 @@ const { content } = Astro.props
         <Image
           src={content.image.src}
           alt={content.image.alt}
-          class={`w-full rounded-md object-cover ${
+          class={`w-full rounded-3xl object-cover ${
             content.image.size ? `aspect-${content.image.size}` : 'h-full'
           } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
         />

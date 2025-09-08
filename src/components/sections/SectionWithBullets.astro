@@ -34,7 +34,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-gray-700" set:html={formatText(text)} />
+              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
             })
           }
         </div>
@@ -48,7 +48,7 @@ const { content } = Astro.props
                 }`}
               >
                 {content.bulletPoints.map((point) => (
-                  <li class="text-gray-700">{point}</li>
+                  <li class="text-text-primary">{point}</li>
                 ))}
               </ul>
             </div>
@@ -62,7 +62,7 @@ const { content } = Astro.props
                 <Button
                   intent="primary"
                   size="medium"
-                  borderRadius="full"
+                  borderRadius="corner"
                   href={content.buttons.primary.href}
                 >
                   {content.buttons.primary.text}
@@ -72,8 +72,7 @@ const { content } = Astro.props
                 <Button
                   intent="outlined"
                   size="medium"
-                  borderRadius="full"
-                  textTransform="uppercase"
+                  borderRadius="corner"
                   href={content.buttons.secondary.href}
                 >
                   {content.buttons.secondary.text}

@@ -7,6 +7,9 @@ import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
 import HeroWithStats from '@components/sections/HeroWithStats.astro'
+import Section1 from '@components/sections/Section1.astro'
+import OfferImg from '@assets/images/locksmith.jpg'
+import Library1 from '@assets/images/modern-library-1.jpg'
 
 // Get all services from content collection
 const allServices = await getCollection('services')
@@ -35,5 +38,45 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
+  <Section1
+      content={{
+        badge: 'Offer',
+        title: 'Why Homeowners Trust Us',
+        paragraphs: {
+          p1: 'Choosing the right handyman service makes all the difference. We understand that homeowners value reliability, efficiency, and clear communication. That’s why we focus on combining skilled craftsmanship with a professional, approachable attitude. Every project, big or small, is handled with care and attention to detail, ensuring results that last.',
+          p2: 'Our team’s reputation is built on trust, experience, and happy customers who return again and again. With transparent pricing, punctual service, and a friendly approach, we turn everyday fixes into stress-free solutions. We don’t just complete tasks—we make your life easier.',
+        },
+        buttons: {
+          primary: {
+            text: 'Find Out More',
+            href: '#about',
+          },
+        },
+        image: {
+          src: OfferImg,
+          alt: 'managed it services transportation logistics',
+        },
+      }}
+    />
+    <Section1
+      content={{
+        badge: 'Our Latest Project',
+        title: 'University Library',
+        paragraphs: {
+          p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
+          p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
+        },
+        buttons: {
+          primary: {
+            text: 'View All Works',
+            href: '#works',
+          },
+        },
+        image: {
+          src: Library1,
+          alt: 'managed it services transportation logistics',
+        },
+      }}
+    />
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
 </Layout>
