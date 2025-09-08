@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import CTA from '@components/CTA.astro'
-import TrustStats from '@components/TrustStats.astro'
 import ContactUs from '@components/ContactUs.astro'
+import Section1 from '@components/sections/Section1.astro'
 import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
@@ -24,7 +24,6 @@ const services = allServices.filter((service) => service.data.featured)
     secondaryButtonHref="#about"
   />
 
-
   <Services sectionId="services" title="Our Services" services={services} />
 
   <CTA
@@ -34,6 +33,29 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonText="Get Your Free Quote"
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+  <Section1
+    content={{
+      sectionId: 'section1',
+      title: 'Our Services',
+      paragraphs: {
+        main: 'We are a team of experienced handymen who are dedicated to providing the best possible service to our clients.',
+      },
+      buttons: {
+        primary: {
+          text: 'Get a Free Quote',
+          href: '#contact',
+        },
+        secondary: {
+          text: 'Learn More',
+          href: '#about',
+        },
+      },
+      image: {
+        src: heroImage,
+        alt: 'Handyman services',
+      },
+    }}
   />
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
 </Layout>

@@ -4,7 +4,49 @@ import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 import Badge from '../ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionContent } from '@schemas/section'
+
+import type { ImageMetadata } from 'astro'
+
+export type SectionContent = {
+  sectionId: string
+  title: string
+  paragraphs: Record<string, string>
+  badge?: string
+  reverse?: boolean
+  justifyContent?: 'start' | 'center'
+  buttons?: {
+    primary?: {
+      text: string
+      href?: string
+    }
+    secondary?: {
+      text: string
+      href?: string
+    }
+  }
+  image: {
+    src: ImageMetadata
+    alt: string
+    size?: 'video' | 'square' | 'full'
+    position?: 'middle' | 'top'
+  }
+  additionalContent?: {
+    heading?: string
+    description?: string
+  }
+}
+
+export type SectionWithBulletsContent = SectionContent & {
+  bulletPoints: string[]
+  listType?: 'bullets' | 'numbers'
+}
+
+export type SectionWithIconsContent = SectionContent & {
+  iconItems: Array<{
+    icon: string
+    text: string
+  }>
+}
 
 type Props = {
   content: SectionContent
@@ -13,7 +55,7 @@ type Props = {
 const { content } = Astro.props
 ---
 
-<section class="py-10" aria-label="Hero section container">
+<section class="py-10"  id={content.sectionId}>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -66,15 +108,19 @@ const { content } = Astro.props
           )
         }
       </div>
-      <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
-        <Image
-          src={content.image.src}
-          alt={content.image.alt}
-          class={`w-full rounded-md object-cover ${
-            content.image.size ? `aspect-${content.image.size}` : 'h-full'
-          } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
-        />
-      </div>
+      {
+        content.image.src && (
+          <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+            <Image
+              src={content.image.src}
+              alt={content.image.alt}
+              class={`w-full rounded-md object-cover ${
+                content.image.size ? `aspect-${content.image.size}` : 'h-full'
+              } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+            />
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
