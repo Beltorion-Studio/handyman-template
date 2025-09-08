@@ -20,10 +20,11 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="tablet:text-2xl text-lg text-pretty text-primary">
+  <body class="tablet:text-2xl text-primary text-lg text-pretty">
     <Nav1 />
     <slot />
     <Footer2 />
   </body>
 </html>
 <style is:global></style>
+

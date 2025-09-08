@@ -48,11 +48,17 @@ export class HorizontalSlider {
   }
 }
 
-// Initialize slider
+// Auto-initialize all sliders with data-slider attribute
 document.addEventListener('DOMContentLoaded', () => {
-  new HorizontalSlider({
-    container: '[data-slider="testimonial-2"]',
-    speed: 1,
-    duration: 0.4,
+  const sliders = document.querySelectorAll('[data-slider]')
+  sliders.forEach((slider) => {
+    const sliderId = slider.getAttribute('data-slider')
+    if (sliderId) {
+      new HorizontalSlider({
+        container: `[data-slider="${sliderId}"]`,
+        speed: 1,
+        duration: 0.4,
+      })
+    }
   })
 })

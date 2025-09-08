@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets'
+import Badge from '@components/ui/Badge.astro'
+import Heading from '@components/ui/Heading.astro'
+import { Icon } from 'astro-icon/components'
+
+export type Props = {
+  title: string
+  sectionId: string
+  testimonials: Array<{
+    testimonial: string
+    name: string
+    position: string
+    company: string
+    avatar: ImageMetadata
+  }>
+  badgeText?: string
+}
+
+const {
+  testimonials,
+  badgeText,
+  title = 'Client Testimonials Showcase Our Excellence',
+  sectionId = 'testimonials',
+} = Astro.props
+---
+
+<section aria-label={title} id={sectionId}>
+  <div class="tablet:px-0 tablet:py-20 mx-auto flex max-w-7xl flex-col px-4 py-10">
+    <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+      {
+        badgeText && (
+          <Badge intent="primary" roundness="sm" size="base">
+            {badgeText}
+          </Badge>
+        )
+      }
+      <Heading
+        tag="h2"
+        size="h2"
+        variant="default"
+        text={title}
+        align="center"
+        class="tablet:text-5xl mt-10 mb-20 text-3xl font-bold"
+      />
+    </div>
+    <div class="tablet:gap-20 mx-auto grid max-w-3xl grid-cols-3 gap-6" data-slider="testimonial">
+      <div class="relative aspect-[2/3] w-full overflow-hidden rounded-3xl">
+        {
+          testimonials.map((testimonial, index) => (
+            <Image
+              src={testimonial.avatar}
+              alt={testimonial.name}
+              class={`testimonial-image absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              data-index={index}
+            />
+          ))
+        }
+      </div>
+      <div class="col-span-2 flex flex-col justify-center">
+        <div class="testimonial-content relative min-h-[200px] overflow-hidden">
+          <div class="testimonial-slider flex" data-slider-container>
+            {
+              testimonials.map((testimonial, index) => (
+                <div
+                  class="testimonial-text w-full flex-shrink-0 px-4"
+                  data-slider-item
+                  data-index={index}
+                >
+                  <p class="tablet:text-lg mb-6 text-base font-medium text-gray-700">
+                    "{testimonial.testimonial}"
+                  </p>
+                  <p class="font-bold text-gray-700">{testimonial.name}</p>
+                  <p class="mb-10 text-gray-700">
+                    {testimonial.position} • {testimonial.company}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="tablet:gap-10 mt-6 flex flex-row items-center gap-6">
+          <button
+            class="tablet:w-12 relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border border-black p-2 transition duration-300 hover:bg-gray-100"
+            tabindex="0"
+            aria-label="Previous testimonial"
+            data-slider-prev
+          >
+            <Icon name="quill:chevron-left" class="h-6 w-6 text-gray-700" />
+          </button>
+          <button
+            class="tablet:w-12 relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border border-black p-2 transition duration-300 hover:bg-gray-100"
+            tabindex="0"
+            aria-label="Next testimonial"
+            data-slider-next
+          >
+            <Icon name="quill:chevron-right" class="h-6 w-6 text-gray-700" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="@lib/testimonialSlider.ts"></script>
