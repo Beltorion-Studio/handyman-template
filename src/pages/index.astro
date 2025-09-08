@@ -6,7 +6,7 @@ import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
 import HeroWithStats from '@components/sections/HeroWithStats.astro'
-import Section1 from '@components/sections/Section1.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
 import OfferImg from '@assets/images/locksmith.jpg'
 import Library1 from '@assets/images/modern-library-1.jpg'
 
@@ -36,7 +36,7 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
-  <Section1
+  <SectionRegular
       content={{
         sectionId: 'offer',
         badge: 'Offer',
@@ -57,7 +57,7 @@ const services = allServices.filter((service) => service.data.featured)
         },
       }}
     />
-    <Section1
+    <SectionRegular
       content={{
         sectionId: 'Our Latest Project',
         badge: 'Our Latest Project',
