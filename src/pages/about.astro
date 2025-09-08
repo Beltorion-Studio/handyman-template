@@ -1,0 +1,37 @@
+---
+import Layout from '@layouts/Layout.astro'
+import heroImage from '@assets/images/installer-holding-screwdriver.png'
+import { getCollection } from 'astro:content'
+import Hero from '@components/sections/Hero.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
+import AboutImg from '@assets/images/installer-holding-shelf.jpg'
+
+// Get all services from content collection
+const allServices = await getCollection('services')
+const services = allServices.filter((service) => service.data.featured)
+---
+
+<Layout title="Home">
+  <Hero
+    heroImage={{ src: heroImage, alt: 'Hero background image' }}
+    title="@@The Man@@ Behind the Tools"
+  />
+
+ <SectionRegular
+    content={{
+      sectionId: 'About',
+      badge: 'About',
+      title: 'Daniel Harris',
+      paragraphs: {
+        p1: 'At the heart of our work is Daniel Harris, a skilled handyman with a passion for solving everyday problems.',
+        p2: 'With years of experience across trades, he built a service dedicated to reliability, creativity, and care.',
+        p3: 'We believe every home and office deserves professional attention delivered with warmth and efficiency.',
+        p4: 'Our mission is simple: to take the stress out of repairs, improvements, and installations.',
+      },
+      image: {
+        src: AboutImg,
+        alt: 'managed it services transportation logistics',
+      },
+    }}
+  />
+</Layout>

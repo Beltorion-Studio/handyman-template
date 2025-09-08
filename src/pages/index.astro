@@ -9,6 +9,7 @@ import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
 import OfferImg from '@assets/images/locksmith.jpg'
 import Library1 from '@assets/images/modern-library-1.jpg'
+import AboutImg from '@assets/images/installer-holding-shelf.jpg'
 
 // Get all services from content collection
 const allServices = await getCollection('services')
@@ -36,48 +37,78 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
+
   <SectionRegular
-      content={{
-        sectionId: 'offer',
-        badge: 'Offer',
-        title: 'Why Homeowners Trust Us',
-        paragraphs: {
-          p1: 'Choosing the right handyman service makes all the difference. We understand that homeowners value reliability, efficiency, and clear communication. That’s why we focus on combining skilled craftsmanship with a professional, approachable attitude. Every project, big or small, is handled with care and attention to detail, ensuring results that last.',
-          p2: 'Our team’s reputation is built on trust, experience, and happy customers who return again and again. With transparent pricing, punctual service, and a friendly approach, we turn everyday fixes into stress-free solutions. We don’t just complete tasks—we make your life easier.',
+    content={{
+      sectionId: 'offer',
+      badge: 'Offer',
+      title: 'Why Homeowners Trust Us',
+      paragraphs: {
+        p1: 'Choosing the right handyman service makes all the difference. We understand that homeowners value reliability, efficiency, and clear communication. That’s why we focus on combining skilled craftsmanship with a professional, approachable attitude. Every project, big or small, is handled with care and attention to detail, ensuring results that last.',
+        p2: 'Our team’s reputation is built on trust, experience, and happy customers who return again and again. With transparent pricing, punctual service, and a friendly approach, we turn everyday fixes into stress-free solutions. We don’t just complete tasks—we make your life easier.',
+      },
+      
+      image: {
+        src: OfferImg,
+        alt: 'managed it services transportation logistics',
+      },
+    }}
+  />
+
+  <SectionRegular
+    content={{
+      sectionId: 'Our Latest Project',
+      badge: 'Our Latest Project',
+      title: 'University Library',
+      paragraphs: {
+        p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
+        p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
+      },
+      buttons: {
+        primary: {
+          text: 'View All Works',
+          href: '#works',
         },
-        buttons: {
-          primary: {
-            text: 'Find Out More',
-            href: '#about',
-          },
+      },
+      image: {
+        src: Library1,
+        alt: 'managed it services transportation logistics',
+      },
+    }}
+  />
+
+  <CTA
+    sectionId="Call to action"
+    title="Let’s Get Your Project Started"
+    primaryButtonText="Contact Us Today"
+    primaryButtonHref="#contact"
+    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+
+  <SectionRegular
+    content={{
+      sectionId: 'About',
+      reverse: 'order-2',
+      badge: 'About',
+      title: 'Meet the Team Behind the Tools',
+      paragraphs: {
+        p1: 'At the heart of our work is Daniel Harris, a skilled handyman with a passion for solving everyday problems.',
+        p2: 'With years of experience across trades, he built a service dedicated to reliability, creativity, and care.',
+        p3: 'We believe every home and office deserves professional attention delivered with warmth and efficiency.',
+        p4: 'Our mission is simple: to take the stress out of repairs, improvements, and installations.',
+      },
+      buttons: {
+        primary: {
+          text: 'Find out More',
+          href: '#about',
         },
-        image: {
-          src: OfferImg,
-          alt: 'managed it services transportation logistics',
-        },
-      }}
-    />
-    <SectionRegular
-      content={{
-        sectionId: 'Our Latest Project',
-        badge: 'Our Latest Project',
-        title: 'University Library',
-        paragraphs: {
-          p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
-          p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
-        },
-        buttons: {
-          primary: {
-            text: 'View All Works',
-            href: '#works',
-          },
-        },
-        image: {
-          src: Library1,
-          alt: 'managed it services transportation logistics',
-        },
-      }}
-    />
+      },
+      image: {
+        src: AboutImg,
+        alt: 'managed it services transportation logistics',
+      },
+    }}
+  />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
 </Layout>

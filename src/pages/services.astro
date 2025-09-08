@@ -1,0 +1,30 @@
+---
+import Layout from '@layouts/Layout.astro'
+import CTA from '@components/CTA.astro'
+import ContactUs from '@components/ContactUs.astro'
+import heroImage from '@assets/images/electrician-in-safety-helmet.jpg'
+import { getCollection } from 'astro:content'
+import Hero from '@components/sections/Hero.astro'
+
+// Get all services from content collection
+const allServices = await getCollection('services')
+const services = allServices.filter((service) => service.data.featured)
+---
+
+<Layout title="Home">
+  <Hero
+    heroImage={{ src: heroImage, alt: 'Hero background image' }}
+    title="@@Services@@ for Every Home"
+  />
+
+  <CTA
+    sectionId="Call to action"
+    title="Ready to Fix It Today?"
+    description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
+    primaryButtonText="Get Your Free Quote"
+    primaryButtonHref="#contact"
+    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+
+  <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
+</Layout>
