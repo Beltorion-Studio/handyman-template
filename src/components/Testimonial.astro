@@ -51,7 +51,10 @@ const {
             <Image
               src={testimonial.avatar}
               alt={testimonial.name}
-              class={`testimonial-image absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              loading="eager"
+              decoding="async"
+              class={`testimonial-image absolute inset-0 h-full w-full object-cover ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              style="will-change: opacity"
               data-index={index}
             />
           ))

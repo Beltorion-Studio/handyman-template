@@ -7,12 +7,12 @@ type GroupSliderOptions = {
 }
 
 export class HorizontalSlider {
-  private container: Element | null = null
+  protected container: Element | null = null
   private sliderTrack: Element | null = null
   private slides: Element[] = []
   private nextButton: Element | null = null
   private prevButton: Element | null = null
-  private loop: ExtendedTimeline | null = null
+  protected loop: ExtendedTimeline | null = null
 
   constructor(options: GroupSliderOptions) {
     this.initializeElements(options)
