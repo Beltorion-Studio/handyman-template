@@ -3,6 +3,7 @@ import { cva } from 'cva'
 import { z } from 'zod'
 import { Icon } from 'astro-icon/components'
 import type { IconName } from '@lib/icons'
+import Heading from '@components/ui/Heading.astro'
 
 const card = cva('bg-white relative rounded-3xl size-full', {
   variants: {
@@ -68,39 +69,33 @@ const Element = href ? 'a' : 'div'
   aria-label={ariaLabel}
   class:list={[card({ intent, padding, defaults }), 'm-0']}
 >
-  <div
-    class="relative flex size-full flex-col content-stretch items-start justify-start overflow-clip"
-  >
+  <div class="relative flex size-full flex-col content-stretch items-start justify-start gap-6">
     <!-- Icon Section -->
     {
       icon && (
-        <div class="relative box-border flex w-full shrink-0 content-stretch items-start justify-start overflow-clip">
-          <div class="relative size-16 shrink-0">
-            <Icon
-              name={icon}
-              title={iconAlt || title || 'Card icon'}
-              class="block size-full text-current"
-            />
-          </div>
-        </div>
+        <Icon
+          name={icon}
+          title={iconAlt || title || 'Card icon'}
+          class="block size-16 text-current"
+        />
       )
     }
 
     <!-- Content Section -->
     <div
-      class="text-text-primary relative box-border flex w-full shrink-0 flex-col content-stretch items-start justify-start gap-4 leading-[0]"
+      class="text-text-primary relative box-border flex w-full shrink-0 flex-col content-stretch items-start justify-start"
     >
       {
         title && (
-          <div class="relative w-full shrink-0 text-2xl font-bold">
-            <p class="leading-normal">{title}</p>
+          <div class="relative w-full shrink-0">
+            <Heading tag="h3" size="h3" variant="default" text={title} align="left" bottomSpacing="tight" />
           </div>
         )
       }
       {
         description && (
-          <div class="relative w-full shrink-0 overflow-hidden text-base font-normal overflow-ellipsis">
-            <p class="leading-[1.4]">{description}</p>
+          <div class="relative w-full shrink-0 overflow-hidden text-2xl/snug  overflow-ellipsis">
+            <p>{description}</p>
           </div>
         )
       }

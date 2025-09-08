@@ -5,7 +5,7 @@ import { formatText, type TextStyle } from '@lib/utils/textFormatting'
 
 const headingVariants = cva(
   // Base styles applied to all headings
-  'font-bold text-pretty mb-6',
+  'font-bold text-pretty',
   {
     variants: {
       variant: {
@@ -75,6 +75,7 @@ const headingVariants = cva(
       variant: 'primary',
       weight: 'bold',
       align: 'left',
+      bottomSpacing: 'normal',
     },
   }
 )
