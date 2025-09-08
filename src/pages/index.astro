@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import CTA from '@components/CTA.astro'
-import TrustStats from '@components/TrustStats.astro'
 import ContactUs from '@components/ContactUs.astro'
+import Section1 from '@components/sections/Section1.astro'
 import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
@@ -26,7 +26,6 @@ const services = allServices.filter((service) => service.data.featured)
     secondaryButtonText="Learn More"
     secondaryButtonHref="#about"
   />
-
 
   <Services sectionId="services" title="Our Services" services={services} />
 
@@ -78,5 +77,6 @@ const services = allServices.filter((service) => service.data.featured)
         },
       }}
     />
+
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
 </Layout>

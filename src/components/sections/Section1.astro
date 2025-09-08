@@ -4,7 +4,9 @@ import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 import Badge from '../ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionContent } from '@schemas/section'
+import type { SectionContent } from '@types/section'
+
+
 
 type Props = {
   content: SectionContent
@@ -55,15 +57,20 @@ const { content } = Astro.props
           )
         }
       </div>
-      <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
-        <Image
-          src={content.image.src}
-          alt={content.image.alt}
-          class={`w-full rounded-3xl object-cover ${
-            content.image.size ? `aspect-${content.image.size}` : 'h-full'
-          } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
-        />
-      </div>
+      {
+        content.image.src && (
+          <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+            <Image
+              src={content.image.src}
+              alt={content.image.alt}
+              class={`w-full rounded-md object-cover ${
+                content.image.size ? `aspect-${content.image.size}` : 'h-full'
+              } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+            />
+          </div>
+        )
+      }
+
     </div>
   </div>
 </section>
