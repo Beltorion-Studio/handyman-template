@@ -4,10 +4,12 @@ import CTA from '@components/CTA.astro'
 import heroImage from '@assets/images/modern-library-1.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
+import Library1 from '@assets/images/modern-library-1.jpg'
+import Testimonial from '@components/Testimonial.astro'
 
-// Get all services from content collection
-const allServices = await getCollection('services')
-const services = allServices.filter((service) => service.data.featured)
+// Get testimonials from content collection
+const testimonials = await getCollection('testimonial')
 ---
 
 <Layout title="Home">
@@ -16,12 +18,44 @@ const services = allServices.filter((service) => service.data.featured)
     title="Our Latest @@Works@@"
   />
 
+  <SectionRegular
+    content={{
+      sectionId: 'Our Latest Project',
+      badge: 'Our Latest Project',
+      title: 'University Library',
+      paragraphs: {
+        p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
+        p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
+      },
+      image: {
+        src: Library1,
+        alt: 'managed it services transportation logistics',
+      },
+    }}
+  />
+
   <CTA
     sectionId="Call to action"
     title="Let’s Get Your Project Started"
     primaryButtonText="Contact Us Today"
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+
+  <Testimonial
+    badgeText="Testimonials"
+    ,
+    title="What Our Clients Say"
+    ,
+    sectionId="testimonials"
+    ,
+    testimonials={testimonials.map((testimonial) => ({
+      testimonial: testimonial.data.testimonial,
+      name: testimonial.data.name,
+      position: testimonial.data.position,
+      company: testimonial.data.company,
+      avatar: testimonial.data.avatar,
+    }))}
   />
 
 </Layout>

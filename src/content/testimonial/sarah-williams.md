@@ -3,5 +3,5 @@ testimonial: 'Professional, reliable, and skilled craftsmen. They transformed ou
 name: 'Sarah Williams'
 position: 'Property Manager'
 company: 'Elite Properties'
-avatar: '@assets/images/testimonial/portrait-03.jpg'
+avatar: '@assets/images/testimonial/portrait-03-1-1.jpg'
 ---

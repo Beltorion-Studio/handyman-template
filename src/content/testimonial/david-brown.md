@@ -3,5 +3,5 @@ testimonial: 'Exceptional workmanship and customer service. They completed our b
 name: 'David Brown'
 position: 'Business Owner'
 company: 'Brown & Associates'
-avatar: '@assets/images/testimonial/portrait-04.jpg'
+avatar: '@assets/images/testimonial/portrait-04-1-1.jpg'
 ---

@@ -3,5 +3,5 @@ testimonial: "Outstanding service! The team was professional, punctual, and comp
 name: 'Michael Johnson'
 position: 'Homeowner'
 company: 'Residential Property'
-avatar: '@assets/images/testimonial/portrait-02.jpg'
+avatar: '@assets/images/testimonial/portrait-02-1-1.jpg'
 ---

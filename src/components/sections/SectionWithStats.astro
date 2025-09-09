@@ -15,7 +15,7 @@ type Props = {
 const { content } = Astro.props
 ---
 
-<section class="py-10 tablet:py-28" aria-label="Hero section container">
+<section class="py-10 tablet:py-28 text-text-white bg-gradient-to-br from-brand to-primary-dark" aria-label="Hero section container">
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -25,7 +25,7 @@ const { content } = Astro.props
       >
         {
           content.badge && (
-            <Badge intent="secondary" roundness="sm" size="base">
+            <Badge intent="primary" roundness="sm" size="base">
               {content.badge}
             </Badge>
           )
@@ -36,7 +36,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
+              return <p class="mt-4 text-text-white" set:html={formatText(text)} />
             })
           }
         </div>
@@ -45,7 +45,7 @@ const { content } = Astro.props
             <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
               {content.buttons.primary && (
                 <Button
-                  intent="primary"
+                  intent="secondary"
                   size="medium"
                   borderRadius="corner"
                   href={content.buttons.primary.href}

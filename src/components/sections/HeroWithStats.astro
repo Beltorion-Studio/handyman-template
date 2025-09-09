@@ -37,18 +37,18 @@ const {
 
 <section
   id={sectionId}
-  class={`relative bg-black/60 rounded-bl-[96px] rounded-br-[96px]  mb-40 ${className}`}
+  class={`relative bg-black/60 tablet:rounded-bl-[96px] tablet:rounded-br-[96px] rounded-bl-[36px] rounded-br-[36px]  mb-40 ${className}`}
   aria-label="Hero section"
 >
   <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
+  <div class="overflow-clip absolute inset-0 z-0 tablet:rounded-bl-[96px] tablet:rounded-br-[96px] rounded-bl-[36px] rounded-br-[36px]">
     <Image
       src={heroImage.src}
       alt={heroImage.alt}
-      class="h-full w-full rounded-br-[96px] rounded-bl-[96px] object-cover object-center"
+      class="h-full w-full object-cover object-center"
       loading="eager"
     />
-    <div class="absolute inset-0 rounded-br-[96px] rounded-bl-[96px] bg-black/60"></div>
+    <div class="absolute inset-0 bg-black/60"></div>
   </div>
 
   <!-- Content -->
@@ -63,12 +63,12 @@ const {
 
           <!-- Hero Text and Actions -->
           <div class="flex w-full flex-col items-start justify-start gap-6">
-            {subheading && <p class="text-2xl/snug font-bold text-white">{subheading}</p>}
+            {subheading && <p class="tablet:text-2xl/snug text-xl/snug font-medium text-white">{subheading}</p>}
 
             <!-- Action Buttons -->
             {
               (primaryButtonText || secondaryButtonText) && (
-                <div class="flex items-center justify-center gap-8">
+                <div class="flex flex-col tablet:flex-row tablet:items-center justify-start items-stretch w-full gap-8">
                   {primaryButtonText && (
                     <Button
                       href={primaryButtonHref}

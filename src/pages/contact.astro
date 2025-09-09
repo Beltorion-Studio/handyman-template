@@ -1,8 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import heroImage from '@assets/images/installer-talking-on-phone.jpg'
+import heroImage from '@assets/images/contact.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import Testimonial from '@components/Testimonial.astro'
+
+// Get testimonials from content collection
+const testimonials = await getCollection('testimonial')
 
 // Get all services from content collection
 const allServices = await getCollection('services')
@@ -15,5 +19,19 @@ const services = allServices.filter((service) => service.data.featured)
     title="Contact Us"
   />
 
- 
+ <Testimonial
+    badgeText="Testimonials"
+    ,
+    title="What Our Clients Say"
+    ,
+    sectionId="testimonials"
+    ,
+    testimonials={testimonials.map((testimonial) => ({
+      testimonial: testimonial.data.testimonial,
+      name: testimonial.data.name,
+      position: testimonial.data.position,
+      company: testimonial.data.company,
+      avatar: testimonial.data.avatar,
+    }))}
+  />
 </Layout>

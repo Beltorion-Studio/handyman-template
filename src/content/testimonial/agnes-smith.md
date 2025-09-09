@@ -3,5 +3,5 @@ testimonial: "The platform has revolutionized how we handle customer data. The a
 name: 'Anges Smith'
 position: 'Director'
 company: 'Innovation Labs'
-avatar: '@assets/images/testimonial/portrait-01.jpg'
+avatar: '@assets/images/testimonial/portrait-01-1-1.jpg'
 ---
