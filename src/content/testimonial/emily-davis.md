@@ -3,5 +3,5 @@ testimonial: 'Amazing experience from start to finish! They handled our entire h
 name: 'Emily Davis'
 position: 'Interior Designer'
 company: 'Davis Design Studio'
-avatar: '@assets/images/testimonial/portrait-05.jpg'
+avatar: '@assets/images/testimonial/portrait-05-1-1.jpg'
 ---

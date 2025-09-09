@@ -9,7 +9,7 @@ import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
 import OfferImg from '@assets/images/locksmith.jpg'
 import Library1 from '@assets/images/modern-library-1.jpg'
-import AboutImg from '@assets/images/installer-holding-shelf.jpg'
+import AboutImg from '@assets/images/crossed-arms.jpg'
 import Testimonial from '@components/Testimonial.astro'
 
 // Get all services from content collection
@@ -64,6 +64,22 @@ const testimonials = await getCollection('testimonial')
     }}
   />
 
+  <Testimonial
+    badgeText="Testimonials"
+    ,
+    title="What Our Clients Say"
+    ,
+    sectionId="testimonials"
+    ,
+    testimonials={testimonials.map((testimonial) => ({
+      testimonial: testimonial.data.testimonial,
+      name: testimonial.data.name,
+      position: testimonial.data.position,
+      company: testimonial.data.company,
+      avatar: testimonial.data.avatar,
+    }))}
+  />
+
   <SectionRegular
     content={{
       sectionId: 'Our Latest Project',
@@ -115,23 +131,9 @@ const testimonials = await getCollection('testimonial')
       image: {
         src: AboutImg,
         alt: 'managed it services transportation logistics',
+        size: "square"
       },
     }}
-  />
-  <Testimonial
-    badgeText="Testimonials"
-    ,
-    title="What Our Clients Say"
-    ,
-    sectionId="testimonials"
-    ,
-    testimonials={testimonials.map((testimonial) => ({
-      testimonial: testimonial.data.testimonial,
-      name: testimonial.data.name,
-      position: testimonial.data.position,
-      company: testimonial.data.company,
-      avatar: testimonial.data.avatar,
-    }))}
   />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
