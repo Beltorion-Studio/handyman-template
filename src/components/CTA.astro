@@ -5,7 +5,7 @@ import Button from '@components/ui/Button.astro'
 const PropsSchema = z.object({
   sectionId: z.string(),
   title: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   primaryButtonText: z.string().optional(),
   primaryButtonHref: z.string().optional(),
   backgroundClass: z.string().optional(),
@@ -39,7 +39,7 @@ const {
         <div
           class="relative w-full shrink-0 text-center text-6xl leading-0 font-bold text-white md:text-7xl"
         >
-          <h2 class="leading-normal">{title}</h2>
+          <h2 class="leading-none">{title}</h2>
         </div>
       </div>
       <div
