@@ -18,7 +18,7 @@ export class MobileNavAnimation {
   private readonly SCROLL_DURATION = 0.3
 
   private readonly SCROLL_COLOR = 'oklch(.5 .134 242.749)'
-  private readonly TRANSPARENT_COLOR = 'oklch(0 0 0 / 0)'
+  private readonly TRANSPARENT_COLOR = 'oklch(.5 .134 242.749 / 0)'
 
   constructor(navSelector: string) {
     this.nav = document.querySelector(navSelector)!

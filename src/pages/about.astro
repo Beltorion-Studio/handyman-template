@@ -7,6 +7,7 @@ import SectionRegular from '@components/sections/SectionRegular.astro'
 import AboutImg from '@assets/images/installer-in-overalls.jpg'
 import SectionWithStats from '@components/sections/SectionWithStats.astro'
 import Testimonial from '@components/Testimonial.astro'
+import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
 
 // Get testimonials from content collection
 const testimonials = await getCollection('testimonial')
@@ -18,7 +19,7 @@ const testimonials = await getCollection('testimonial')
     title="@@The Man@@ Behind the Tools"
   />
 
- <SectionRegular
+  <SectionRegular
     content={{
       sectionId: 'About',
       badge: 'About',
@@ -32,12 +33,36 @@ const testimonials = await getCollection('testimonial')
       image: {
         src: AboutImg,
         alt: 'managed it services transportation logistics',
-        size: "square"
+        size: 'square',
       },
     }}
   />
 
-   <SectionWithStats
+  <SectionWithTrustStats
+    content={{
+      sectionId: 'why-trust-us',
+      badge: 'Offer',
+      title: 'Why Homeowners Trust Us',
+      paragraphs: {
+        p1: 'Choosing the right handyman service makes all the difference. We understand that homeowners value reliability, efficiency, and clear communication.',
+        p2: "Our team's reputation is built on trust, experience, and happy customers who return again and again. With transparent pricing, punctual service, and a friendly approach, we turn everyday fixes into stress-free solutions.",
+      },
+      buttons: {
+        primary: {
+          text: 'Get in Touch',
+          href: '/contact',
+        },
+      },
+      trustStats: [
+        { value: '98%', label: 'Customer satisfaction rate' },
+        { value: '250+', label: 'Completed projects' },
+        { value: '15+', label: 'Years of trade experience' },
+        { value: '24/7', label: 'Emergency support available' },
+      ],
+    }}
+  />
+
+  <SectionWithStats
     content={{
       sectionId: 'Offer',
       badge: 'About',
@@ -57,7 +82,7 @@ const testimonials = await getCollection('testimonial')
       image: {
         src: AboutImg,
         alt: 'managed it services transportation logistics',
-        size: "square"
+        size: 'square',
       },
     }}
   />
