@@ -1,4 +1,7 @@
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export class MobileNavAnimation {
   private nav: HTMLElement
@@ -12,11 +15,15 @@ export class MobileNavAnimation {
   // Animation durations
   private readonly HAMBURGER_DURATION = 0.25
   private readonly MENU_DURATION = 0.5
+  private readonly SCROLL_DURATION = 0.3
+
+  private readonly SCROLL_COLOR = 'oklch(.5 .134 242.749)'
+  private readonly TRANSPARENT_COLOR = 'oklch(0 0 0 / 0)'
 
   constructor(navSelector: string) {
     this.nav = document.querySelector(navSelector)!
     this.menuButton = this.nav.querySelector('[za-elements="menu-button"]')!
-    this.mobileMenu =  this.nav.querySelector('[za-elements="mobile-menu"]')!
+    this.mobileMenu = this.nav.querySelector('[za-elements="mobile-menu"]')!
     this.spans = this.menuButton.querySelectorAll('span')
 
     // Create GSAP timelines
@@ -93,6 +100,7 @@ export class MobileNavAnimation {
       return
     }
     this.bindEvents()
+    this.setupScrollAnimations()
   }
 
   private toggleMenu(): void {
@@ -129,5 +137,33 @@ export class MobileNavAnimation {
     if (e.key === 'Escape' && this.menuButton.getAttribute('aria-expanded') === 'true') {
       this.toggleMenu()
     }
+  }
+
+  private setupScrollAnimations(): void {
+    // Only apply scroll animations on desktop
+    if (window.innerWidth < 1024) return
+
+    // Simple scroll trigger - background changes when scrolled down past threshold
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: '100px top', // 100px threshold
+      end: 'max',
+      onEnter: () => {
+        // Scrolled down past threshold - add background
+        gsap.to(this.nav, {
+          duration: this.SCROLL_DURATION,
+          backgroundColor: this.SCROLL_COLOR,
+          ease: 'power2.out',
+        })
+      },
+      onLeaveBack: () => {
+        // Scrolled back up to top - remove background
+        gsap.to(this.nav, {
+          duration: this.SCROLL_DURATION,
+          backgroundColor: this.TRANSPARENT_COLOR,
+          ease: 'power2.out',
+        })
+      },
+    })
   }
 }

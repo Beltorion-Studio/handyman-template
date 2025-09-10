@@ -15,7 +15,7 @@ You need add the 'fixed classes to the mobile menu
 */
 ---
 
-<header class="fixed top-0 z-40 w-full bg-transparent py-6" za-elements="main-nav1">
+<header class="fixed top-0 z-40 w-full bg-transparent py-4" za-elements="main-nav1">
   <div class="container">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -90,9 +90,9 @@ You need add the 'fixed classes to the mobile menu
           za-elements="menu-button"
           class="w-6 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
         >
-          <span class="block h-[2px] w-full rounded-sm bg-black"></span>
-          <span class="mt-1 block h-[2px] w-full rounded-sm bg-black"></span>
-          <span class="mt-1 block h-[2px] w-full rounded-sm bg-black"></span>
+          <span class="block h-[2px] w-full rounded-sm bg-text-secondary"></span>
+          <span class="mt-1 block h-[2px] w-full rounded-sm bg-text-secondary"></span>
+          <span class="mt-1 block h-[2px] w-full rounded-sm bg-text-secondary"></span>
         </div>
       </div>
     </div>
@@ -115,7 +115,7 @@ You need add the 'fixed classes to the mobile menu
             <li role="none">
               {'items' in item ? (
                 <div class="flex flex-col gap-2">
-                  <span class="text-lg font-bold" role="menuitem">
+                  <span class="text-text-brand text-lg font-bold" role="menuitem">
                     {item.text}
                   </span>
                   <ul class="ml-2 flex flex-col gap-2" role="menu">
@@ -142,6 +142,7 @@ You need add the 'fixed classes to the mobile menu
                   fontWeight="bold"
                   hoverStyle="color"
                   role="menuitem"
+                  intent="tertiary"
                   ariaLabel={item.ariaLabel}
                 >
                   {item.text}
