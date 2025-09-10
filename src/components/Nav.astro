@@ -15,7 +15,7 @@ You need add the 'fixed classes to the mobile menu
 */
 ---
 
-<header class="z-40 w-full bg-transparent py-6 fixed top-0" za-elements="main-nav1">
+<header class="fixed top-0 z-40 w-full bg-transparent py-6" za-elements="main-nav1">
   <div class="container">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -28,7 +28,7 @@ You need add the 'fixed classes to the mobile menu
         <ul class="flex items-center gap-6" role="menubar">
           {
             navigationConfig.main.map((item) => (
-              <li class="relative">
+              <li class="relative flex items-center">
                 {'items' in item ? (
                   <div
                     class="group relative z-60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
@@ -36,9 +36,9 @@ You need add the 'fixed classes to the mobile menu
                     tabindex="0"
                     aria-label={item.ariaLabel}
                   >
-                    <span class="flex cursor-pointer items-center gap-1 font-bold">
+                    <span class="text-text-secondary flex cursor-pointer items-center gap-1 text-lg font-bold">
                       {item.text}
-                      <Icon name="quill:chevron-down" class="h-4 w-4 text-white" />
+                      <Icon name="quill:chevron-down" class="text-text-secondary h-4 w-4" />
                     </span>
                     <div class="pointer-events-none absolute top-full right-0 w-48 rounded-md bg-white py-2 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
                       {item.items.map((subItem: any) => (
@@ -62,6 +62,7 @@ You need add the 'fixed classes to the mobile menu
                     size="medium"
                     fontWeight="bold"
                     hoverStyle="underline"
+                    hoverColor="text-secondary"
                     ariaLabel={item.ariaLabel}
                   >
                     {item.text}
@@ -71,7 +72,12 @@ You need add the 'fixed classes to the mobile menu
             ))
           }
           <li>
-            <Button href={navigationConfig.cta.primary.href} intent="secondary" size="small" borderRadius="corner">
+            <Button
+              href={navigationConfig.cta.primary.href}
+              intent="secondary"
+              size="small"
+              borderRadius="corner"
+            >
               {navigationConfig.cta.primary.text}
             </Button>
           </li>
