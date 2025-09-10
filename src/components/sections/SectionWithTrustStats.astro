@@ -13,7 +13,7 @@ const { content } = Astro.props
 ---
 
 <section
-  class="text-text-white from-brand to-primary-dark bg-gradient-to-br py-20"
+  class="text-text-white from-brand to-primary-dark bg-gradient-to-br tablet:py-28 py-10"
   aria-label="Why homeowners trust us section container"
   id={content.sectionId}
 >
@@ -32,7 +32,7 @@ const { content } = Astro.props
           )
         }
 
-        <Heading tag="h2">{content.title}</Heading>
+        <Heading tag="h2" size="h2">{content.title}</Heading>
         <div class="mb-8 flex flex-col">
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
@@ -63,11 +63,11 @@ const { content } = Astro.props
         <div class="grid h-[316px] grid-cols-2 gap-8">
           {
             content.trustStats.map((stat, index) => (
-              <div class="flex flex-col items-center justify-start text-center">
-                <div class="text-text-secondary-light mb-2 text-6xl leading-normal font-bold">
+              <div class="flex flex-col items-start justify-start">
+                <div class="text-text-secondary text-6xl font-bold leading-normal">
                   {stat.value}
                 </div>
-                <div class="text-text-white text-lg leading-[1.4] font-normal">{stat.label}</div>
+                <div class="text-text-white text-lg leading-[1.4] font-medium">{stat.label}</div>
               </div>
             ))
           }

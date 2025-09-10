@@ -5,7 +5,6 @@ import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
 import AboutImg from '@assets/images/installer-in-overalls.jpg'
-import SectionWithStats from '@components/sections/SectionWithStats.astro'
 import Testimonial from '@components/Testimonial.astro'
 import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
 
@@ -16,13 +15,13 @@ const testimonials = await getCollection('testimonial')
 <Layout title="Home">
   <Hero
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
-    title="@@The Man@@ Behind the Tools"
+    title="@@The Team@@ Behind the Tools"
   />
 
   <SectionRegular
     content={{
       sectionId: 'About',
-      badge: 'About',
+      badge: 'Founder',
       title: 'Daniel Harris',
       paragraphs: {
         p1: 'At the heart of our work is Daniel Harris, a skilled handyman with a passion for solving everyday problems.',
@@ -59,31 +58,6 @@ const testimonials = await getCollection('testimonial')
         { value: '15+', label: 'Years of trade experience' },
         { value: '24/7', label: 'Emergency support available' },
       ],
-    }}
-  />
-
-  <SectionWithStats
-    content={{
-      sectionId: 'Offer',
-      badge: 'About',
-      title: 'Daniel Harris',
-      paragraphs: {
-        p1: 'At the heart of our work is Daniel Harris, a skilled handyman with a passion for solving everyday problems.',
-        p2: 'With years of experience across trades, he built a service dedicated to reliability, creativity, and care.',
-        p3: 'We believe every home and office deserves professional attention delivered with warmth and efficiency.',
-        p4: 'Our mission is simple: to take the stress out of repairs, improvements, and installations.',
-      },
-      buttons: {
-        primary: {
-          text: 'Get in Touch',
-          href: '#contact',
-        },
-      },
-      image: {
-        src: AboutImg,
-        alt: 'managed it services transportation logistics',
-        size: 'square',
-      },
     }}
   />
 
