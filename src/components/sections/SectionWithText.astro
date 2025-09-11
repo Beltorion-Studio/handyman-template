@@ -1,0 +1,55 @@
+---
+import Heading from '@components/ui/Heading.astro'
+import Badge from '@components/ui/Badge.astro'
+import { formatText } from '@lib/utils/textFormatting'
+
+export type Props = {
+  sectionId: string
+  badge?: string
+  title?: string
+  description?: string
+  className?: string
+}
+
+const { sectionId, badge, title, description, className } = Astro.props as Props
+---
+
+<section class={`tablet:py-28 py-10 ${className}`} aria-label="Get in touch section" id={sectionId}>
+  <div class="container">
+    <div class="flex flex-col items-center justify-start gap-16 px-4">
+      <div class="flex max-w-[1168px] flex-col items-center justify-start gap-6 text-center">
+        {
+          badge && (
+            <Badge intent="secondary" roundness="sm" size="base" class="mb-0">
+              {badge}
+            </Badge>
+          )
+        }
+
+        {
+          title && (
+            <Heading
+              tag="h2"
+              size="h2"
+              variant="primary"
+              align="center"
+              class="text-text-primary whitespace-pre-wrap"
+              text={title}
+            />
+          )
+        }
+      </div>
+
+      {
+        description && (
+          <div class="w-full max-w-[900px]">
+            <p
+              class="text-text-primary text-lg leading-[1.4] font-normal"
+              set:html={formatText(description)}
+            />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

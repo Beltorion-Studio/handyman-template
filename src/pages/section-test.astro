@@ -1,0 +1,251 @@
+---
+import Layout from '@layouts/Layout.astro'
+import SectionWithCards from '@components/sections/SectionWithCards.astro'
+import SectionWithFeatures from '@components/sections/SectionWithFeatures.astro'
+import SectionWithContent from '@components/sections/SectionWithContent.astro'
+import SectionWithText from '@components/sections/SectionWithText.astro'
+import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
+import aboutImage from '@assets/images/crossed-arms.jpg'
+import serviceImage from '@assets/images/locksmith.jpg'
+---
+
+<Layout title="Section Components Test">
+  <div class="py-10">
+    <div class="container">
+      <h1 class="mb-12 text-center text-4xl font-bold">Section Components Test Page</h1>
+
+      <!-- Section With Text Example -->
+      <SectionWithText
+        badge="Get in Touch Today"
+        title="Simple Steps to Your Next Project"
+        description="Reaching out is the easiest way to start turning your ideas into reality. Whether it's a small repair, a fresh coat of paint, or a full renovation, we're here to listen and help. Every project begins with a conversation—one where your needs, timeline, and budget are understood from the start. With clear communication and a straightforward process, we make it stress-free to get the support you need. Fill out the form below and let us handle the rest with professionalism and care."
+        sectionId="get-in-touch-section"
+      />
+
+      <!-- Section With Cards Example -->
+      <SectionWithCards
+        content={{
+          sectionId: 'cards-section',
+          badge: 'Services',
+          title: 'Our Service Cards',
+          paragraphs: {
+            p1: 'Here are some of our key services displayed as cards with icons and descriptions.',
+            p2: 'Each card represents a different service we offer to our customers.',
+          },
+          buttons: {
+            primary: {
+              text: 'View All Services',
+              href: '/services',
+            },
+            secondary: {
+              text: 'Contact Us',
+              href: '/contact',
+            },
+          },
+          image: {
+            src: serviceImage,
+            alt: 'Handyman services',
+          },
+          cards: [
+            {
+              title: 'Plumbing Repairs',
+              description: 'Fix leaks, unclog drains, and repair plumbing fixtures',
+              icon: 'plumber-wrench',
+            },
+            {
+              title: 'Electrical Work',
+              description: 'Install outlets, fix lighting, and electrical maintenance',
+              icon: 'energy-electric-plug',
+            },
+            {
+              title: 'Carpentry',
+              description: 'Custom woodwork, repairs, and furniture assembly',
+              icon: 'home-repair-hammer',
+            },
+            {
+              title: 'Painting',
+              description: 'Interior and exterior painting services',
+              icon: 'home-repair-paint-brush',
+            },
+          ],
+          cardLayout: 'grid',
+        }}
+      />
+
+      <!-- Section With Features Example -->
+      <SectionWithFeatures
+        content={{
+          sectionId: 'features-section',
+          badge: 'Features',
+          title: 'Why Choose Our Services',
+          paragraphs: {
+            p1: 'We provide exceptional handyman services with these key features.',
+            p2: 'Our team is committed to delivering quality work and customer satisfaction.',
+          },
+          buttons: {
+            primary: {
+              text: 'Get Started',
+              href: '/contact',
+            },
+          },
+          image: {
+            src: testImage,
+            alt: 'Professional handyman work',
+          },
+          features: [
+            {
+              title: 'Licensed & Insured',
+              description:
+                'All our technicians are fully licensed and insured for your peace of mind.',
+              icon: 'security-shield',
+              highlight: true,
+            },
+            {
+              title: 'Same Day Service',
+              description: 'Most repairs can be completed the same day you call us.',
+              icon: 'energy-light-bulb',
+            },
+            {
+              title: 'Quality Guarantee',
+              description: 'We stand behind our work with a comprehensive quality guarantee.',
+              icon: 'security-badge',
+            },
+            {
+              title: 'Fair Pricing',
+              description: 'Transparent, upfront pricing with no hidden fees or surprises.',
+              icon: 'home-repair-toolbox',
+            },
+          ],
+          featureLayout: 'vertical',
+        }}
+      />
+
+      <!-- Section With Content Example -->
+      <SectionWithContent
+        content={{
+          sectionId: 'content-section',
+          reverse: true,
+          badge: 'About',
+          title: 'Meet Our Team',
+          paragraphs: {
+            p1: 'Our experienced team of handymen is dedicated to providing top-quality service.',
+            p2: 'With years of experience in various trades, we can handle any project big or small.',
+          },
+          buttons: {
+            primary: {
+              text: 'Learn More',
+              href: '/about',
+            },
+            secondary: {
+              text: 'View Portfolio',
+              href: '/works',
+            },
+          },
+          image: {
+            src: aboutImage,
+            alt: 'Our professional team',
+            size: 'square',
+          },
+          additionalContent: {
+            heading: 'Professional Excellence',
+            description:
+              'We pride ourselves on professional excellence, attention to detail, and customer satisfaction. Every project is completed with the highest standards of quality and craftsmanship.',
+          },
+        }}
+      />
+
+      <!-- Section With Cards - Horizontal Layout -->
+      <SectionWithCards
+        content={{
+          sectionId: 'cards-horizontal-section',
+          badge: 'Process',
+          title: 'Our Work Process',
+          paragraphs: {
+            p1: 'Here is how we approach every project to ensure the best results.',
+            p2: 'Our systematic approach ensures quality and efficiency in every job.',
+          },
+          buttons: {
+            primary: {
+              text: 'Start Your Project',
+              href: '/contact',
+            },
+          },
+          image: {
+            src: testImage,
+            alt: 'Our work process',
+          },
+          cards: [
+            {
+              title: '1. Initial Consultation',
+              description: 'We discuss your needs and provide a detailed estimate',
+            },
+            {
+              title: '2. Planning & Scheduling',
+              description: 'We plan the work and schedule it at your convenience',
+            },
+            {
+              title: '3. Quality Execution',
+              description: 'Our skilled team completes the work to the highest standards',
+            },
+            {
+              title: '4. Final Inspection',
+              description: 'We ensure everything meets your expectations before finishing',
+            },
+          ],
+          cardLayout: 'horizontal',
+        }}
+      />
+
+      <!-- Section With Features - Grid Layout -->
+      <SectionWithFeatures
+        content={{
+          sectionId: 'features-grid-section',
+          reverse: true,
+          badge: 'Benefits',
+          title: 'Customer Benefits',
+          paragraphs: {
+            p1: 'Experience the benefits of choosing our handyman services.',
+            p2: 'We focus on delivering value and satisfaction to every customer.',
+          },
+          buttons: {
+            primary: {
+              text: 'Get Quote',
+              href: '/contact',
+            },
+            secondary: {
+              text: 'Call Now',
+              href: 'tel:+1234567890',
+            },
+          },
+          image: {
+            src: serviceImage,
+            alt: 'Customer benefits',
+          },
+          features: [
+            {
+              title: 'Time Saving',
+              description: 'Get your repairs done quickly and efficiently.',
+              icon: 'repair-toolbox',
+            },
+            {
+              title: 'Cost Effective',
+              description: 'Competitive rates with no hidden fees.',
+              icon: 'home-repair-toolbox',
+            },
+            {
+              title: 'Reliable Service',
+              description: 'On-time service you can count on.',
+              icon: 'security-badge',
+            },
+            {
+              title: 'Expert Knowledge',
+              description: 'Years of experience in multiple trades.',
+              icon: 'repair-helmet',
+            },
+          ],
+          featureLayout: 'grid',
+        }}
+      />
+    </div>
+  </div>
+</Layout>

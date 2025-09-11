@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
+import Button from '@components/ui/Button.astro'
+import Heading from '@components/ui/Heading.astro'
+import Badge from '../ui/Badge.astro'
+import Card from '../ui/Card.astro'
+import { formatText } from '@lib/utils/textFormatting'
+import type { SectionWithCardsContent } from '@types/section'
+
+type Props = {
+  content: SectionWithCardsContent
+}
+
+const { content } = Astro.props
+---
+
+<section
+  class="tablet:py-28 py-10"
+  aria-label="Section with cards container"
+  id={content.sectionId}
+>
+  <div class="container">
+    <div class="desktop:grid-cols-2 grid items-start gap-20">
+      <div
+        class={`desktop:items-start h-full text-left flex flex-col items-center ${
+          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${content.reverse ? 'order-2' : 'order-1'}`}
+      >
+        {
+          content.badge && (
+            <Badge intent="secondary" roundness="sm" size="base">
+              {content.badge}
+            </Badge>
+          )
+        }
+
+        <Heading tag="h2">{content.title}</Heading>
+        <div class="mb-8 flex flex-col">
+          {
+            Object.entries(content.paragraphs).map(([key, text]) => {
+              void key
+              return <p class="text-text-primary mt-4" set:html={formatText(text)} />
+            })
+          }
+        </div>
+
+        {
+          content.cards.length > 0 && (
+            <div class="mb-8 w-full">
+              <div
+                class={`desktop:text-left text-center ${
+                  content.cardLayout === 'grid'
+                    ? 'grid grid-cols-1 gap-4 md:grid-cols-2'
+                    : content.cardLayout === 'horizontal'
+                      ? 'flex flex-col gap-4'
+                      : 'space-y-4'
+                }`}
+              >
+                {content.cards.map((card) => (
+                  <div class="hover:border-brand flex items-start gap-3 rounded-lg border border-gray-200 p-4 transition-colors">
+                    {card.icon && (
+                      <div class="flex-shrink-0 pt-1">
+                        <Icon name={card.icon} class="text-text-brand h-6 w-6" />
+                      </div>
+                    )}
+                    <div class="flex-1">
+                      <h4 class="text-text-primary mb-2 text-lg font-semibold">{card.title}</h4>
+                      <p class="text-text-primary text-base">{card.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          content.buttons && (
+            <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
+              {content.buttons.primary && (
+                <Button
+                  intent="primary"
+                  size="medium"
+                  borderRadius="corner"
+                  href={content.buttons.primary.href}
+                >
+                  {content.buttons.primary.text}
+                </Button>
+              )}
+              {content.buttons.secondary && (
+                <Button
+                  intent="outlined"
+                  size="medium"
+                  borderRadius="corner"
+                  href={content.buttons.secondary.href}
+                >
+                  {content.buttons.secondary.text}
+                </Button>
+              )}
+            </div>
+          )
+        }
+      </div>
+
+      {
+        content.image.src && (
+          <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+            <Image
+              src={content.image.src}
+              alt={content.image.alt}
+              class={`w-full rounded-3xl object-cover ${
+                content.image.size ? `aspect-${content.image.size}` : 'h-full'
+              } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+            />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
