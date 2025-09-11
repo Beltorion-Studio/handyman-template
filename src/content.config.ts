@@ -21,6 +21,23 @@ const services = defineCollection({
     }),
 })
 
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      heroImage: image(),
+      imageAlt: z.string(),
+      author: z.string().default('Handyman Pro'),
+      category: z.string(),
+      tags: z.array(z.string()).default([]),
+      featured: z.boolean().default(false),
+    }),
+})
+
 const testimonial = defineCollection({
   loader: glob({ base: './src/content/testimonial', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) =>
@@ -33,4 +50,4 @@ const testimonial = defineCollection({
     }),
 })
 
-export const collections = { services, testimonial }
+export const collections = { services, testimonial, blog }
