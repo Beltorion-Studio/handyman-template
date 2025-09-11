@@ -4,9 +4,26 @@ import SectionWithCards from '@components/sections/SectionWithCards.astro'
 import SectionWithFeatures from '@components/sections/SectionWithFeatures.astro'
 import SectionWithContent from '@components/sections/SectionWithContent.astro'
 import SectionWithText from '@components/sections/SectionWithText.astro'
+import SectionWithBullets from '@components/sections/SectionWithBullets.astro'
+import SectionWithIcons from '@components/sections/SectionWithIcons.astro'
+import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
+import Hero from '@components/sections/Hero.astro'
+import HeroWithStats from '@components/sections/HeroWithStats.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
+import PostsSection from '@components/sections/PostsSection.astro'
+import Services from '@components/sections/Services.astro'
 import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import aboutImage from '@assets/images/crossed-arms.jpg'
 import serviceImage from '@assets/images/locksmith.jpg'
+import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
+import { getCollection } from 'astro:content'
+
+// Get collections for PostsSection and Services
+const allBlogPosts = await getCollection('blog')
+const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+
+const allServices = await getCollection('services')
+const services = allServices.filter((service) => service.data.featured)
 ---
 
 <Layout title="Section Components Test">
@@ -28,6 +45,7 @@ import serviceImage from '@assets/images/locksmith.jpg'
           sectionId: 'cards-section',
           badge: 'Services',
           title: 'Our Service Cards',
+          reverse: true,
           paragraphs: {
             p1: 'Here are some of our key services displayed as cards with icons and descriptions.',
             p2: 'Each card represents a different service we offer to our customers.',
@@ -246,6 +264,176 @@ import serviceImage from '@assets/images/locksmith.jpg'
           featureLayout: 'grid',
         }}
       />
+
+      <!-- Section With Bullets Example -->
+      <SectionWithBullets
+        content={{
+          sectionId: 'bullets-section',
+          badge: 'Process',
+          title: 'Our Simple Process',
+          paragraphs: {
+            p1: 'We follow a simple, proven process to ensure your satisfaction.',
+            p2: 'From initial contact to project completion, we keep you informed every step of the way.',
+          },
+          buttons: {
+            primary: {
+              text: 'Get Started',
+              href: '/contact',
+            },
+          },
+          image: {
+            src: testImage,
+            alt: 'Our simple process',
+          },
+          bulletPoints: [
+            'Free consultation and estimate',
+            'Flexible scheduling to fit your needs',
+            'Quality materials and expert workmanship',
+            'Clean-up and final inspection',
+          ],
+          listType: 'bullets',
+        }}
+      />
+
+      <!-- Section With Icons Example -->
+      <SectionWithIcons
+        content={{
+          sectionId: 'icons-section',
+          badge: 'Services',
+          title: 'What We Offer',
+          paragraphs: {
+            p1: 'We provide comprehensive handyman services for your home.',
+            p2: 'Our skilled team can handle a wide variety of repair and maintenance tasks.',
+          },
+          buttons: {
+            primary: {
+              text: 'View All Services',
+              href: '/services',
+            },
+          },
+          image: {
+            src: serviceImage,
+            alt: 'Our services',
+          },
+          iconItems: [
+            {
+              icon: 'plumber-wrench',
+              text: 'Plumbing repairs and installations',
+            },
+            {
+              icon: 'energy-electric-plug',
+              text: 'Electrical work and fixtures',
+            },
+            {
+              icon: 'home-repair-hammer',
+              text: 'Carpentry and woodworking',
+            },
+            {
+              icon: 'home-repair-paint-brush',
+              text: 'Painting and refinishing',
+            },
+          ],
+        }}
+      />
+
+      <!-- Section With Trust Stats Example -->
+      <SectionWithTrustStats
+        content={{
+          sectionId: 'trust-stats-section',
+          badge: 'Trust',
+          title: 'Why Homeowners Trust Us',
+          paragraphs: {
+            p1: 'Our track record speaks for itself with satisfied customers and quality work.',
+            p2: 'We are committed to excellence in every project we undertake.',
+          },
+          buttons: {
+            primary: {
+              text: 'Join Our Happy Customers',
+              href: '/contact',
+            },
+          },
+          trustStats: [
+            {
+              value: '500+',
+              label: 'Happy Customers',
+            },
+            {
+              value: '15+',
+              label: 'Years Experience',
+            },
+            {
+              value: '24/7',
+              label: 'Emergency Service',
+            },
+            {
+              value: '100%',
+              label: 'Satisfaction Guaranteed',
+            },
+          ],
+        }}
+      />
+
+      <!-- Hero Section Example -->
+      <Hero
+        sectionId="hero-example"
+        heroImage={{ src: heroImage, alt: 'Hero background' }}
+        title="Professional Handyman Services"
+        subheading="Reliable, skilled, and ready to help with all your home repair needs."
+        primaryButtonText="Get Free Quote"
+        primaryButtonHref="/contact"
+        secondaryButtonText="Learn More"
+        secondaryButtonHref="/about"
+      />
+
+      <!-- Hero With Stats Example -->
+      <HeroWithStats
+        sectionId="hero-stats-example"
+        heroImage={{ src: heroImage, alt: 'Hero with stats background' }}
+        title="Trusted by 500+ Homeowners"
+        subheading="Experience the difference professional handyman services can make."
+        primaryButtonText="Schedule Service"
+        primaryButtonHref="/contact"
+        secondaryButtonText="View Portfolio"
+        secondaryButtonHref="/works"
+      />
+
+      <!-- Section Regular Example -->
+      <SectionRegular
+        content={{
+          sectionId: 'regular-section',
+          badge: 'About',
+          title: 'Our Story',
+          paragraphs: {
+            p1: 'We started as a small family business with a passion for helping homeowners.',
+            p2: 'Today, we continue to provide the same personal touch and quality workmanship.',
+          },
+          buttons: {
+            primary: {
+              text: 'Learn Our Story',
+              href: '/about',
+            },
+          },
+          image: {
+            src: aboutImage,
+            alt: 'Our story',
+          },
+        }}
+      />
+
+      <!-- Posts Section Example -->
+      <PostsSection
+        sectionId="posts-section"
+        badge="Blog"
+        title="Latest Tips & News"
+        description="Stay updated with helpful home maintenance tips and industry news."
+        posts={blogPosts}
+        maxPosts={3}
+        buttonText="View All Posts"
+        buttonHref="/blog"
+      />
+
+      <!-- Services Section Example -->
+      <Services sectionId="services-section" title="Featured Services" services={services} />
     </div>
   </div>
 </Layout>
