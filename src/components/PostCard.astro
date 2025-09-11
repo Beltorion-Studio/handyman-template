@@ -18,7 +18,7 @@ const { image, imageAlt, date, title, description, readMoreText = 'Read More', h
 ---
 
 <div
-  class="group relative h-full overflow-hidden rounded-3xl border border-gray-200 bg-white transition-shadow duration-300 hover:shadow-lg"
+  class="group relative h-full overflow-hidden rounded-3xl border border-brand bg-white transition-shadow duration-300 hover:shadow-lg"
 >
   <!-- Image Section -->
   {
@@ -41,7 +41,7 @@ const { image, imageAlt, date, title, description, readMoreText = 'Read More', h
     {
       date && (
         <div class="mb-3">
-          <p class="text-sm font-medium text-gray-500">{date}</p>
+          <p class="text-sm font-medium text-text-primary">{date}</p>
         </div>
       )
     }
@@ -65,18 +65,18 @@ const { image, imageAlt, date, title, description, readMoreText = 'Read More', h
     <!-- Description with 3-line limit -->
     {
       description && (
-        <div class="mb-4 flex-1">
-          <p class="line-clamp-3 text-base leading-relaxed text-gray-600">{description}</p>
+        <div class="mb-4 flex-1 max-h-20">
+          <p class="line-clamp-3 text-base leading-relaxed text-text-primary">{description}</p>
         </div>
       )
     }
 
     <!-- Read More Link -->
-    <div class="mt-auto">
+    <div class="text-text-brand">
       <Link
         href={href}
         intent="primary"
-        class="inline-flex items-center gap-2 text-base font-semibold"
+        class="inline-flex items-center gap-2 text-lg font-semibold"
       >
         <span>{readMoreText}</span>
         <Icon
