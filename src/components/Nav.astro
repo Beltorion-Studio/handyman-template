@@ -15,7 +15,7 @@ You need add the 'fixed classes to the mobile menu
 */
 ---
 
-<header class="fixed top-0 z-40 w-full bg-transparent py-4" za-elements="main-nav1">
+<header class="fixed top-0 z-40 w-full bg-brand md:bg-transparent py-4" za-elements="main-nav1">
   <div class="container">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -90,9 +90,9 @@ You need add the 'fixed classes to the mobile menu
           za-elements="menu-button"
           class="w-6 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
         >
-          <span class="block h-[2px] w-full rounded-sm bg-text-secondary"></span>
-          <span class="mt-1 block h-[2px] w-full rounded-sm bg-text-secondary"></span>
-          <span class="mt-1 block h-[2px] w-full rounded-sm bg-text-secondary"></span>
+          <span class="bg-text-secondary block h-[2px] w-full rounded-sm"></span>
+          <span class="bg-text-secondary mt-1 block h-[2px] w-full rounded-sm"></span>
+          <span class="bg-text-secondary mt-1 block h-[2px] w-full rounded-sm"></span>
         </div>
       </div>
     </div>
@@ -103,8 +103,8 @@ You need add the 'fixed classes to the mobile menu
   <!-- Move mobile menu here, inside the main nav div -->
   <div
     za-elements="mobile-menu"
-    class="desktop:hidden inset-0 top-[65px] overflow-y-auto bg-white"
-    style="opacity: 0; visibility: hidden;"
+    class="desktop:hidden fixed top-[65px] right-0 left-0 bg-white shadow-lg pb-4"
+    
     role="dialog"
     aria-label="Mobile menu"
   >
@@ -118,7 +118,7 @@ You need add the 'fixed classes to the mobile menu
                   <span class="text-text-brand text-lg font-bold" role="menuitem">
                     {item.text}
                   </span>
-                  <ul class="ml-2 flex flex-col gap-2" role="menu">
+                  <ul class="ml-2 flex flex-col gap-2 mb-4" role="menu">
                     {item.items.map((subItem: any) => (
                       <li role="none">
                         <Link
@@ -152,10 +152,10 @@ You need add the 'fixed classes to the mobile menu
           ))
         }
       </ul>
+      <Button href={navigationConfig.cta.primary.href} intent="primary" size="small">
+        {navigationConfig.cta.primary.text}
+      </Button>
     </nav>
-    <Button href={navigationConfig.cta.primary.href} intent="primary" size="small">
-      {navigationConfig.cta.primary.text}
-    </Button>
   </div>
 </header>
 <script>

@@ -17,7 +17,7 @@ export class MobileNavAnimation {
   private readonly MENU_DURATION = 0.5
   private readonly SCROLL_DURATION = 0.3
 
-  private readonly SCROLL_COLOR = 'oklch(.5 .134 242.749)'
+  private readonly SCROLL_COLOR = 'oklch(.5 .134 242.749 / 1)'
   private readonly TRANSPARENT_COLOR = 'oklch(.5 .134 242.749 / 0)'
 
   constructor(navSelector: string) {
@@ -82,12 +82,14 @@ export class MobileNavAnimation {
       {
         opacity: 0,
         visibility: 'hidden',
+        height: 0,
         y: -10,
       },
       {
         duration: this.MENU_DURATION,
         opacity: 1,
         visibility: 'visible',
+        height: 'auto',
         y: 0,
         ease: 'power2.out',
       }
@@ -114,6 +116,7 @@ export class MobileNavAnimation {
     if (this.isActive) {
       this.hamburgerTimeline.play()
       this.menuTimeline.play()
+      this.updateMobileMenuBackground()
     } else {
       this.hamburgerTimeline.reverse()
       this.menuTimeline.reverse()
@@ -165,5 +168,12 @@ export class MobileNavAnimation {
         })
       },
     })
+  }
+
+  private updateMobileMenuBackground(): void {
+    // On mobile, always ensure nav has bg-brand when menu is open
+    if (window.innerWidth < 1024 && this.isActive) {
+      gsap.set(this.nav, { backgroundColor: this.SCROLL_COLOR })
+    }
   }
 }
