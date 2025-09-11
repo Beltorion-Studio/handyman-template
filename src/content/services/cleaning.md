@@ -19,7 +19,7 @@ order: 10
 
 # Professional Cleaning Services
 
-Keep your home or office spotless with our comprehensive cleaning services. We provide both one-time deep cleaning and regular maintenance cleaning.
+Keep your home or office spotless with our comprehensive cleaning services. We provide both one-time deep cleaning and regular maintenance cleaning.a
 
 ## Our Services
 

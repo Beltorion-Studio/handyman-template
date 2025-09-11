@@ -19,7 +19,7 @@ order: 3
 
 # Expert Carpentry Services
 
-Transform your space with our custom carpentry and woodworking services. We create beautiful, functional solutions tailored to your needs.
+Transform your space with our custom carpentry and woodworking services. We create beautiful, functional solutions tailored to your needs.a
 
 ## Our Specialties
 

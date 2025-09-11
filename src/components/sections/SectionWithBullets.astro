@@ -13,7 +13,7 @@ type Props = {
 const { content } = Astro.props
 ---
 
-<section class="py-20" aria-label="Section with bullets container" id={content.sectionId}>
+<section class="tablet:py-28 py-10" aria-label="Section with bullets container" id={content.sectionId}>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -23,7 +23,7 @@ const { content } = Astro.props
       >
         {
           content.badge && (
-            <Badge intent="primary" roundness="full">
+            <Badge intent="secondary" roundness="sm" size="base">
               {content.badge}
             </Badge>
           )
