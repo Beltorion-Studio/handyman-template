@@ -3,10 +3,11 @@ import Layout from '@layouts/Layout.astro'
 import heroImage from '@assets/images/locksmith.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import PostsSection from '@components/sections/PostsSection.astro'
 
-// Get all services from content collection
-const allServices = await getCollection('services')
-const services = allServices.filter((service) => service.data.featured)
+// Get blog posts from content collection
+const allBlogPosts = await getCollection('blog')
+const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
 <Layout title="Home">
@@ -15,5 +16,12 @@ const services = allServices.filter((service) => service.data.featured)
     title="Blog"
   />
 
+  <div></div>
+
+  <PostsSection
+    posts={blogPosts}
+    postType="blog"
+    sectionId="blog-posts"
+  />
  
 </Layout>

@@ -3,6 +3,8 @@ title: 'Home Repairs'
 description: 'General home maintenance and repairs. From electrical work to drywall repairs, we keep your home in perfect condition with professional service.'
 shortDescription: 'General home maintenance and repairs'
 icon: 'home-repair-drill'
+heroImage: '@assets/images/plumbing.jpg'
+imageAlt: 'side view of installer holding slip joint pliers near pipe and touching faucet in bathroom'
 featured: true
 category: 'Maintenance'
 price: 'Starting at $50'

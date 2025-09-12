@@ -3,6 +3,8 @@ title: 'Gardening Services'
 description: 'Landscaping and garden maintenance. We help you create and maintain beautiful outdoor spaces with professional gardening services.'
 shortDescription: 'Landscaping and garden maintenance'
 icon: 'gardening-tools'
+heroImage: '@assets/images/plumbing.jpg'
+imageAlt: 'side view of installer holding slip joint pliers near pipe and touching faucet in bathroom'
 featured: true
 category: 'Maintenance'
 price: 'Starting at $45'

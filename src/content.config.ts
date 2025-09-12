@@ -11,7 +11,8 @@ const services = defineCollection({
       description: z.string(),
       shortDescription: z.string().optional(),
       icon: z.string().optional(),
-      heroImage: image().optional(),
+      heroImage: image(),
+      imageAlt: z.string(),
       featured: z.boolean().default(false),
       category: z.string().optional(),
       price: z.string().optional(), // e.g., "Starting at $50", "Free estimate"
