@@ -3,6 +3,8 @@ title: 'Cleaning Services'
 description: 'Professional cleaning and maintenance services. Keep your home spotless with our comprehensive cleaning solutions for residential and commercial properties.'
 shortDescription: 'Professional cleaning and maintenance'
 icon: 'home-repair-paint-brush'
+heroImage: '@assets/images/plumbing.jpg'
+imageAlt: 'side view of installer holding slip joint pliers near pipe and touching faucet in bathroom'
 featured: false
 category: 'Maintenance'
 price: 'Starting at $35'
