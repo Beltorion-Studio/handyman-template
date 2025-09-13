@@ -17,14 +17,14 @@ const { className = '', formId = 'contact-form' } = PropsSchema.parse(Astro.prop
 
 // Service options for the select dropdown
 const serviceOptions = [
-  { value: 'plumbing', label: 'Plumbing' },
-  { value: 'electrical', label: 'Electrical' },
-  { value: 'carpentry', label: 'Carpentry' },
-  { value: 'painting', label: 'Painting' },
-  { value: 'hvac', label: 'HVAC' },
-  { value: 'general', label: 'General Handyman' },
-  { value: 'emergency', label: 'Emergency Service' },
-  { value: 'other', label: 'Other' },
+  { value: 'plumbing', label: 'Plumbing', disabled: false },
+  { value: 'electrical', label: 'Electrical', disabled: false },
+  { value: 'carpentry', label: 'Carpentry', disabled: false },
+  { value: 'painting', label: 'Painting', disabled: false },
+  { value: 'hvac', label: 'HVAC', disabled: false },
+  { value: 'general', label: 'General Handyman', disabled: false },
+  { value: 'emergency', label: 'Emergency Service', disabled: false },
+  { value: 'other', label: 'Other', disabled: false },
 ]
 ---
 
@@ -40,9 +40,11 @@ const serviceOptions = [
     <Input
       type="text"
       name="fullName"
+      id="fullName"
       label="Full name"
       placeholder="Your full name"
       required={true}
+      disabled={false}
     />
   </div>
 
@@ -52,18 +54,22 @@ const serviceOptions = [
       <Input
         type="tel"
         name="phone"
+        id="phone"
         label="Phone"
         placeholder="Your phone number"
         required={true}
+        disabled={false}
       />
     </div>
     <div class="flex-1">
       <Input
         type="email"
         name="email"
+        id="email"
         label="Email"
         placeholder="Your email address"
         required={true}
+        disabled={false}
       />
     </div>
   </div>
@@ -73,20 +79,24 @@ const serviceOptions = [
     <Input
       type="text"
       name="location"
+      id="location"
       label="Location"
       placeholder="Your location"
       required={true}
+      disabled={false}
     />
   </div>
 
   <!-- Service Selection -->
   <div class="w-full">
     <Select
+      id="service"
       name="service"
       label="Select service"
       placeholder="Select one..."
       options={serviceOptions}
       required={true}
+      disabled={false}
     />
   </div>
 
@@ -94,16 +104,26 @@ const serviceOptions = [
   <div class="w-full">
     <Textarea
       name="message"
+      id="message"
       label="Message"
       placeholder="Type your message..."
       rows={6}
       required={true}
+      disabled={false}
+      resize="vertical"
     />
   </div>
 
   <!-- Terms Checkbox -->
   <div class="pb-4">
-    <Checkbox name="acceptTerms" label="I accept the Terms" required={true} />
+    <Checkbox
+      name="acceptTerms"
+      label="I accept the Terms"
+      required={true}
+      disabled={false}
+      checked={false}
+      value="accept"
+    />
   </div>
 
   <!-- Submit Button -->
