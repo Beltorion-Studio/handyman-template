@@ -11,6 +11,7 @@ import Hero from '@components/sections/Hero.astro'
 import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
+import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import Services from '@components/sections/Services.astro'
 import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import aboutImage from '@assets/images/crossed-arms.jpg'
@@ -413,6 +414,14 @@ const services = allServices.filter((service) => service.data.featured)
         alt: 'Our story',
       },
     }}
+  />
+
+  <!-- Featured Blog Section Example -->
+  <FeaturedBlogSection
+    sectionId="featured-blog-section"
+    post={blogPosts[0]}
+    postType="blog"
+    readMoreText="Read more"
   />
 
   <!-- Posts Section Example -->
