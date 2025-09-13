@@ -4,8 +4,8 @@ import { z } from 'zod'
 const PropsSchema = z.object({
   type: z.enum(['text', 'email', 'tel', 'password']).optional().default('text'),
   name: z.string(),
-  id: z.string().optional(),
-  placeholder: z.string().optional(),
+  id: z.string(),
+  placeholder: z.string(),
   required: z.boolean().optional().default(false),
   disabled: z.boolean().optional().default(false),
   value: z.string().optional(),
