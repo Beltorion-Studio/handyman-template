@@ -3,6 +3,8 @@ title: 'Plumbing Services'
 description: 'Professional plumbing repairs, installations, and maintenance for your home. From leaky faucets to complete bathroom renovations, we handle it all with expertise and reliability.'
 shortDescription: 'Expert plumbing repairs and installations'
 icon: 'plumber-wrench'
+heroImage: '@assets/images/plumbing.jpg'
+imageAlt: 'side view of installer holding slip joint pliers near pipe and touching faucet in bathroom'
 featured: true
 category: 'Repairs'
 price: 'Starting at $75'

@@ -5,10 +5,8 @@ import Services from '@components/sections/Services.astro'
 import heroImage from '@assets/images/plumbing.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
-import SectionRegular from '@components/sections/SectionRegular.astro'
-import SectionWithBullets from '@components/sections/SectionWithBullets.astro'
-import ServiceImg from '@assets/images/installer-holding-pliers.jpg'
-import WhyImg from '@assets/images/installer-metallic-sink.jpg'
+import SectionWithText from '@components/sections/SectionWithText.astro'
+import PostsSection from '@components/sections/PostsSection.astro'
 
 
 // Get all services from content collection
@@ -17,6 +15,10 @@ const services = allServices.filter((service) => service.data.featured)
 
 // Get testimonials from content collection
 const testimonials = await getCollection('testimonial')
+
+// Get blog posts from content collection
+const allBlogPosts = await getCollection('blog')
+const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
 <Layout title="Home">
@@ -28,65 +30,29 @@ const testimonials = await getCollection('testimonial')
     primaryButtonHref='#contact'
   />
 
-  <Services sectionId="services" title="Features" services={services} />
+  <SectionWithText
+    title="Service Overview"
+    description="We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively."
+    sectionId="serviceOverview"
+  />
 
   <CTA
     sectionId="Call to action"
-    title="Ready to Fix It Today?"
-    description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
+    title="Get Your Plumbing Quote"
+    description="Don't let plumbing problems disrupt your daily routine. Contact us today for a free estimate on your plumbing needs. Our experienced plumbers will assess your situation, provide expert recommendations, and deliver reliable plumbing solutions."
     primaryButtonText="Get Your Free Quote"
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
-  <SectionRegular
-    content={{
-      sectionId: 'service',
-      badge: 'Service',
-      title: 'Professional Plumbing Services',
-      paragraphs: {
-        p1: 'Our experienced plumbers provide comprehensive plumbing solutions for residential and commercial properties. We are equipped to handle everything from minor repairs to major installations.',
-        p2: 'Whether it’s fixing a small leak, replacing outdated pipes, or setting up a brand-new water heater, our team ensures the job is done right the first time. We take pride in combining technical expertise with friendly service, making every plumbing project hassle-free. With reliable solutions tailored to your needs, we help keep your home or business running smoothly.',
-      },
-      image: {
-        src: ServiceImg,
-        alt: 'managed it services transportation logistics',
-        size: "square"
-      },
-    }}
+  <PostsSection
+    badge="And this is only part of it"
+    title="Check Out What Else We Do"
+    buttonText="View All Services"
+    buttonHref="/services"
+    posts={services}
+    postType="service"
+    maxPosts={3}
+    sectionId="otherServices"
   />
-
-  <p>OFFER SECTION</p>
-  
-  <SectionWithBullets
-    content={{
-      sectionId: 'WhyUs',
-      reverse: true,
-      badge: 'Our strengths',
-      title: 'Why Choose Us',
-        paragraphs: {
-          p1: 'Choosing the right plumber makes all the difference. We combine years of hands-on experience with a customer-first approach, ensuring every job is completed quickly, safely, and with lasting results. Here’s what sets us apart:',
-        },
-        bulletPoints: [
-          'Licensed and insured professionals',
-          'Upfront pricing with no hidden fees',
-          'Quality workmanship guaranteed',
-          'Same-day service available',
-          '100% satisfaction guarantee',
-        ],
-      buttons: {
-        primary: {
-          text: 'Contact Us Today',
-          href: '#contact',
-        },
-      },
-      image: {
-        src: WhyImg,
-        alt: 'managed it services transportation logistics',
-        size: "square"
-      },
-    }}
-  />
-
-  <p>OTHER SERVICES SECTION</p>
 </Layout>

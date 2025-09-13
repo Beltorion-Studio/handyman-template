@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro'
 import heroImage from '@assets/images/contact.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import SectionWithText from '@components/sections/SectionWithText.astro'
 import Testimonial from '@components/Testimonial.astro'
 
 // Get testimonials from content collection
@@ -17,6 +18,13 @@ const services = allServices.filter((service) => service.data.featured)
   <Hero
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="Contact Us"
+  />
+
+  <SectionWithText
+    badge="Get in Touch Today"
+    title="Simple Steps to Your Next Project"
+    description="Reaching out is the easiest way to start turning your ideas into reality. Whether it’s a small repair, a fresh coat of paint, or a full renovation, we’re here to listen and help. Every project begins with a conversation—one where your needs, timeline, and budget are understood from the start. With clear communication and a straightforward process, we make it stress-free to get the support you need. Fill out the form below and let us handle the rest with professionalism and care."
+    sectionId="get-in-touch-section"
   />
 
  <Testimonial
