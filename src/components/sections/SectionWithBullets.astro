@@ -8,12 +8,17 @@ import type { SectionWithBulletsContent } from '@types/section'
 
 type Props = {
   content: SectionWithBulletsContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'bg-white' } = Astro.props
 ---
 
-<section class="tablet:py-28 py-10" aria-label="Section with bullets container" id={content.sectionId}>
+<section
+  class={`tablet:py-28 py-10 ${background}`}
+  aria-label="Section with bullets container"
+  id={content.sectionId}
+>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -34,7 +39,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
+              return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
           }
         </div>

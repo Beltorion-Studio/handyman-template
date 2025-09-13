@@ -6,16 +6,15 @@ import Badge from '../ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
 import type { SectionContent } from '@types/section'
 
-
-
 type Props = {
   content: SectionContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'bg-white' } = Astro.props
 ---
 
-<section class="py-10 tablet:py-28" aria-label="Hero section container">
+<section class={`py-10 tablet:py-28 ${background}`} aria-label="Hero section container">
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -36,7 +35,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
+              return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
           }
         </div>
@@ -70,7 +69,6 @@ const { content } = Astro.props
           </div>
         )
       }
-
     </div>
   </div>
 </section>

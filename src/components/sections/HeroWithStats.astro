@@ -1,26 +1,24 @@
 ---
-import { z } from 'zod'
-import { Image, type ImageMetadata } from 'astro:assets'
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 import TrustStats from '@components/TrustStats.astro'
 
-const PropsSchema = z.object({
-  sectionId: z.string().optional(),
-  heroImage: z.object({
-    src: z.custom<ImageMetadata | string>(),
-    alt: z.string(),
-  }),
-  title: z.string(),
-  subheading: z.string().optional(),
-  primaryButtonText: z.string().optional(),
-  primaryButtonHref: z.string().optional(),
-  secondaryButtonText: z.string().optional(),
-  secondaryButtonHref: z.string().optional(),
-  className: z.string().optional(),
-})
-
-export type Props = z.infer<typeof PropsSchema>
+export type Props = {
+  sectionId: string
+  heroImage: {
+    src: ImageMetadata | string
+    alt: string
+  }
+  title: string
+  subheading?: string
+  primaryButtonText?: string
+  primaryButtonHref?: string
+  secondaryButtonText?: string
+  secondaryButtonHref?: string
+  className?: string
+}
 
 const {
   sectionId = 'hero',
@@ -32,7 +30,7 @@ const {
   secondaryButtonText,
   secondaryButtonHref,
   className = '',
-} = PropsSchema.parse(Astro.props)
+} = Astro.props
 ---
 
 <section
@@ -41,7 +39,9 @@ const {
   aria-label="Hero section"
 >
   <!-- Background Image -->
-  <div class="overflow-clip absolute inset-0 z-0 tablet:rounded-bl-[96px] tablet:rounded-br-[96px] rounded-bl-[36px] rounded-br-[36px]">
+  <div
+    class="tablet:rounded-bl-[96px] tablet:rounded-br-[96px] absolute inset-0 z-0 overflow-clip rounded-br-[36px] rounded-bl-[36px]"
+  >
     <Image
       src={heroImage.src}
       alt={heroImage.alt}
@@ -63,12 +63,16 @@ const {
 
           <!-- Hero Text and Actions -->
           <div class="flex w-full flex-col items-start justify-start gap-6">
-            {subheading && <p class="tablet:text-2xl/snug text-xl/snug font-medium text-white">{subheading}</p>}
+            {
+              subheading && (
+                <p class="tablet:text-2xl/snug text-xl/snug font-medium text-white">{subheading}</p>
+              )
+            }
 
             <!-- Action Buttons -->
             {
               (primaryButtonText || secondaryButtonText) && (
-                <div class="flex flex-col tablet:flex-row tablet:items-center justify-start items-stretch w-full gap-8">
+                <div class="tablet:flex-row tablet:items-center flex w-full flex-col items-stretch justify-start gap-8">
                   {primaryButtonText && (
                     <Button
                       href={primaryButtonHref}

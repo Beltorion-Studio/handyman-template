@@ -9,12 +9,24 @@ export type Props = {
   title?: string
   description?: string
   className?: string
+  background?: string
 }
 
-const { sectionId, badge, title, description, className } = Astro.props as Props
+const {
+  sectionId,
+  badge,
+  title,
+  description,
+  className,
+  background = 'bg-white',
+} = Astro.props as Props
 ---
 
-<section class={`tablet:py-28 py-10 ${className}`} aria-label="Get in touch section" id={sectionId}>
+<section
+  class={`tablet:py-28 py-10 ${background} ${className}`}
+  aria-label="Get in touch section"
+  id={sectionId}
+>
   <div class="container">
     <div class="flex flex-col items-center justify-start gap-8 px-4">
       <div class="flex max-w-[1168px] flex-col items-center justify-start gap-6 text-center">

@@ -9,12 +9,17 @@ import type { SectionWithIconsContent } from '@types/section'
 
 type Props = {
   content: SectionWithIconsContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'bg-white' } = Astro.props
 ---
 
-<section class="py-20" aria-label="Section with icons container" id={content.sectionId}>
+<section
+  class={`py-20 ${background}`}
+  aria-label="Section with icons container"
+  id={content.sectionId}
+>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
@@ -35,7 +40,7 @@ const { content } = Astro.props
           {
             Object.entries(content.paragraphs).map(([key, text]) => {
               void key
-              return <p class="mt-4 text-text-primary" set:html={formatText(text)} />
+              return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
           }
         </div>

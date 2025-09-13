@@ -9,13 +9,14 @@ import type { SectionWithFeaturesContent } from '@types/section'
 
 type Props = {
   content: SectionWithFeaturesContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'bg-white' } = Astro.props
 ---
 
 <section
-  class="tablet:py-28 py-10"
+  class={`tablet:py-28 py-10 ${background}`}
   aria-label="Section with features container"
   id={content.sectionId}
 >

@@ -8,12 +8,17 @@ import type { SectionContent } from '@types/section'
 
 type Props = {
   content: SectionContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'bg-white' } = Astro.props
 ---
 
-<section class="tablet:py-28 py-10" aria-label="Section container" id={content.sectionId}>
+<section
+  class={`tablet:py-28 py-10 ${background}`}
+  aria-label="Section container"
+  id={content.sectionId}
+>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div

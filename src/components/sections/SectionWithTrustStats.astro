@@ -7,13 +7,15 @@ import type { SectionWithTrustStatsContent } from '@types/section'
 
 export type Props = {
   content: SectionWithTrustStatsContent
+  background?: string
 }
 
-const { content } = Astro.props
+const { content, background = 'text-text-white from-brand to-primary-dark bg-gradient-to-br' } =
+  Astro.props
 ---
 
 <section
-  class="text-text-white from-brand to-primary-dark bg-gradient-to-br tablet:py-28 py-10"
+  class={`${background} tablet:py-28 py-10`}
   aria-label="Why homeowners trust us section container"
   id={content.sectionId}
 >
@@ -59,12 +61,14 @@ const { content } = Astro.props
         }
       </div>
 
-      <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full flex items-center justify-center`}>
+      <div
+        class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full flex items-center justify-center`}
+      >
         <div class="grid h-[316px] grid-cols-2 gap-8">
           {
             content.trustStats.map((stat, index) => (
               <div class="flex flex-col items-start justify-start">
-                <div class="text-text-secondary text-6xl font-bold leading-normal">
+                <div class="text-text-secondary text-6xl leading-normal font-bold">
                   {stat.value}
                 </div>
                 <div class="text-text-white text-lg leading-[1.4] font-medium">{stat.label}</div>
