@@ -1,0 +1,123 @@
+---
+import { Icon } from 'astro-icon/components'
+import Heading from '@components/ui/Heading.astro'
+import Link from '@components/ui/Link.astro'
+import ContactForm from '@components/ContactForm.astro'
+import Badge from '@components/ui/Badge.astro'
+import { contactConfig } from '@config/contact'
+
+export type Props = {
+  sectionId: string
+  badge?: string
+  title?: string
+  description?: string
+  className?: string
+}
+
+const { sectionId = 'contact-us', badge, title, description, className } = Astro.props
+
+const { company } = contactConfig
+---
+
+<section id={sectionId} class={`relative py-20 ${className}`} aria-label="Contact section">
+  <!-- Gradient Background -->
+  <div class="to-brand absolute inset-0 bg-gradient-to-r from-white from-50% to-50%"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 container mx-auto px-4">
+    <div class="mx-auto max-w-[1280px]">
+      <div class="grid grid-cols-1 gap-20 lg:grid-cols-2">
+        <!-- Left Column - Contact Information -->
+        <div class="flex flex-col gap-8">
+          <!-- Section Heading -->
+          <div class="flex flex-col gap-6">
+            {
+              badge && (
+                <Badge intent="secondary" roundness="sm" size="base" class="mb-0">
+                  {badge}
+                </Badge>
+              )
+            }
+            {
+              title && (
+                <Heading
+                  tag="h2"
+                  size="h2"
+                  variant="primary"
+                  align="left"
+                  class="text-4xl leading-normal font-bold lg:text-[44px]"
+                >
+                  {title}
+                </Heading>
+              )
+            }
+          </div>
+
+          <!-- Description -->
+          {
+            description && (
+              <div class="text-text-primary text-lg leading-relaxed">{description}</div>
+            )
+          }
+
+          <!-- Contact Info -->
+          <div class="flex flex-col gap-4">
+            <!-- Email -->
+            <div class="flex items-center gap-3">
+              <div class="flex h-8 w-8 items-center justify-center">
+                <Icon name="carbon:email" class="text-text-primary h-8 w-8" />
+              </div>
+              <div class="text-text-primary text-xl font-medium">
+                <Link
+                  href={`mailto:${company.email.general}`}
+                  intent="primary"
+                  class="hover:text-brand transition-colors"
+                >
+                  {company.email.general}
+                </Link>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-center gap-3">
+              <div class="flex h-8 w-8 items-center justify-center">
+                <Icon name="carbon:phone" class="text-text-primary h-8 w-8" />
+              </div>
+              <div class="text-text-primary text-xl font-medium">
+                <Link
+                  href={`tel:${company.phone.primary}`}
+                  intent="primary"
+                  class="hover:text-brand transition-colors"
+                >
+                  {company.phone.primary}
+                </Link>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="flex items-start gap-3">
+              <div class="mt-1 flex h-8 w-8 items-center justify-center">
+                <Icon name="carbon:location" class="text-text-primary h-8 w-8" />
+              </div>
+              <div class="text-text-primary text-xl font-medium">
+                <div>
+                  <div>{company.address.street}</div>
+                  <div>
+                    {company.address.city}, {company.address.state}
+                    {company.address.zipCode}
+                  </div>
+                  <div>{company.address.country}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Contact Form -->
+        <div class="flex flex-col">
+          <ContactForm formId="contact-form-new" className="bg-black/25 backdrop-blur-sm" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

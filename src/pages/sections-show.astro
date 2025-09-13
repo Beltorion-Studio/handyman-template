@@ -12,6 +12,7 @@ import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
+import ContactSectionNew from '@components/sections/ContactSectionNew.astro'
 import Services from '@components/sections/Services.astro'
 import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import aboutImage from '@assets/images/crossed-arms.jpg'
@@ -438,4 +439,12 @@ const services = allServices.filter((service) => service.data.featured)
 
   <!-- Services Section Example -->
   <Services sectionId="services-section" title="Featured Services" services={services} />
+
+  <!-- New Contact Section Example (Figma Design) -->
+  <ContactSectionNew
+    sectionId="contact-new"
+    badge="Contact Us"
+    title="Let's Talk About Your Needs"
+    description="We're just one form away from helping you. Share your project details, and we'll provide fast, friendly, and professional solutions tailored to your home or business."
+  />
 </Layout>
