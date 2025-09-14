@@ -65,12 +65,13 @@ const { company } = contactConfig
             <!-- Email -->
             <div class="flex items-center gap-3">
               <div class="flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:email" class="text-text-primary h-8 w-8" />
+                <Icon name="carbon:email" class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-xl font-medium">
                 <Link
                   href={`mailto:${company.email.general}`}
                   intent="primary"
+                  type="email"
                   class="hover:text-brand transition-colors"
                 >
                   {company.email.general}
@@ -81,12 +82,13 @@ const { company } = contactConfig
             <!-- Phone -->
             <div class="flex items-center gap-3">
               <div class="flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:phone" class="text-text-primary h-8 w-8" />
+                <Icon name="carbon:phone" class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-xl font-medium">
                 <Link
                   href={`tel:${company.phone.primary}`}
                   intent="primary"
+                  type="tel"
                   class="hover:text-brand transition-colors"
                 >
                   {company.phone.primary}
@@ -97,7 +99,7 @@ const { company } = contactConfig
             <!-- Address -->
             <div class="flex items-start gap-3">
               <div class="mt-1 flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:location" class="text-text-primary h-8 w-8" />
+                <Icon name="carbon:location" class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-xl font-medium">
                 <div>

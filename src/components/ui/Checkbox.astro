@@ -33,7 +33,7 @@ const checkboxId = id || name
 const hasError = Boolean(error)
 ---
 
-<div class={`flex items-start gap-2 ${className}`}>
+<div class={`flex items-start gap-3  ${className}`}>
   <div class="relative flex-shrink-0">
     <input
       type="checkbox"
@@ -44,7 +44,7 @@ const hasError = Boolean(error)
       disabled={disabled}
       checked={checked}
       class={`
-        w-[18px] h-[18px] rounded border-2 transition-colors duration-200
+        w-5 h-5 rounded border-2 transition-colors duration-200
         focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2
         disabled:opacity-50 disabled:cursor-not-allowed
         ${hasError ? 'border-red-500 focus:ring-red-300' : 'border-sky-600 focus:border-sky-600'}
@@ -76,7 +76,7 @@ const hasError = Boolean(error)
     label && (
       <label
         for={checkboxId}
-        class={`cursor-pointer text-sm leading-[1.4] text-white select-none ${labelClassName}`}
+        class={`cursor-pointer text-base mt-1 gap-2 text-white select-none ${labelClassName}`}
       >
         {label}
         {required && <span class="ml-1 text-red-400">*</span>}

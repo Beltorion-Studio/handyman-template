@@ -94,6 +94,7 @@ export type Props = VariantProps<typeof link> & {
   ariaLabel?: string
   target?: string
   rel?: string
+  type?: 'email' | 'tel'
 } & AnyProps
 
 const {
@@ -112,6 +113,7 @@ const {
   ariaLabel,
   target,
   rel,
+  type,
   ...rest
 } = Astro.props as Props
 
