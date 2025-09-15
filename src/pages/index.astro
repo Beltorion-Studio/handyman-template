@@ -31,9 +31,10 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     title="@@Reliable Help@@ for Every Task"
     subheading="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
     primaryButtonText="Get a Free Quote"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     secondaryButtonText="Learn More"
-    secondaryButtonHref="#about"
+    secondaryButtonHref="/services"
+    sectionId='Handyman Home'
   />
 
   <Services sectionId="services" title="Our Services" services={services} />
@@ -43,7 +44,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     title="Ready to Fix It Today?"
     description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
     primaryButtonText="Get Your Free Quote"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
@@ -59,7 +60,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'Find Out More',
-          href: '#about',
+          href: '/about',
         },
       },
       image: {
@@ -92,12 +93,12 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'View All Works',
-          href: '#works',
+          href: '/works',
         },
       },
       image: {
         src: Library1,
-        alt: 'managed it services transportation logistics',
+        alt: 'Modern Library',
         size: 'square',
       },
     }}
@@ -107,7 +108,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     sectionId="Call to action"
     title="Let’s Get Your Project Started"
     primaryButtonText="Contact Us Today"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
@@ -126,12 +127,12 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'Find out More',
-          href: '#about',
+          href: '/about',
         },
       },
       image: {
         src: AboutImg,
-        alt: 'managed it services transportation logistics',
+        alt: 'Daniel Harris — founder',
         size: 'square',
       },
     }}
@@ -146,6 +147,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     postType="blog"
     maxPosts={3}
     sectionId="latest-blog-posts"
+    background='bg-gradient-to-br from-primary-light/5 to-brand/5'
   />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />
