@@ -11,8 +11,10 @@ import SectionRegular from '@components/sections/SectionRegular.astro'
 import SectionWithCarousel from '@components/sections/SectionWithCarousel.astro'
 import OfferImg from '@assets/images/locksmith.jpg'
 import Library1 from '@assets/images/modern-library-1.jpg'
-import Library2 from '@assets/images/crossed-arms.jpg'
-import Library3 from '@assets/images/installer-holding-shelf-w2000.jpg'
+import Library2 from '@assets/images/modern-library-2.jpg'
+import Library3 from '@assets/images/modern-library-3.jpg'
+import Library4 from '@assets/images/modern-library-4.jpg'
+import Library5 from '@assets/images/modern-library-5.jpg'
 import AboutImg from '@assets/images/crossed-arms.jpg'
 import Testimonial from '@components/Testimonial.astro'
 
@@ -34,9 +36,10 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     title="@@Reliable Help@@ for Every Task"
     subheading="We are a team of experienced handymen who are dedicated to providing the best possible service to our clients."
     primaryButtonText="Get a Free Quote"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     secondaryButtonText="Learn More"
-    secondaryButtonHref="#about"
+    secondaryButtonHref="/services"
+    sectionId='Handyman Home'
   />
 
   <Services sectionId="services" title="Our Services" services={services} />
@@ -46,7 +49,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     title="Ready to Fix It Today?"
     description="Don't wait for small problems to become big ones. Fill out our form now and let us make your home hassle-free."
     primaryButtonText="Get Your Free Quote"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
@@ -62,7 +65,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'Find Out More',
-          href: '#about',
+          href: '/about',
         },
       },
       image: {
@@ -95,7 +98,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'View All Works',
-          href: '#works',
+          href: '/works',
         },
       },
       image: {
@@ -111,10 +114,18 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       },
       {
         src: Library2,
-        alt: 'University Library renovation - team at work',
+        alt: 'University Library renovation - final result',
       },
       {
         src: Library3,
+        alt: 'University Library renovation - final result',
+      },
+      {
+        src: Library4,
+        alt: 'University Library renovation - final result',
+      },
+      {
+        src: Library5,
         alt: 'University Library renovation - final result',
       },
     ]}
@@ -125,7 +136,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     sectionId="Call to action"
     title="Let’s Get Your Project Started"
     primaryButtonText="Contact Us Today"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
@@ -144,12 +155,12 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       buttons: {
         primary: {
           text: 'Find out More',
-          href: '#about',
+          href: '/about',
         },
       },
       image: {
         src: AboutImg,
-        alt: 'managed it services transportation logistics',
+        alt: 'Daniel Harris — founder',
         size: 'square',
       },
     }}
@@ -164,6 +175,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     postType="blog"
     maxPosts={3}
     sectionId="latest-blog-posts"
+    background='bg-gradient-to-br from-primary-light/5 to-brand/5'
   />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />

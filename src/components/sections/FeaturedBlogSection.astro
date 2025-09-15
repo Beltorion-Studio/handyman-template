@@ -53,13 +53,13 @@ const formattedDate = post?.data.pubDate ? formatDate(post.data.pubDate) : undef
 ---
 
 <section 
-  class={`py-10 tablet:py-20 ${background} ${className}`} 
+  class={`pt-10 tablet:pt-28 ${background} ${className}`} 
   id={sectionId}
   aria-label="Featured blog post"
 >
   <div class="container mx-auto px-4">
     {post ? (
-      <div class="mx-auto max-w-[1280px]">
+      <div class="mx-auto w-full">
         <div class="overflow-hidden rounded-3xl border border-brand bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <!-- Image Section -->
@@ -74,7 +74,7 @@ const formattedDate = post?.data.pubDate ? formatDate(post.data.pubDate) : undef
             </div>
 
             <!-- Content Section -->
-            <div class="flex h-full w-full flex-col justify-between p-6 lg:p-8">
+            <div class="flex h-full w-full flex-col justify-between pr-6 py-6 lg:pr-8 lg:py-8">
               <div class="flex flex-col gap-4">
                 <!-- Date -->
                 {formattedDate && (
