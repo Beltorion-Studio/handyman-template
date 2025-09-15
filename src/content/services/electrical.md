@@ -3,7 +3,7 @@ title: 'Electrical Services'
 description: 'Safe and reliable electrical work for your home or business. Our licensed electricians handle everything from simple repairs to complete electrical system upgrades.'
 shortDescription: 'Licensed electrical repairs and installations'
 icon: 'energy-electric-plug'
-heroImage: '@assets/images/plumbing.jpg'
+heroImage: '@assets/images/electrical-electrician-using-digital-tablet.jpg'
 imageAlt: 'side view of installer holding slip joint pliers near pipe and touching faucet in bathroom'
 featured: true
 category: 'Repairs'
