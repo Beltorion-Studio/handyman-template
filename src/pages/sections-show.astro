@@ -10,6 +10,7 @@ import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.as
 import Hero from '@components/sections/Hero.astro'
 import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
+import SectionWithCarousel from '@components/sections/SectionWithCarousel.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import ContactSectionNew from '@components/sections/ContactSectionNew.astro'
@@ -19,6 +20,9 @@ import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import aboutImage from '@assets/images/crossed-arms.jpg'
 import serviceImage from '@assets/images/locksmith.jpg'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
+import carouselImage1 from '@assets/images/installer-holding-shelf-w2000.jpg'
+import carouselImage2 from '@assets/images/crossed-arms.jpg'
+import carouselImage3 from '@assets/images/locksmith.jpg'
 import { getCollection } from 'astro:content'
 
 // Get collections for PostsSection, Services, and TeamSection
@@ -420,6 +424,44 @@ const teamMembers = await getCollection('team')
     }}
   />
 
+  <!-- Section With Carousel Example -->
+  <SectionWithCarousel
+    content={{
+      sectionId: 'carousel-section',
+      badge: 'Our Latest Project',
+      title: 'University Library Renovation',
+      paragraphs: {
+        p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
+        p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
+      },
+      buttons: {
+        primary: {
+          text: 'View All Works',
+          href: '/works',
+        },
+      },
+      image: {
+        src: carouselImage1,
+        alt: 'University Library renovation project',
+      },
+    }}
+    carouselImages={[
+      {
+        src: carouselImage1,
+        alt: 'University Library renovation - main view',
+      },
+      {
+        src: carouselImage2,
+        alt: 'University Library renovation - team at work',
+      },
+      {
+        src: carouselImage3,
+        alt: 'University Library renovation - final result',
+      },
+    ]}
+    sectionId="carousel-section"
+  />
+
   <!-- Featured Blog Section Example -->
   <FeaturedBlogSection
     sectionId="featured-blog-section"
@@ -446,7 +488,6 @@ const teamMembers = await getCollection('team')
   <!-- Team Section Example -->
   <TeamSection sectionId="team-section" teamMembers={teamMembers} />
 
-  <!-- New Contact Section Example (Figma Design) -->
   <ContactSectionNew
     sectionId="contact-new"
     badge="Contact Us"

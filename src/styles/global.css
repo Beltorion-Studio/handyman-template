@@ -1,25 +1,33 @@
 @import 'tailwindcss';
 @import './theme.css';
 
-/* Prism.js syntax highlighting */
-
+/* Mobile: 320px+ */
 @utility container {
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
+/* Tablet: 768px+ */
 @media (width >= 48rem) {
   .container {
     padding-inline: 4rem;
   }
 }
+/* Small Desktop: 1024px+ */
 @media (width >= 64rem) {
   .container {
-    padding-inline: 5rem;
+    padding-inline: 2rem;
   }
 }
+/* Medium Desktop: 1280px+ */
+@media (width >= 80rem) {
+  .container {
+    padding-inline: 3rem;
+  }
+}
+/* Large Desktop: 1440px+ */
 @media (width >= 90rem) {
   .container {
-    padding-inline: 6rem;
+    padding-inline: 5rem;
   }
 }
 
