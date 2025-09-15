@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro'
 import heroImage from '@assets/images/locksmith.jpg'
 import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 
 // Get blog posts from content collection
@@ -16,7 +17,13 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     title="Blog"
   />
 
-  <div></div>
+  <!-- Featured Blog Section Example -->
+  <FeaturedBlogSection
+    sectionId="featured-blog-section"
+    post={blogPosts[0]}
+    postType="blog"
+    readMoreText="Read more"
+  />
 
   <PostsSection
     posts={blogPosts}

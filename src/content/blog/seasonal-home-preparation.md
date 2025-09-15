@@ -5,7 +5,7 @@ pubDate: 2024-03-05
 category: 'Seasonal Maintenance'
 tags:
   ['seasonal maintenance', 'home preparation', 'checklist', 'preventive care', 'weatherproofing']
-featured: true
+featured: false
 author: 'Handyman Pro'
 heroImage: '@assets/images/empty-white-room.jpg'
 imageAlt: 'Home exterior showing seasonal preparation checklist items'

@@ -45,11 +45,11 @@ const hasError = Boolean(error)
       checked={checked}
       class={`
         w-5 h-5 rounded border-2 transition-colors duration-200
-        focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2
+        focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2
         disabled:opacity-50 disabled:cursor-not-allowed
-        ${hasError ? 'border-red-500 focus:ring-red-300' : 'border-sky-600 focus:border-sky-600'}
-        checked:bg-sky-600 checked:border-sky-600
-        checked:focus:bg-sky-600 checked:focus:border-sky-600
+        ${hasError ? 'border-red-500 focus:ring-red-300' : 'border-brand focus:border-brand'}
+        checked:bg-brand checked:border-brand
+        checked:focus:bg-brand checked:focus:border-brand checked:text-text-white
       `}
       aria-invalid={hasError}
       aria-describedby={hasError ? `${checkboxId}-error` : undefined}
@@ -58,7 +58,7 @@ const hasError = Boolean(error)
     <!-- Custom checkmark -->
     <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
       <svg
-        class="h-3 w-3 text-white opacity-0 transition-opacity duration-200"
+        class="h-3 w-3 text-text-white opacity-0 transition-opacity duration-200"
         style={checked ? 'opacity: 1' : 'opacity: 0'}
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -76,7 +76,7 @@ const hasError = Boolean(error)
     label && (
       <label
         for={checkboxId}
-        class={`cursor-pointer text-base mt-1 gap-2 text-white select-none ${labelClassName}`}
+        class={`cursor-pointer text-base mt-1 gap-2 text-text-white select-none ${labelClassName}`}
       >
         {label}
         {required && <span class="ml-1 text-red-400">*</span>}

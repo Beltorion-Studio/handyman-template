@@ -33,7 +33,7 @@ export type Props = {
 
 const {
   badge,
-  title = 'Latest Posts',
+  title,
   description,
   buttonText,
   buttonHref,
@@ -69,9 +69,9 @@ const formatDate = (date: Date | undefined) => {
 ---
 
 <section class={`py-10 tablet:py-28 ${background} ${className}`} id={sectionId}>
-  <div class="container mx-auto">
+  <div class="container mx-auto flex flex-col gap-12">
     <!-- Section Header -->
-    <div class="mb-12 flex items-end justify-between">
+    <div class="flex items-end justify-between">
       <div class="flex flex-col items-start">
         {
           badge && (
@@ -80,7 +80,7 @@ const formatDate = (date: Date | undefined) => {
             </Badge>
           )
         }
-        <Heading tag="h2" size="h2" variant="primary" align="left" class="mb-0">
+        <Heading tag="h2" size="h2" variant="primary" align="left" bottomSpacing="none">
           {title}
         </Heading>
         {description && <p class="text-text-primary mt-4 max-w-2xl text-lg">{description}</p>}
