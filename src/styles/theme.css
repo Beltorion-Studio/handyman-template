@@ -5,18 +5,18 @@
   --breakpoint-wide: 90rem;
 
   /* Custom Colors from Figma */
-  --color-brand: oklch(.5 .134 242.749); /* sky-700 */
-  --color-primary-dark: oklch(.293 .066 243.157); /* sky-950 */
+  --color-brand: oklch(0.5 0.134 242.749); /* sky-700 */
+  --color-primary-dark: oklch(0.293 0.066 243.157); /* sky-950 */
   --color-primary-light: oklch(0.85 0.08 200); /* sky-200 */
-  --color-secondary: oklch(.865 .127 207.078); /* cyan-300 */
+  --color-secondary: oklch(0.865 0.127 207.078); /* cyan-300 */
   --color-light: oklch(0.5 0.01 0); /* gray-500 */
   --color-lightest: oklch(0.95 0.01 0); /* gray-100 */
 
   --color-text-primary: oklch(0.2 0.01 0); /* gray-900 */
-  --color-text-secondary: oklch(.865 .127 207.078); /* cyan-300 */
-  --color-text-brand: oklch(.5 .134 242.749); /* sky-700 */
-  --color-text-light: oklch(.391 .09 240.876); /* sky-900 */
+  --color-text-secondary: oklch(0.865 0.127 207.078); /* cyan-300 */
+  --color-text-brand: oklch(0.5 0.134 242.749); /* sky-700 */
+  --color-text-light: oklch(0.391 0.09 240.876); /* sky-900 */
   --color-text-white: oklch(1 0 0); /* white */
   --color-text-black: oklch(0 0 0); /* black */
-  --color-text-gradient: oklch(.5 .134 242.749); /* sky-700 */
+  --color-text-gradient: oklch(0.5 0.134 242.749); /* sky-700 */
 }
