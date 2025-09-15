@@ -8,8 +8,11 @@ import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
 import HeroWithStats from '@components/sections/HeroWithStats.astro'
 import SectionRegular from '@components/sections/SectionRegular.astro'
+import SectionWithCarousel from '@components/sections/SectionWithCarousel.astro'
 import OfferImg from '@assets/images/locksmith.jpg'
 import Library1 from '@assets/images/modern-library-1.jpg'
+import Library2 from '@assets/images/crossed-arms.jpg'
+import Library3 from '@assets/images/installer-holding-shelf-w2000.jpg'
 import AboutImg from '@assets/images/crossed-arms.jpg'
 import Testimonial from '@components/Testimonial.astro'
 
@@ -80,7 +83,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     testimonials={testimonials}
   />
 
-  <SectionRegular
+  <SectionWithCarousel
     content={{
       sectionId: 'Our Latest Project',
       badge: 'Our Latest Project',
@@ -97,10 +100,25 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       },
       image: {
         src: Library1,
-        alt: 'managed it services transportation logistics',
+        alt: 'University Library renovation project',
         size: 'square',
       },
     }}
+    carouselImages={[
+      {
+        src: Library1,
+        alt: 'University Library renovation - main view',
+      },
+      {
+        src: Library2,
+        alt: 'University Library renovation - team at work',
+      },
+      {
+        src: Library3,
+        alt: 'University Library renovation - final result',
+      },
+    ]}
+    sectionId="our-latest-project"
   />
 
   <CTA
