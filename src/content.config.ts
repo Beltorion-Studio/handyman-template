@@ -51,4 +51,16 @@ const testimonial = defineCollection({
     }),
 })
 
-export const collections = { services, testimonial, blog }
+const team = defineCollection({
+  loader: glob({ base: './src/content/team', pattern: '**/*.{md,mdx}' }),
+  schema:({ image }) =>  z.object({
+    name: z.string(),
+    status: z.string(),
+    description: z.string(),
+    image: image(),
+    imageAlt: z.string(),
+    featured: z.boolean().optional().default(false),
+  }),
+})
+
+export const collections = { services, testimonial, blog, team }

@@ -65,7 +65,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       image: {
         src: OfferImg,
         alt: 'managed it services transportation logistics',
-        size: "square"
+        size: 'square',
       },
     }}
   />
@@ -77,13 +77,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     ,
     sectionId="testimonials"
     ,
-    testimonials={testimonials.map((testimonial) => ({
-      testimonial: testimonial.data.testimonial,
-      name: testimonial.data.name,
-      position: testimonial.data.position,
-      company: testimonial.data.company,
-      avatar: testimonial.data.avatar,
-    }))}
+    testimonials={testimonials}
   />
 
   <SectionRegular
@@ -104,7 +98,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
       image: {
         src: Library1,
         alt: 'managed it services transportation logistics',
-        size: "square"
+        size: 'square',
       },
     }}
   />

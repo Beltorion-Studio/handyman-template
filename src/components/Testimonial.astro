@@ -9,11 +9,13 @@ export type Props = {
   title: string
   sectionId: string
   testimonials: Array<{
-    testimonial: string
-    name: string
-    position: string
-    company: string
-    avatar: ImageMetadata
+    data: {
+      testimonial: string
+      name: string
+      position: string
+      company: string
+      avatar: ImageMetadata
+    }
   }>
   badgeText?: string
 }
@@ -26,10 +28,18 @@ const {
 } = Astro.props
 ---
 
-<section class="overflow-x-clip bg-gradient-to-br from-primary-light/5 to-brand/5" aria-label={title} id={sectionId}>
-  <div class="relative tablet:px-0 tablet:py-28 mx-auto flex max-w-7xl flex-col px-4 py-10">
-    <Image src={QuotationMark} alt='Image' class='absolute w-full desktop:max-w-[60rem] top-0 -right-8'/>
-    <div class="mx-auto flex max-w-3xl flex-col items-center text-center z-1">
+<section
+  class="from-primary-light/5 to-brand/5 overflow-x-clip bg-gradient-to-br"
+  aria-label={title}
+  id={sectionId}
+>
+  <div class="tablet:px-0 tablet:py-28 relative mx-auto flex max-w-7xl flex-col px-4 py-10">
+    <Image
+      src={QuotationMark}
+      alt="Image"
+      class="desktop:max-w-[60rem] absolute top-0 -right-8 w-full"
+    />
+    <div class="z-1 mx-auto flex max-w-3xl flex-col items-center text-center">
       {
         badgeText && (
           <Badge intent="secondary" roundness="sm" size="base">
@@ -46,13 +56,16 @@ const {
         class="tablet:text-5xl mb-20 text-3xl font-bold"
       />
     </div>
-    <div class="mx-auto desktop:gap-20 w-full tablet:max-w-3xl flex flex-col tablet:grid tablet:grid-cols-3 gap-6 bg-white/15 backdrop-blur-xl tablet:shadow-lg tablet:shadow-brand/5 rounded-3xl" data-slider="testimonial">
-      <div class="relative aspect-square tablet:aspect-[5/9.8] w-full overflow-hidden rounded-3xl">
+    <div
+      class="desktop:gap-20 tablet:max-w-3xl tablet:grid tablet:grid-cols-3 tablet:shadow-lg tablet:shadow-brand/5 mx-auto flex w-full flex-col gap-6 rounded-3xl bg-white/15 backdrop-blur-xl"
+      data-slider="testimonial"
+    >
+      <div class="tablet:aspect-[5/9.8] relative aspect-square w-full overflow-hidden rounded-3xl">
         {
           testimonials.map((testimonial, index) => (
             <Image
-              src={testimonial.avatar}
-              alt={testimonial.name}
+              src={testimonial.data.avatar}
+              alt={testimonial.data.name}
               loading="eager"
               decoding="async"
               class={`testimonial-image absolute inset-0 h-full w-full object-cover ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
@@ -68,25 +81,25 @@ const {
             {
               testimonials.map((testimonial, index) => (
                 <div
-                  class="testimonial-text w-full flex-shrink-0 tablet:pr-8 tablet:pt-8"
+                  class="testimonial-text tablet:pr-8 tablet:pt-8 w-full flex-shrink-0"
                   data-slider-item
                   data-index={index}
                 >
-                  <p class="tablet:text-lg tablet:mb-6 text-base font-medium text-text-primary">
-                    "{testimonial.testimonial}"
+                  <p class="tablet:text-lg tablet:mb-6 text-text-primary text-base font-medium">
+                    "{testimonial.data.testimonial}"
                   </p>
-                  <p class="font-bold text-text-primary">{testimonial.name}</p>
-                  <p class=" text-text-primary mb-6">
-                    {testimonial.position} • {testimonial.company}
+                  <p class="text-text-primary font-bold">{testimonial.data.name}</p>
+                  <p class="text-text-primary mb-6">
+                    {testimonial.data.position} • {testimonial.data.company}
                   </p>
                 </div>
               ))
             }
           </div>
         </div>
-        <div class="tablet:gap-10 my-6 tablet:my-8 flex flex-row items-center gap-6">
+        <div class="tablet:gap-10 tablet:my-8 my-6 flex flex-row items-center gap-6">
           <button
-            class="tablet:w-12 relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border border-brand text-text-brand p-2 transition duration-300 hover:bg-brand hover:text-text-white"
+            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300"
             tabindex="0"
             aria-label="Previous testimonial"
             data-slider-prev
@@ -94,7 +107,7 @@ const {
             <Icon name="quill:chevron-left" class="h-6 w-6" />
           </button>
           <button
-            class="tablet:w-12 relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border border-brand text-text-brand p-2 transition duration-300 hover:bg-brand hover:text-text-white"
+            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300"
             tabindex="0"
             aria-label="Next testimonial"
             data-slider-next

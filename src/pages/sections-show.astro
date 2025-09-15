@@ -14,18 +14,21 @@ import PostsSection from '@components/sections/PostsSection.astro'
 import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import ContactSectionNew from '@components/sections/ContactSectionNew.astro'
 import Services from '@components/sections/Services.astro'
+import TeamSection from '@components/sections/TeamSection.astro'
 import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import aboutImage from '@assets/images/crossed-arms.jpg'
 import serviceImage from '@assets/images/locksmith.jpg'
 import heroImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 import { getCollection } from 'astro:content'
 
-// Get collections for PostsSection and Services
+// Get collections for PostsSection, Services, and TeamSection
 const allBlogPosts = await getCollection('blog')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 
 const allServices = await getCollection('services')
 const services = allServices.filter((service) => service.data.featured)
+
+const teamMembers = await getCollection('team')
 ---
 
 <Layout title="Section Components Test">
@@ -439,6 +442,9 @@ const services = allServices.filter((service) => service.data.featured)
 
   <!-- Services Section Example -->
   <Services sectionId="services-section" title="Featured Services" services={services} />
+
+  <!-- Team Section Example -->
+  <TeamSection sectionId="team-section" teamMembers={teamMembers} />
 
   <!-- New Contact Section Example (Figma Design) -->
   <ContactSectionNew

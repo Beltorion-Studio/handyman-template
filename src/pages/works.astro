@@ -13,10 +13,7 @@ const testimonials = await getCollection('testimonial')
 ---
 
 <Layout title="Home">
-  <Hero
-    heroImage={{ src: heroImage, alt: 'Hero background image' }}
-    title="Our Latest @@Works@@"
-  />
+  <Hero sectionId="hero" heroImage={{ src: heroImage, alt: 'Hero background image' }} title="Our Latest @@Works@@" />
 
   <SectionRegular
     content={{
@@ -49,13 +46,6 @@ const testimonials = await getCollection('testimonial')
     ,
     sectionId="testimonials"
     ,
-    testimonials={testimonials.map((testimonial) => ({
-      testimonial: testimonial.data.testimonial,
-      name: testimonial.data.name,
-      position: testimonial.data.position,
-      company: testimonial.data.company,
-      avatar: testimonial.data.avatar,
-    }))}
+    testimonials={testimonials}
   />
-
 </Layout>

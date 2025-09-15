@@ -7,13 +7,16 @@ import SectionRegular from '@components/sections/SectionRegular.astro'
 import AboutImg from '@assets/images/installer-in-overalls.jpg'
 import Testimonial from '@components/Testimonial.astro'
 import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
+import TeamSection from '@components/sections/TeamSection.astro'
 
-// Get testimonials from content collection
+// Get testimonials and team members from content collections
 const testimonials = await getCollection('testimonial')
+const teamMembers = await getCollection('team')
 ---
 
 <Layout title="Home">
   <Hero
+    sectionId="hero"
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="@@The Team@@ Behind the Tools"
   />
@@ -61,19 +64,12 @@ const testimonials = await getCollection('testimonial')
     }}
   />
 
+  <TeamSection sectionId="our-team" teamMembers={teamMembers} />
+
   <Testimonial
     badgeText="Testimonials"
-    ,
     title="What Our Clients Say"
-    ,
     sectionId="testimonials"
-    ,
-    testimonials={testimonials.map((testimonial) => ({
-      testimonial: testimonial.data.testimonial,
-      name: testimonial.data.name,
-      position: testimonial.data.position,
-      company: testimonial.data.company,
-      avatar: testimonial.data.avatar,
-    }))}
+    testimonials={testimonials}
   />
 </Layout>

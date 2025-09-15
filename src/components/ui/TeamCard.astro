@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets'
+import Heading from '@components/ui/Heading.astro'
+
+export type Props = {
+  image: ImageMetadata
+  imageAlt: string
+  name: string
+  status: string
+  description?: string
+}
+
+const { image, imageAlt, name, status, description} = Astro.props
+---
+
+<div
+  class="group border-brand relative h-full overflow-hidden rounded-3xl border bg-white transition-shadow duration-300 hover:shadow-lg"
+>
+  <!-- Image Section -->
+  <div class="aspect-[3/4] w-full overflow-hidden">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+      width={400}
+      height={400}
+    />
+  </div>
+
+  <!-- Content Section -->
+  <div class="flex h-full flex-col p-6">
+    <!-- Name -->
+    <div class="mb-2">
+      <Heading tag="h3" size="h4" variant="primary" class="text-2xl leading-tight font-bold">
+        {name}
+      </Heading>
+    </div>
+
+    <!-- Status -->
+    <div class="mb-4">
+      <p class="text-brand text-sm font-medium">{status}</p>
+    </div>
+
+    <!-- Description -->
+    {
+      description && (
+        <div class="flex-1">
+          <p class="text-text-primary text-base leading-relaxed">{description}</p>
+        </div>
+      )
+    }
+  </div>
+</div>
