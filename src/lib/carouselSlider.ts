@@ -7,6 +7,12 @@ type CarouselSliderOptions = {
 
 const DEFAULT_DURATION = 0.6
 const OPACITY_EASE = 'power2.inOut' as const
+const MIN_IMAGES_FOR_NAVIGATION = 1
+const FIRST_IMAGE_INDEX = 0
+const OVERLAP_TIMING = 2
+const TIMELINE_START_POSITION = 0
+const OPACITY_HIDDEN = 0
+const OPACITY_VISIBLE = 1
 
 export class CarouselSlider {
   private container: Element
@@ -60,25 +66,27 @@ export class CarouselSlider {
 
   private setInitialState(): void {
     // Set all images to opacity 0 except the first one
-    gsap.set(this.images, { opacity: 0 })
-    gsap.set(this.images[0], { opacity: 1 })
+    gsap.set(this.images, { opacity: OPACITY_HIDDEN })
+    gsap.set(this.images[FIRST_IMAGE_INDEX], { opacity: OPACITY_VISIBLE })
   }
 
   private handleNext(duration: number): void {
-    if (this.isAnimating || this.images.length <= 1) {
+    if (this.isAnimating || this.images.length <= MIN_IMAGES_FOR_NAVIGATION) {
       return
     }
 
-    const nextIndex = this.currentIndex === this.images.length - 1 ? 0 : this.currentIndex + 1
+    const nextIndex =
+      this.currentIndex === this.images.length - 1 ? FIRST_IMAGE_INDEX : this.currentIndex + 1
     this.animateToIndex(nextIndex, duration)
   }
 
   private handlePrev(duration: number): void {
-    if (this.isAnimating || this.images.length <= 1) {
+    if (this.isAnimating || this.images.length <= MIN_IMAGES_FOR_NAVIGATION) {
       return
     }
 
-    const prevIndex = this.currentIndex === 0 ? this.images.length - 1 : this.currentIndex - 1
+    const prevIndex =
+      this.currentIndex === FIRST_IMAGE_INDEX ? this.images.length - 1 : this.currentIndex - 1
     this.animateToIndex(prevIndex, duration)
   }
 
@@ -100,17 +108,17 @@ export class CarouselSlider {
 
     // Fade out current image and fade in target image
     tl.to(currentImage, {
-      opacity: 0,
-      duration: duration / 2,
+      opacity: OPACITY_HIDDEN,
+      duration: duration / OVERLAP_TIMING,
       ease: OPACITY_EASE,
     }).to(
       targetImage,
       {
-        opacity: 1,
-        duration: duration / 2,
+        opacity: OPACITY_VISIBLE,
+        duration: duration / OVERLAP_TIMING,
         ease: OPACITY_EASE,
       },
-      0
+      TIMELINE_START_POSITION
     ) // Start at the same time as the fade out
 
     this.currentIndex = targetIndex
