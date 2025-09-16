@@ -6,14 +6,14 @@ export const navigationConfig = {
       ariaLabel: 'View our services',
       items: [
         {
-          href: '/services/home-repairs',
-          text: 'Home Repairs',
-          ariaLabel: 'View our home repair services',
-        },
-        {
           href: '/services/plumbing',
           text: 'Plumbing Services',
           ariaLabel: 'View our plumbing services',
+        },
+        {
+          href: '/services/electrical',
+          text: 'Electrical Services',
+          ariaLabel: 'View our electrical services',
         },
         {
           href: '/services/carpentry',
@@ -21,9 +21,34 @@ export const navigationConfig = {
           ariaLabel: 'View our carpentry and woodworking services',
         },
         {
-          href: '/services/electrical',
-          text: 'Electrical Services',
-          ariaLabel: 'View our electrical services',
+          href: '/services/hvac',
+          text: 'HVAC Services',
+          ariaLabel: 'View our HVAC services',
+        },
+        {
+          href: '/services/painting',
+          text: 'Painting Services',
+          ariaLabel: 'View our painting services',
+        },
+        {
+          href: '/services/home-repairs',
+          text: 'Home Repairs',
+          ariaLabel: 'View our home repair services',
+        },
+        {
+          href: '/services/energy-solutions',
+          text: 'Energy Solutions',
+          ariaLabel: 'View our energy solutions services',
+        },
+        {
+          href: '/services/gardening',
+          text: 'Gardening Services',
+          ariaLabel: 'View our gardening services',
+        },
+        {
+          href: '/services/cleaning',
+          text: 'Cleaning Services',
+          ariaLabel: 'View our cleaning services',
         },
       ],
     },
@@ -43,7 +68,7 @@ export const navigationConfig = {
           href: '/template/sections',
           text: 'Sections',
           ariaLabel: 'View our sections',
-        },  
+        },
       ],
     },
   ],

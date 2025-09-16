@@ -32,6 +32,7 @@ const link = cva('block', {
         'hover:underline-offset-4',
       ],
       tertiary: ['text-text-brand', 'hover:text-text-secondary'],
+      dropdown: ['text-text-brand', 'hover:text-text-brand'],
     },
     size: {
       xsmall: ['text-sm'],
@@ -77,7 +78,7 @@ const link = cva('block', {
       'text-primary': ['hover:text-text-primary', 'hover:decoration-text-primary'],
       'text-light': ['hover:text-text-light', 'hover:decoration-text-light'],
       'text-white': ['hover:text-text-white', 'hover:decoration-text-white'],
-      'text-black': ['hover:text-text-black', 'hover:decoration-text-black'],
+      'text-black': ['!hover:text-text-black', 'hover:decoration-text-black'],
     },
   },
   compoundVariants: [
@@ -95,6 +96,7 @@ export type Props = VariantProps<typeof link> & {
   target?: string
   rel?: string
   type?: 'email' | 'tel'
+  class?: string
 } & AnyProps
 
 const {
@@ -114,6 +116,7 @@ const {
   target,
   rel,
   type,
+  class: className,
   ...rest
 } = Astro.props as Props
 
@@ -141,6 +144,7 @@ const finalAriaLabel = ariaLabel || (external ? 'Opens in new tab' : undefined)
       defaults,
     }),
     'm-0',
+    className,
   ]}
 >
   <slot />

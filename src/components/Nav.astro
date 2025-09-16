@@ -15,7 +15,7 @@ You need add the 'fixed classes to the mobile menu
 */
 ---
 
-<header class="fixed top-0 z-40 w-full bg-brand md:bg-transparent py-4" za-elements="main-nav1">
+<header class="bg-brand fixed top-0 z-40 w-full py-4 md:bg-transparent" za-elements="main-nav1">
   <div class="container">
     <div class="flex items-center justify-between">
       <!-- Logo -->
@@ -40,16 +40,19 @@ You need add the 'fixed classes to the mobile menu
                       {item.text}
                       <Icon name="quill:chevron-down" class="text-text-secondary h-4 w-4" />
                     </span>
-                    <div class="pointer-events-none absolute top-full right-0 w-48 rounded-md bg-white py-2 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
+                    <div
+                      class={`pointer-events-none absolute top-full left-1/2 -translate-x-1/2 transform rounded-md bg-white py-2 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100 ${item.items.length > 4 ? 'column-fill-auto w-max columns-2 gap-4' : 'w-max'}`}
+                    >
                       {item.items.map((subItem: any) => (
                         <Link
                           href={subItem.href}
                           display="block"
-                          intent="tertiary"
+                          intent="dropdown"
                           paddingX="medium"
                           paddingY="medium"
                           hoverStyle="background"
                           ariaLabel={subItem.ariaLabel}
+                          class="w-60"
                         >
                           {subItem.text}
                         </Link>
@@ -103,8 +106,7 @@ You need add the 'fixed classes to the mobile menu
   <!-- Move mobile menu here, inside the main nav div -->
   <div
     za-elements="mobile-menu"
-    class="desktop:hidden fixed top-[65px] right-0 left-0 bg-white shadow-lg pb-4"
-    
+    class="desktop:hidden fixed top-[65px] right-0 left-0 bg-white pb-4 shadow-lg"
     role="dialog"
     aria-label="Mobile menu"
   >
@@ -118,7 +120,7 @@ You need add the 'fixed classes to the mobile menu
                   <span class="text-text-brand text-lg font-bold" role="menuitem">
                     {item.text}
                   </span>
-                  <ul class="ml-2 flex flex-col gap-2 mb-4" role="menu">
+                  <ul class="mb-4 ml-2 flex flex-col gap-2" role="menu">
                     {item.items.map((subItem: any) => (
                       <li role="none">
                         <Link
