@@ -103,8 +103,9 @@ const formattedDate = post?.data.pubDate ? formatDate(post.data.pubDate) : undef
               <div class="mt-6 lg:mt-8">
                 <Link
                   href={postUrl}
-                  intent="primary"
-                  class="group inline-flex items-center gap-2 text-lg font-bold text-text-light transition-colors duration-200 hover:text-brand"
+                  intent="tertiary"
+                  fontWeight="bold"
+                  class="group inline-flex items-center gap-2 text-lg text-text-light transition-colors duration-200 hover:text-brand"
                   tabindex="0"
                   aria-label={`Read more about ${post.data.title}`}
                 >

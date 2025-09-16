@@ -1,16 +1,16 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Link from '@components/ui/Link.astro'
-import SectionWithCards from '@components/sections/SectionWithCards.astro'
-import SectionWithFeatures from '@components/sections/SectionWithFeatures.astro'
-import SectionWithContent from '@components/sections/SectionWithContent.astro'
+import HeroWithStats from '@components/sections/HeroWithStats.astro'
+import Hero from '@components/sections/Hero.astro'
 import SectionWithText from '@components/sections/SectionWithText.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
+import SectionWithContent from '@components/sections/SectionWithContent.astro'
 import SectionWithBullets from '@components/sections/SectionWithBullets.astro'
 import SectionWithIcons from '@components/sections/SectionWithIcons.astro'
+import SectionWithCards from '@components/sections/SectionWithCards.astro'
+import SectionWithFeatures from '@components/sections/SectionWithFeatures.astro'
 import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
-import Hero from '@components/sections/Hero.astro'
-import HeroWithStats from '@components/sections/HeroWithStats.astro'
-import SectionRegular from '@components/sections/SectionRegular.astro'
 import SectionWithCarousel from '@components/sections/SectionWithCarousel.astro'
 import SectionWithFaq from '@components/sections/SectionWithFaq.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
@@ -39,14 +39,18 @@ const teamMembers = await getCollection('team')
 // Define sections for navigation
 const sections = [
   { id: 'hero-stats-example', title: 'Hero With Stats', component: 'HeroWithStats' },
+  { id: 'hero-example', title: 'Hero Section', component: 'Hero' },
   { id: 'get-in-touch-section', title: 'Section With Text', component: 'SectionWithText' },
+  { id: 'regular-section', title: 'Section Regular', component: 'SectionRegular' },
+  { id: 'content-section', title: 'Section With Content', component: 'SectionWithContent' },
+  { id: 'bullets-section', title: 'Section With Bullets', component: 'SectionWithBullets' },
+  { id: 'icons-section', title: 'Section With Icons', component: 'SectionWithIcons' },
   { id: 'cards-section', title: 'Section With Cards (Grid)', component: 'SectionWithCards' },
   {
     id: 'features-section',
     title: 'Section With Features (Vertical)',
     component: 'SectionWithFeatures',
   },
-  { id: 'content-section', title: 'Section With Content', component: 'SectionWithContent' },
   {
     id: 'cards-horizontal-section',
     title: 'Section With Cards (Horizontal)',
@@ -57,15 +61,11 @@ const sections = [
     title: 'Section With Features (Grid)',
     component: 'SectionWithFeatures',
   },
-  { id: 'bullets-section', title: 'Section With Bullets', component: 'SectionWithBullets' },
-  { id: 'icons-section', title: 'Section With Icons', component: 'SectionWithIcons' },
   {
     id: 'trust-stats-section',
     title: 'Section With Trust Stats',
     component: 'SectionWithTrustStats',
   },
-  { id: 'hero-example', title: 'Hero Section', component: 'Hero' },
-  { id: 'regular-section', title: 'Section Regular', component: 'SectionRegular' },
   { id: 'carousel-section', title: 'Section With Carousel', component: 'SectionWithCarousel' },
   { id: 'faq-section', title: 'Section With FAQ', component: 'SectionWithFaq' },
   { id: 'featured-blog-section', title: 'Featured Blog Section', component: 'FeaturedBlogSection' },
@@ -88,7 +88,7 @@ const sections = [
   <div class="flex min-h-screen bg-gray-50">
     <!-- Left Navigation Sidebar -->
     <nav class="sticky top-24 h-screen w-60 overflow-y-auto bg-white shadow-lg">
-      <div class="pr-1 pb-16 pl-4">
+      <div class="pr-1 pb-28 pl-4">
         <h2 class="text-text-primary mb-4 text-lg font-semibold">Section Navigation</h2>
         <ul class="space-y-2">
           {
@@ -137,6 +137,29 @@ const sections = [
           </div>
         </div>
 
+        <!-- Hero Section Example -->
+        <div
+          id="hero-example"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Hero Section</h3>
+            <p class="text-sm text-gray-600">Component: Hero</p>
+          </div>
+          <div class="p-0">
+            <Hero
+              sectionId="hero-example"
+              heroImage={{ src: heroImage, alt: 'Hero background' }}
+              title="Professional Handyman Services"
+              subheading="Reliable, skilled, and ready to help with all your home repair needs."
+              primaryButtonText="Get Free Quote"
+              primaryButtonHref="/contact"
+              secondaryButtonText="Learn More"
+              secondaryButtonHref="/about"
+            />
+          </div>
+        </div>
+
         <!-- Section With Text Example -->
         <div
           id="get-in-touch-section"
@@ -152,6 +175,178 @@ const sections = [
               title="Simple Steps to Your Next Project"
               description="Reaching out is the easiest way to start turning your ideas into reality. Whether it's a small repair, a fresh coat of paint, or a full renovation, we're here to listen and help. Every project begins with a conversation—one where your needs, timeline, and budget are understood from the start. With clear communication and a straightforward process, we make it stress-free to get the support you need. Fill out the form below and let us handle the rest with professionalism and care."
               sectionId="get-in-touch-section"
+            />
+          </div>
+        </div>
+
+        <!-- Section Regular Example -->
+        <div
+          id="regular-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section Regular</h3>
+            <p class="text-sm text-gray-600">Component: SectionRegular</p>
+          </div>
+          <div class="p-0">
+            <SectionRegular
+              content={{
+                sectionId: 'regular-section',
+                badge: 'About',
+                title: 'Our Story',
+                paragraphs: {
+                  p1: 'We started as a small family business with a passion for helping homeowners.',
+                  p2: 'Today, we continue to provide the same personal touch and quality workmanship.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'Learn Our Story',
+                    href: '/about',
+                  },
+                },
+                image: {
+                  src: aboutImage,
+                  alt: 'Our story',
+                },
+              }}
+            />
+          </div>
+        </div>
+
+        <!-- Section With Content Example -->
+        <div
+          id="content-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Content</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithContent</p>
+          </div>
+          <div class="p-0">
+            <SectionWithContent
+              content={{
+                sectionId: 'content-section',
+                reverse: true,
+                badge: 'About',
+                title: 'Meet Our Team',
+                paragraphs: {
+                  p1: 'Our experienced team of handymen is dedicated to providing top-quality service.',
+                  p2: 'With years of experience in various trades, we can handle any project big or small.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'Learn More',
+                    href: '/about',
+                  },
+                  secondary: {
+                    text: 'View Portfolio',
+                    href: '/works',
+                  },
+                },
+                image: {
+                  src: aboutImage,
+                  alt: 'Our professional team',
+                  size: 'square',
+                },
+                additionalContent: {
+                  heading: 'Professional Excellence',
+                  description:
+                    'We pride ourselves on professional excellence, attention to detail, and customer satisfaction. Every project is completed with the highest standards of quality and craftsmanship.',
+                },
+              }}
+            />
+          </div>
+        </div>
+
+        <!-- Section With Bullets Example -->
+        <div
+          id="bullets-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Bullets</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithBullets</p>
+          </div>
+          <div class="p-0">
+            <SectionWithBullets
+              content={{
+                sectionId: 'bullets-section',
+                badge: 'Process',
+                title: 'Our Simple Process',
+                paragraphs: {
+                  p1: 'We follow a simple, proven process to ensure your satisfaction.',
+                  p2: 'From initial contact to project completion, we keep you informed every step of the way.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'Get Started',
+                    href: '/contact',
+                  },
+                },
+                image: {
+                  src: testImage,
+                  alt: 'Our simple process',
+                },
+                bulletPoints: [
+                  'Free consultation and estimate',
+                  'Flexible scheduling to fit your needs',
+                  'Quality materials and expert workmanship',
+                  'Clean-up and final inspection',
+                ],
+                listType: 'bullets',
+              }}
+            />
+          </div>
+        </div>
+
+        <!-- Section With Icons Example -->
+        <div
+          id="icons-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Icons</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithIcons</p>
+          </div>
+          <div class="p-0">
+            <SectionWithIcons
+              content={{
+                sectionId: 'icons-section',
+                badge: 'Services',
+                title: 'What We Offer',
+                paragraphs: {
+                  p1: 'We provide comprehensive handyman services for your home.',
+                  p2: 'Our skilled team can handle a wide variety of repair and maintenance tasks.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'View All Services',
+                    href: '/services',
+                  },
+                },
+                image: {
+                  src: serviceImage,
+                  alt: 'Our services',
+                },
+                iconItems: [
+                  {
+                    icon: 'plumber-wrench',
+                    text: 'Plumbing repairs and installations',
+                  },
+                  {
+                    icon: 'energy-electric-plug',
+                    text: 'Electrical work and fixtures',
+                  },
+                  {
+                    icon: 'home-repair-hammer',
+                    text: 'Carpentry and woodworking',
+                  },
+                  {
+                    icon: 'home-repair-paint-brush',
+                    text: 'Painting and refinishing',
+                  },
+                ],
+              }}
             />
           </div>
         </div>
@@ -277,51 +472,6 @@ const sections = [
           </div>
         </div>
 
-        <!-- Section With Content Example -->
-        <div
-          id="content-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Content</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithContent</p>
-          </div>
-          <div class="p-0">
-            <SectionWithContent
-              content={{
-                sectionId: 'content-section',
-                reverse: true,
-                badge: 'About',
-                title: 'Meet Our Team',
-                paragraphs: {
-                  p1: 'Our experienced team of handymen is dedicated to providing top-quality service.',
-                  p2: 'With years of experience in various trades, we can handle any project big or small.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'Learn More',
-                    href: '/about',
-                  },
-                  secondary: {
-                    text: 'View Portfolio',
-                    href: '/works',
-                  },
-                },
-                image: {
-                  src: aboutImage,
-                  alt: 'Our professional team',
-                  size: 'square',
-                },
-                additionalContent: {
-                  heading: 'Professional Excellence',
-                  description:
-                    'We pride ourselves on professional excellence, attention to detail, and customer satisfaction. Every project is completed with the highest standards of quality and craftsmanship.',
-                },
-              }}
-            />
-          </div>
-        </div>
-
         <!-- Section With Cards - Horizontal Layout -->
         <div
           id="cards-horizontal-section"
@@ -437,99 +587,6 @@ const sections = [
           </div>
         </div>
 
-        <!-- Section With Bullets Example -->
-        <div
-          id="bullets-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Bullets</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithBullets</p>
-          </div>
-          <div class="p-0">
-            <SectionWithBullets
-              content={{
-                sectionId: 'bullets-section',
-                badge: 'Process',
-                title: 'Our Simple Process',
-                paragraphs: {
-                  p1: 'We follow a simple, proven process to ensure your satisfaction.',
-                  p2: 'From initial contact to project completion, we keep you informed every step of the way.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'Get Started',
-                    href: '/contact',
-                  },
-                },
-                image: {
-                  src: testImage,
-                  alt: 'Our simple process',
-                },
-                bulletPoints: [
-                  'Free consultation and estimate',
-                  'Flexible scheduling to fit your needs',
-                  'Quality materials and expert workmanship',
-                  'Clean-up and final inspection',
-                ],
-                listType: 'bullets',
-              }}
-            />
-          </div>
-        </div>
-
-        <!-- Section With Icons Example -->
-        <div
-          id="icons-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Icons</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithIcons</p>
-          </div>
-          <div class="p-0">
-            <SectionWithIcons
-              content={{
-                sectionId: 'icons-section',
-                badge: 'Services',
-                title: 'What We Offer',
-                paragraphs: {
-                  p1: 'We provide comprehensive handyman services for your home.',
-                  p2: 'Our skilled team can handle a wide variety of repair and maintenance tasks.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'View All Services',
-                    href: '/services',
-                  },
-                },
-                image: {
-                  src: serviceImage,
-                  alt: 'Our services',
-                },
-                iconItems: [
-                  {
-                    icon: 'plumber-wrench',
-                    text: 'Plumbing repairs and installations',
-                  },
-                  {
-                    icon: 'energy-electric-plug',
-                    text: 'Electrical work and fixtures',
-                  },
-                  {
-                    icon: 'home-repair-hammer',
-                    text: 'Carpentry and woodworking',
-                  },
-                  {
-                    icon: 'home-repair-paint-brush',
-                    text: 'Painting and refinishing',
-                  },
-                ],
-              }}
-            />
-          </div>
-        </div>
-
         <!-- Section With Trust Stats Example -->
         <div
           id="trust-stats-section"
@@ -573,63 +630,6 @@ const sections = [
                     label: 'Satisfaction Guaranteed',
                   },
                 ],
-              }}
-            />
-          </div>
-        </div>
-
-        <!-- Hero Section Example -->
-        <div
-          id="hero-example"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Hero Section</h3>
-            <p class="text-sm text-gray-600">Component: Hero</p>
-          </div>
-          <div class="p-0">
-            <Hero
-              sectionId="hero-example"
-              heroImage={{ src: heroImage, alt: 'Hero background' }}
-              title="Professional Handyman Services"
-              subheading="Reliable, skilled, and ready to help with all your home repair needs."
-              primaryButtonText="Get Free Quote"
-              primaryButtonHref="/contact"
-              secondaryButtonText="Learn More"
-              secondaryButtonHref="/about"
-            />
-          </div>
-        </div>
-
-        <!-- Section Regular Example -->
-        <div
-          id="regular-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section Regular</h3>
-            <p class="text-sm text-gray-600">Component: SectionRegular</p>
-          </div>
-          <div class="p-0">
-            <SectionRegular
-              content={{
-                sectionId: 'regular-section',
-                badge: 'About',
-                title: 'Our Story',
-                paragraphs: {
-                  p1: 'We started as a small family business with a passion for helping homeowners.',
-                  p2: 'Today, we continue to provide the same personal touch and quality workmanship.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'Learn Our Story',
-                    href: '/about',
-                  },
-                },
-                image: {
-                  src: aboutImage,
-                  alt: 'Our story',
-                },
               }}
             />
           </div>
