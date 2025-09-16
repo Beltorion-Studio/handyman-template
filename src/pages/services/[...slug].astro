@@ -2,7 +2,8 @@
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/sections/Hero.astro'
 import CTA from '@components/CTA.astro'
-import ProcessTimeline from '@components/sections/ProcessTimeline.astro'
+import ProcessTimeline from '@components/services/ProcessTimeline.astro'
+import CommonScenarios from '@components/sections/CommonScenarios.astro'
 import { getCollection } from 'astro:content'
 import { config } from '@config'
 import type { CollectionEntry } from 'astro:content'
@@ -43,6 +44,12 @@ const pageTitle = `${service.data.title} | ${config.site.name}`
       description: step.content,
       image: { src: service.data.heroImage, alt: service.data.imageAlt },
     }))}
+  />
+
+  <CommonScenarios
+    sectionId="common-scenarios"
+    title={service.data.common.title}
+    cards={service.data.common.cards}
   />
 
   <CTA
