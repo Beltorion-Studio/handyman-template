@@ -2,7 +2,6 @@
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/sections/Hero.astro'
 import CTA from '@components/CTA.astro'
-import ContactUs from '@components/ContactUs.astro'
 import ProcessTimeline from '@components/sections/ProcessTimeline.astro'
 import { getCollection } from 'astro:content'
 import { config } from '@config'
@@ -36,6 +35,16 @@ const pageTitle = `${service.data.title} | ${config.site.name}`
     primaryButtonHref="#contact"
   />
 
+  <ProcessTimeline
+    sectionId="our-process"
+    title={service.data.ourProcess.title}
+    steps={Object.values(service.data.ourProcess.steps).map((step) => ({
+      title: step.title,
+      description: step.content,
+      image: { src: service.data.heroImage, alt: service.data.imageAlt },
+    }))}
+  />
+
   <CTA
     sectionId="service-cta"
     title={`Ready to Get Started with ${service.data.title}?`}
@@ -44,44 +53,4 @@ const pageTitle = `${service.data.title} | ${config.site.name}`
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
-
-
-
-  <ContactUs sectionId="contact" title="Let's Discuss Your Project" />
 </Layout>
-  <ProcessTimeline
-  sectionId="our-process"
-  title="Our Process"
-  steps={[
-    {
-      title: 'Rapid Response',
-      description:
-        'We provide quick response times for all service calls, with same-day service available for urgent plumbing issues.',
-      image: { src: service.data.heroImage, alt: service.data.imageAlt }
-    },
-    {
-      title: 'Thorough Diagnosis',
-      description:
-        'Our plumbers use advanced diagnostic tools to accurately identify plumbing problems and determine the most effective solutions.',
-      image: { src: service.data.heroImage, alt: service.data.imageAlt }
-    },
-    {
-      title: 'Quality Installation',
-      description:
-        'We use high-quality materials and proven installation techniques to ensure long-lasting, reliable plumbing repairs and installations.',
-      image: { src: service.data.heroImage, alt: service.data.imageAlt }
-    },
-    {
-      title: 'System Testing',
-      description:
-        'All work is thoroughly tested to ensure proper operation, water pressure, and leak-free connections.',
-      image: { src: service.data.heroImage, alt: service.data.imageAlt }
-    },
-    {
-      title: 'Cleanup & Warranty',
-      description:
-        'We clean up after every job and provide comprehensive warranties on all parts and labor.',
-      image: { src: service.data.heroImage, alt: service.data.imageAlt }
-    }
-  ]}
-/>
