@@ -1,13 +1,12 @@
 ---
 import { Image } from 'astro:assets'
-import type { ImageMetadata } from 'astro'
 import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 
 export type Props = {
   sectionId: string
   heroImage: {
-    src: ImageMetadata | string
+    src: ImageMetadata
     alt: string
   }
   title: string

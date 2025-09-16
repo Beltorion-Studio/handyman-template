@@ -28,14 +28,114 @@ const blog = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      pubDate: z.coerce.date(),
-      updatedDate: z.coerce.date().optional(),
+      shortDescription: z.string(),
+      icon: z.string(),
       heroImage: image(),
       imageAlt: z.string(),
-      author: z.string().default('Handyman Pro'),
+      featured: z.boolean(),
       category: z.string(),
-      tags: z.array(z.string()).default([]),
-      featured: z.boolean().default(false),
+      price: z.string(),
+      duration: z.string(),
+      features: z.array(z.string()),
+      order: z.number(),
+
+      mainTitle: z.string(),
+      mainDescription: z.string(),
+
+      serviceOverview: z.object({
+        title: z.string(),
+        content: z.string(),
+      }),
+
+      services: z.object({
+        service1: z.object({
+          title: z.string(),
+          paragraph1: z.string(),
+          paragraph2: z.string(),
+        }),
+        service2: z.object({
+          title: z.string(),
+          paragraph1: z.string(),
+          bullets: z.array(z.string()),
+        }),
+        service3: z.object({
+          title: z.string(),
+          paragraph1: z.string(),
+          paragraph2: z.string(),
+        }),
+        service4: z.object({
+          title: z.string(),
+          paragraph1: z.string(),
+          bullets: z.array(z.string()),
+        }),
+        service5: z.object({
+          title: z.string(),
+          paragraph1: z.string(),
+          paragraph2: z.string(),
+        }),
+      }),
+
+      ourProcess: z.object({
+        title: z.string(),
+        steps: z.object({
+          step1: z.object({ title: z.string(), content: z.string() }),
+          step2: z.object({ title: z.string(), content: z.string() }),
+          step3: z.object({ title: z.string(), content: z.string() }),
+          step4: z.object({ title: z.string(), content: z.string() }),
+          step5: z.object({ title: z.string(), content: z.string() }),
+        }),
+      }),
+
+      whyChooseUs: z.object({
+        title: z.string(),
+        benefits: z.object({
+          craftsmanship: z.object({ title: z.string(), content: z.string() }),
+          customSolutions: z.object({ title: z.string(), content: z.string() }),
+          premiumMaterials: z.object({ title: z.string(), content: z.string() }),
+          attentionToDetail: z.object({ title: z.string(), content: z.string() }),
+          projectManagement: z.object({ title: z.string(), content: z.string() }),
+          warranty: z.object({ title: z.string(), content: z.string() }),
+        }),
+      }),
+
+      common: z.object({
+        title: z.string(),
+        cards: z.object({
+          card1: z.object({ title: z.string(), content: z.string() }),
+          card2: z.object({ image: image(), imageAlt: z.string() }),
+          card3: z.object({ title: z.string(), content: z.string() }),
+          card4: z.object({ image: image(), imageAlt: z.string() }),
+          card5: z.object({ title: z.string(), content: z.string() }),
+          card6: z.object({ image: image(), imageAlt: z.string() }),
+        }),
+      }),
+
+      materials: z.object({
+        title: z.string(),
+        categories: z.object({
+          hardwoods: z.object({ title: z.string(), items: z.array(z.string()) }),
+          engineered: z.object({ title: z.string(), items: z.array(z.string()) }),
+          finishes: z.object({ title: z.string(), items: z.array(z.string()) }),
+        }),
+      }),
+
+      serviceAreas: z.object({
+        title: z.string(),
+        content: z.string(),
+        scheduling: z.object({
+          consultations: z.string(),
+          standardHours: z.string(),
+          weekendProjects: z.string(),
+          seasonalWork: z.string(),
+        }),
+      }),
+
+      cta: z.object({
+        title: z.string(),
+        content: z.string(),
+        button: z.string(),
+        subtext: z.string(),
+      }),
     }),
 })
 

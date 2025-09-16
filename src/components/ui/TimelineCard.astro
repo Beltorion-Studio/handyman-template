@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets'
+import Heading from '@components/ui/Heading.astro'
+
+export type Props = {
+  align: 'left' | 'right'
+  image: { src: ImageMetadata; alt: string }
+  title: string
+  description: string
+}
+
+const { align = 'left', image, title, description } = Astro.props as Props
+---
+
+<div
+  class={`desktop:col-span-6 ${align === 'left' ? 'order-1 justify-end' : 'order-2 justify-start'} flex items-center gap-6`}
+>
+  <Image src={image.src} alt={image.alt} class="h-60 w-60 rounded-3xl object-cover" />
+  <div
+    class="bg-primary-dark/80 border-text-secondary w-[400px] rounded-3xl border p-8 text-white backdrop-blur-[10px]"
+  >
+    <Heading tag="h3" size="h3" variant="white">{title}</Heading>
+    <p class="mt-2 text-base leading-relaxed">{description}</p>
+  </div>
+</div>
