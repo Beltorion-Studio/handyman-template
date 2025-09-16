@@ -70,7 +70,7 @@ const { company } = contactConfig
               <div class="text-text-primary text-xl font-medium">
                 <Link
                   href={`mailto:${company.email.general}`}
-                  intent="primary"
+                  intent="tertiary"
                   type="email"
                   class="hover:text-brand transition-colors"
                 >
@@ -87,7 +87,7 @@ const { company } = contactConfig
               <div class="text-text-primary text-xl font-medium">
                 <Link
                   href={`tel:${company.phone.primary}`}
-                  intent="primary"
+                  intent="tertiary"
                   type="tel"
                   class="hover:text-brand transition-colors"
                 >
@@ -101,7 +101,7 @@ const { company } = contactConfig
               <div class="mt-1 flex h-8 w-8 items-center justify-center">
                 <Icon name="carbon:location" class="text-brand h-8 w-8" />
               </div>
-              <div class="text-text-primary text-xl font-medium">
+              <div class="text-text-primary text-lg font-medium">
                 <div>
                   <div>{company.address.street}</div>
                   <div>

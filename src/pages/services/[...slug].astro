@@ -2,6 +2,7 @@
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/sections/Hero.astro'
 import CTA from '@components/CTA.astro'
+
 import ProcessTimeline from '@components/services/ProcessTimeline.astro'
 import CommonScenarios from '@components/sections/CommonScenarios.astro'
 import { getCollection } from 'astro:content'
@@ -24,6 +25,13 @@ const { service } = Astro.props
 
 // Generate page title and description
 const pageTitle = `${service.data.title} | ${config.site.name}`
+
+// Get collections for PostsSection, Services, and TeamSection
+const allBlogPosts = await getCollection('blog')
+const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+
+const allServices = await getCollection('services')
+const services = allServices.filter((service) => service.data.featured)
 ---
 
 <Layout title={pageTitle}>
@@ -60,4 +68,5 @@ const pageTitle = `${service.data.title} | ${config.site.name}`
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
+
 </Layout>
