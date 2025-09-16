@@ -41,14 +41,14 @@ const {
       <div
         class="absolute top-0 left-1/2 z-0 h-full w-1 -translate-x-1/2"
         aria-hidden="true"
-        style="background-image: repeating-linear-gradient(to bottom, rgba(83,234,253,0.6) 0 8px, transparent 8px 28px);"
+        style="background-image: repeating-linear-gradient(to bottom, rgba(83,234,253,1) 0 4px, transparent 4px 28px);"
       >
       </div>
 
       <ul class="relative space-y-24">
         {
           steps.map((step, index) => (
-            <li class="desktop:grid-cols-12 relative grid grid-cols-1 items-center gap-6">
+            <li class="desktop:grid-cols-12 relative grid grid-cols-1 items-center desktop:gap-24 gap-12">
               {index % 2 === 0 ? (
                 <>
                   <TimelineCard
@@ -71,7 +71,7 @@ const {
                 </>
               )}
 
-              <div class="bg-text-secondary/50 text-primary-dark absolute top-1/2 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full font-bold">
+              <div class="bg-secondary text-text-light absolute top-1/2 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full font-bold">
                 {index + 1}
               </div>
             </li>
