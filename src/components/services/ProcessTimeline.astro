@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets'
+import Heading from '@components/ui/Heading.astro'
+import TimelineCard from '@components/services/TimelineCard.astro'
+
+export type TimelineStep = {
+  title: string
+  description: string
+  image: {
+    src: ImageMetadata
+    alt: string
+  }
+}
+
+export type TimelineProps = {
+  sectionId: string
+  title: string
+  backgroundClass?: string
+  steps: TimelineStep[]
+}
+
+const {
+  sectionId = 'our-process',
+  title = 'Our Process',
+  backgroundClass = 'from-brand to-primary-dark bg-gradient-to-br',
+  steps = [],
+} = Astro.props as TimelineProps
+---
+
+<section
+  class={`tablet:py-28 py-16 ${backgroundClass}`}
+  aria-label="Our process section"
+  id={sectionId}
+>
+  <div class="container">
+    <div class="mb-16 flex w-full items-center justify-center">
+      <Heading tag="h2" size="h2" variant="white">{title}</Heading>
+    </div>
+
+    <div class="relative">
+      <div
+        class="absolute top-0 left-1/2 z-0 h-full w-1 -translate-x-1/2"
+        aria-hidden="true"
+        style="background-image: repeating-linear-gradient(to bottom, rgba(83,234,253,0.6) 0 8px, transparent 8px 28px);"
+      >
+      </div>
+
+      <ul class="relative space-y-24">
+        {
+          steps.map((step, index) => (
+            <li class="desktop:grid-cols-12 relative grid grid-cols-1 items-center gap-6">
+              {index % 2 === 0 ? (
+                <>
+                  <TimelineCard
+                    align="left"
+                    image={step.image}
+                    title={step.title}
+                    description={step.description}
+                  />
+                  <div class="desktop:col-span-6 desktop:block order-2 hidden" />
+                </>
+              ) : (
+                <>
+                  <div class="desktop:col-span-6 desktop:block order-1 hidden" />
+                  <TimelineCard
+                    align="right"
+                    image={step.image}
+                    title={step.title}
+                    description={step.description}
+                  />
+                </>
+              )}
+
+              <div class="bg-text-secondary/50 text-primary-dark absolute top-1/2 left-1/2 z-10 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full font-bold">
+                {index + 1}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

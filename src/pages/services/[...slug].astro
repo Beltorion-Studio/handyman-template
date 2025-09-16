@@ -2,8 +2,9 @@
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/sections/Hero.astro'
 import CTA from '@components/CTA.astro'
-import PostsSection from '@components/sections/PostsSection.astro'
-import ContactUs from '@components/ContactUs.astro'
+
+import ProcessTimeline from '@components/services/ProcessTimeline.astro'
+import CommonScenarios from '@components/sections/CommonScenarios.astro'
 import { getCollection } from 'astro:content'
 import { config } from '@config'
 import type { CollectionEntry } from 'astro:content'
@@ -43,6 +44,22 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
   />
 
+  <ProcessTimeline
+    sectionId="our-process"
+    title={service.data.ourProcess.title}
+    steps={Object.values(service.data.ourProcess.steps).map((step) => ({
+      title: step.title,
+      description: step.content,
+      image: { src: service.data.heroImage, alt: service.data.imageAlt },
+    }))}
+  />
+
+  <CommonScenarios
+    sectionId="common-scenarios"
+    title={service.data.common.title}
+    cards={service.data.common.cards}
+  />
+
   <CTA
     sectionId="service-cta"
     title={`Ready to Get Started with ${service.data.title}?`}
@@ -52,16 +69,4 @@ const services = allServices.filter((service) => service.data.featured)
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
 
-  <PostsSection
-    badge="And this is only part of it"
-    title="Check Out What Else We Do"
-    buttonText="View All Services"
-    buttonHref="/services"
-    posts={services}
-    postType="service"
-    maxPosts={3}
-    sectionId="otherServices"
-  />
-
-  <ContactUs sectionId="contact" title="Let's Discuss Your Project" />
 </Layout>
