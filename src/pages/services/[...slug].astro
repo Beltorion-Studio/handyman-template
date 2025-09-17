@@ -1,7 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/sections/Hero.astro'
+import SectionWithText from '@components/sections/SectionWithText.astro'
+import SectionRegular from '@components/sections/SectionRegular.astro'
+import SectionWithBullets from '@components/sections/SectionWithBullets.astro'
+import SectionWithTrustStats from '@components/sections/SectionWithTrustStats.astro'
 import CTA from '@components/CTA.astro'
+import PostsSection from '@components/sections/PostsSection.astro'
 
 import ProcessTimeline from '@components/services/ProcessTimeline.astro'
 import CommonScenarios from '@components/services/CommonScenarios.astro'
@@ -9,6 +14,8 @@ import SectionWithThreeColumns from '@components/sections/SectionWithThreeColumn
 import { getCollection } from 'astro:content'
 import { config } from '@config'
 import type { CollectionEntry } from 'astro:content'
+
+import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 
 export async function getStaticPaths() {
   const services = await getCollection('services')
@@ -45,6 +52,117 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
   />
 
+  <SectionWithText
+    title="Service Overview"
+    description="We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively."
+    sectionId="ServiceOverview"
+  />
+
+  <SectionRegular
+    content={{
+      sectionId: 'service-1',
+      justifyContent: 'center',
+      title: 'Emergency Plumbing Repairs',
+      paragraphs: {
+        p1: '24/7 emergency plumbing services for urgent issues including burst pipes, severe leaks, toilet backups, and water heater failures that cannot wait.',
+        p2: 'We provide rapid response for sewer line blockages, frozen pipe thawing, and emergency repairs to prevent water damage and restore normal operations quickly.',
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+    }}
+  />
+
+  <SectionWithBullets
+    content={{
+      sectionId: 'service-2',
+      justifyContent: 'center',
+      reverse: true,
+      title: 'Leak Detection & Repair',
+      paragraphs: {
+        p1: 'Advanced leak detection and repair services using modern technology to find and fix hidden leaks before they cause damage.',
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+      bulletPoints: [
+        'Hidden leak detection using advanced technology',
+        'Pipe leak repairs and replacements',
+        'Faucet and fixture leak fixes',
+        'Water line leak detection',
+      ],
+      listType: 'bullets',
+    }}
+  />
+
+  <SectionRegular
+    content={{
+      sectionId: 'service-3',
+      justifyContent: 'center',
+      title: 'Fixture Installation & Repair',
+      paragraphs: {
+        p1: 'Professional installation and repair of kitchen and bathroom fixtures including faucets, toilets, showers, and sinks for optimal performance.',
+        p2: 'We handle vanity installation, garbage disposal installation and repair, water filtration system installation, and fixture upgrades to modernize your plumbing.',
+      },
+      buttons: {
+        primary: {
+          text: 'Get Your Free Quote',
+          href: '/contact',
+        },
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+    }}
+  />
+
+  <SectionWithBullets
+    content={{
+      sectionId: 'service-4',
+      justifyContent: 'center',
+      reverse: true,
+      title: 'Pipe Services',
+      paragraphs: {
+        p1: 'Complete pipe installation, replacement, and repair services including repiping for older homes and drain cleaning solutions.',
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+      bulletPoints: [
+        'Pipe installation and replacement',
+        'Repiping for older homes',
+        'Pipe insulation and protection',
+        'Drain cleaning and unclogging',
+      ],
+      listType: 'bullets',
+    }}
+  />
+
+  <SectionRegular
+    content={{
+      sectionId: 'service-5',
+      justifyContent: 'center',
+      title: 'Water Heater Services',
+      paragraphs: {
+        p1: 'Expert water heater installation, repair, maintenance, and replacement services for both traditional and tankless water heater systems.',
+        p2: 'We provide energy-efficient water heater solutions, emergency water heater repairs, and comprehensive maintenance to ensure reliable hot water supply.',
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+    }}
+  />
+
   <ProcessTimeline
     sectionId="our-process"
     title={service.data.ourProcess.title}
@@ -53,6 +171,30 @@ const services = allServices.filter((service) => service.data.featured)
       description: step.content,
       image: { src: service.data.heroImage, alt: service.data.imageAlt },
     }))}
+  />
+
+  <SectionWithBullets
+    content={{
+      sectionId: 'service-4',
+      justifyContent: 'center',
+      reverse: true,
+      title: 'Pipe Services',
+      paragraphs: {
+        p1: 'Complete pipe installation, replacement, and repair services including repiping for older homes and drain cleaning solutions.',
+      },
+      image: {
+        src: testImage,
+        alt: 'Our Service',
+        size: 'square',
+      },
+      bulletPoints: [
+        'Pipe installation and replacement',
+        'Repiping for older homes',
+        'Pipe insulation and protection',
+        'Drain cleaning and unclogging',
+      ],
+      listType: 'bullets',
+    }}
   />
 
   <CommonScenarios
@@ -90,5 +232,50 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonText="Get Free Quote"
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+  <SectionWithTrustStats
+    content={{
+      sectionId: 'trust-stats-section',
+      title: 'Service Areas & Scheduling',
+      paragraphs: {
+        p1: 'We provide plumbing services throughout the metropolitan area with flexible scheduling.',
+        p2: 'Call us now or schedule online - We are here when you need us most!',
+      },
+      buttons: {
+        primary: {
+          text: 'Call Us Now',
+          href: '/contact',
+        },
+      },
+      trustStats: [
+        {
+          value: 'Emergency Service',
+          label: 'Available 24/7 for urgent plumbing issues',
+        },
+        {
+          value: 'Weekend Service',
+          label: 'Saturday appointments for non-emergency work',
+        },
+        {
+          value: 'Standard Appointments',
+          label: 'Monday through Friday, 7 AM to 6 PM',
+        },
+        {
+          value: 'Flexible Scheduling',
+          label: 'Early morning and evening appointments available',
+        },
+      ],
+    }}
+  />
+
+  <PostsSection
+    badge="And this is only part of it"
+    title="Check Out What Else We Do"
+    buttonText="View All Services"
+    buttonHref="/services"
+    posts={services}
+    postType="service"
+    maxPosts={3}
+    sectionId="otherServices"
   />
 </Layout>
