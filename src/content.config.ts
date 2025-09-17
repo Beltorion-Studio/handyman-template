@@ -91,13 +91,11 @@ const services = defineCollection({
         }),
       }),
 
-      materials: z.object({
+      threeColumnsSection: z.object({
         title: z.string(),
-        categories: z.object({
-          hardwoods: z.object({ title: z.string(), items: z.array(z.string()) }),
-          engineered: z.object({ title: z.string(), items: z.array(z.string()) }),
-          finishes: z.object({ title: z.string(), items: z.array(z.string()) }),
-        }),
+        column1: z.object({ title: z.string(), items: z.array(z.string()) }),
+        column2: z.object({ title: z.string(), items: z.array(z.string()) }),
+        column3: z.object({ title: z.string(), items: z.array(z.string()) }),
       }),
 
       serviceAreas: z.object({

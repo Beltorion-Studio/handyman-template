@@ -5,6 +5,7 @@ import CTA from '@components/CTA.astro'
 
 import ProcessTimeline from '@components/services/ProcessTimeline.astro'
 import CommonScenarios from '@components/services/CommonScenarios.astro'
+import SectionWithThreeColumns from '@components/sections/SectionWithThreeColumns.astro'
 import { getCollection } from 'astro:content'
 import { config } from '@config'
 import type { CollectionEntry } from 'astro:content'
@@ -60,6 +61,28 @@ const services = allServices.filter((service) => service.data.featured)
     cards={service.data.common.cards}
   />
 
+  <SectionWithThreeColumns
+    sectionId="three-columns-section"
+    title={service.data.threeColumnsSection.title}
+    columns={[
+      {
+        title: service.data.threeColumnsSection.column1.title,
+        items: service.data.threeColumnsSection.column1.items,
+        iconColor: 'brand',
+      },
+      {
+        title: service.data.threeColumnsSection.column2.title,
+        items: service.data.threeColumnsSection.column2.items,
+        iconColor: 'brand',
+      },
+      {
+        title: service.data.threeColumnsSection.column3.title,
+        items: service.data.threeColumnsSection.column3.items,
+        iconColor: 'brand',
+      },
+    ]}
+  />
+
   <CTA
     sectionId="service-cta"
     title={`Ready to Get Started with ${service.data.title}?`}
@@ -68,5 +91,4 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
-
 </Layout>
