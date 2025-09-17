@@ -82,11 +82,11 @@ const services = defineCollection({
       common: z.object({
         title: z.string(),
         cards: z.object({
-          card1: z.object({ title: z.string(), content: z.string() }),
+          card1: z.object({ title: z.string(), items: z.array(z.string()) }),
           card2: z.object({ image: image(), imageAlt: z.string() }),
-          card3: z.object({ title: z.string(), content: z.string() }),
+          card3: z.object({ title: z.string(), items: z.array(z.string()) }),
           card4: z.object({ image: image(), imageAlt: z.string() }),
-          card5: z.object({ title: z.string(), content: z.string() }),
+          card5: z.object({ title: z.string(), items: z.array(z.string()) }),
           card6: z.object({ image: image(), imageAlt: z.string() }),
         }),
       }),

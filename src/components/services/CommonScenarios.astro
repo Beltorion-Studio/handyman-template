@@ -1,0 +1,85 @@
+---
+import Heading from '@components/ui/Heading.astro'
+import ImageCard from '@components/ui/ImageCard.astro'
+import BulletCard from '@components/ui/BulletCard.astro'
+import { projectIcons } from '@config/icons'
+
+export type CardsContent = {
+  title: string
+  items: string[]
+}
+
+export type CardsImage = {
+  image: ImageMetadata
+  imageAlt: string
+}
+
+export type Cards = {
+  card1: CardsContent
+  card2: CardsImage
+  card3: CardsContent
+  card4: CardsImage
+  card5: CardsContent
+  card6: CardsImage
+}
+
+export type Props = {
+  sectionId?: string
+  title?: string
+  backgroundClass?: string
+  cards: Cards
+}
+
+const {
+  sectionId = 'common-scenarios',
+  title,
+  backgroundClass = 'bg-white',
+  cards,
+} = Astro.props as Props
+---
+
+<section
+  class={`py-16 tablet:py-28 ${backgroundClass}`}
+  aria-label="Common scenarios section"
+  id={sectionId}
+>
+  <div class="container">
+    <div class="mb-16 flex w-full items-center justify-center">
+      <Heading tag="h2" size="h2">{title}</Heading>
+    </div>
+    <div class="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+      <!-- Card 1: Content Card -->
+      <BulletCard
+        title={cards.card1.title}
+        items={cards.card1.items}
+        iconName={projectIcons.checkmark}
+       
+      />
+
+      <!-- Card 2: Image Card -->
+      <ImageCard image={cards.card2.image} imageAlt={cards.card2.imageAlt}  />
+
+      <!-- Card 3: Content Card -->
+      <BulletCard
+        title={cards.card3.title}
+        items={cards.card3.items}
+        iconName={projectIcons.checkmark}
+       
+      />
+
+      <!-- Card 4: Image Card -->
+      <ImageCard image={cards.card4.image} imageAlt={cards.card4.imageAlt}  />
+
+      <!-- Card 5: Content Card -->
+      <BulletCard
+        title={cards.card5.title}
+        items={cards.card5.items}
+        iconName={projectIcons.checkmark}
+        
+      />
+
+      <!-- Card 6: Image Card -->
+      <ImageCard image={cards.card6.image} imageAlt={cards.card6.imageAlt}  />
+    </div>
+  </div>
+</section>
