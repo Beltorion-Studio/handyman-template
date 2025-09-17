@@ -42,6 +42,8 @@ export type IconName = (typeof icons)[keyof typeof icons][keyof (typeof icons)[k
 // Project Icons - Project-specific icon mappings
 // Change these to update icons throughout the entire project
 export const projectIcons = {
+  defaultBullet: icons.checkmark.default,
+
   // Bullet points and list items
   bullet: icons.shapes.dotMark,
   bulletFilled: icons.shapes.circleSolid,

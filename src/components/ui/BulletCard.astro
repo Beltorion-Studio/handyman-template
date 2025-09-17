@@ -1,33 +1,66 @@
 ---
 import Heading from '@components/ui/Heading.astro'
+import { projectIcons } from '@config/icons'
 import { Icon } from 'astro-icon/components'
+import { cva, type VariantProps } from 'cva'
 
-export type Props = {
+const bulletCard = cva('relative rounded-3xl h-full flex flex-col', {
+  variants: {
+    border: {
+      true: 'border p-6',
+      false: 'p-0',
+    },
+    borderColor: {
+      brand: 'border-brand',
+      gray: 'border-gray-300',
+      primary: 'border-primary-dark',
+    },
+  },
+  defaultVariants: {
+    border: true,
+    borderColor: 'brand',
+  },
+})
+
+export type Props = VariantProps<typeof bulletCard> & {
   title: string
   items: string[]
-  iconName: string
+  iconName?: string
+  iconColor?: string
   class?: string
 }
 
-const { title, items, iconName, class: className = '' } = Astro.props as Props
+const {
+  title,
+  items,
+  iconName = projectIcons.defaultBullet,
+  border = true,
+  borderColor = 'brand',
+  iconColor = 'brand',
+  class: className = '',
+} = Astro.props as Props
 ---
 
-<div class={`border-brand relative rounded-3xl border p-6 h-full flex flex-col ${className}`}>
+<div class={bulletCard({ border, borderColor })} class:list={[className]}>
   <div class="flex flex-1 flex-col gap-4">
     <Heading tag="h3" size="h3" class="text-text-primary">
       {title}
     </Heading>
-    <div class="space-y-2">
+    <ul class="space-y-2">
       {
         items.map((item) => (
-          <div class="flex items-start gap-4">
+          <li class="flex items-start gap-4">
             <div class="flex h-6 w-6 flex-shrink-0 items-center justify-center">
-              <Icon name={iconName} class="text-brand h-4 w-4" aria-hidden="true" />
+              <Icon
+                name={iconName}
+                class={`h-4 w-4 text-${iconColor}`}
+                aria-hidden="true"
+              />
             </div>
             <p class="text-text-primary text-base leading-relaxed">{item}</p>
-          </div>
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
 </div>
