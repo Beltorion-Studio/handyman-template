@@ -13,11 +13,11 @@ const { align = 'left', image, title, description } = Astro.props as Props
 ---
 
 <div
-  class={`desktop:col-span-6 ${align === 'left' ? 'order-1 justify-end' : 'order-2 justify-start'} grid grid-cols-6 items-end ml-8 tablet:ml-16 desktop:ml-0`}
+  class={`desktop:col-span-6 ${align === 'left' ? 'order-1 justify-end' : 'order-2 justify-start'} grid grid-cols-6 items-end ml-13 tablet:ml-16 desktop:ml-0`}
 >
   <Image src={image.src} alt={image.alt} class="h-full aspect-square col-span-3 col-start-1 row-start-1 rounded-3xl object-cover" />
   <div
-    class="bg-primary-dark/80 border-text-secondary col-span-4 col-start-3 row-start-1 mt-16 rounded-3xl border p-8 text-white backdrop-blur-[10px]"
+    class="bg-primary-dark/80 border-text-secondary col-span-4 col-start-3 row-start-1 mt-16 rounded-3xl border tablet:p-8 p-6 text-white backdrop-blur-[10px]"
   >
     <Heading tag="h3" size="h3" variant="white">{title}</Heading>
     <p class="mt-2 text-base leading-relaxed">{description}</p>
