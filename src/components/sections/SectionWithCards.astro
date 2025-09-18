@@ -6,40 +6,53 @@ import Heading from '@components/ui/Heading.astro'
 import Badge from '../ui/Badge.astro'
 import Card from '../ui/Card.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionWithCardsContent } from '@types/section'
+import type { SectionWithCards } from '@schemas/section-schemas'
 
 type Props = {
-  content: SectionWithCardsContent
-  background?: string
+  content: SectionWithCards
 }
 
-const { content, background = 'bg-white' } = Astro.props
+const {
+  content: {
+    sectionId,
+    title,
+    background,
+    paragraphs,
+    badge,
+    reverse,
+    justifyContent,
+    buttons,
+    image,
+    cards,
+    cardLayout,
+  },
+} = Astro.props as Props
 ---
 
 <section
   class={`tablet:py-28 py-10 ${background}`}
   aria-label="Section with cards container"
-  id={content.sectionId}
+  id={sectionId}
 >
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-start gap-20">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
-          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
-        } ${content.reverse ? 'order-2' : 'order-1'}`}
+          justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${reverse ? 'order-2' : 'order-1'}`}
       >
         {
-          content.badge && (
+          badge && (
             <Badge intent="secondary" roundness="sm" size="base">
-              {content.badge}
+              {badge}
             </Badge>
           )
         }
 
-        <Heading tag="h2">{content.title}</Heading>
+        <Heading tag="h2">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
-            Object.entries(content.paragraphs).map(([key, text]) => {
+            Object.entries(paragraphs).map(([key, text]) => {
               void key
               return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
@@ -47,18 +60,18 @@ const { content, background = 'bg-white' } = Astro.props
         </div>
 
         {
-          content.cards.length > 0 && (
+          cards.length > 0 && (
             <div class="mb-8 w-full">
               <div
                 class={`desktop:text-left text-center ${
-                  content.cardLayout === 'grid'
+                  cardLayout === 'grid'
                     ? 'grid grid-cols-1 gap-4 md:grid-cols-2'
-                    : content.cardLayout === 'horizontal'
+                    : cardLayout === 'horizontal'
                       ? 'flex flex-col gap-4'
                       : 'space-y-4'
                 }`}
               >
-                {content.cards.map((card) => (
+                {cards.map((card) => (
                   <div class="hover:border-brand flex items-start gap-3 rounded-lg border border-gray-200 p-4 transition-colors">
                     {card.icon && (
                       <div class="flex-shrink-0 pt-1">
@@ -77,26 +90,26 @@ const { content, background = 'bg-white' } = Astro.props
         }
 
         {
-          content.buttons && (
+          buttons && (
             <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
-              {content.buttons.primary && (
+              {buttons.primary && (
                 <Button
                   intent="primary"
                   size="medium"
                   borderRadius="corner"
-                  href={content.buttons.primary.href}
+                  href={buttons.primary.href}
                 >
-                  {content.buttons.primary.text}
+                  {buttons.primary.text}
                 </Button>
               )}
-              {content.buttons.secondary && (
+              {buttons.secondary && (
                 <Button
                   intent="outlined"
                   size="medium"
                   borderRadius="corner"
-                  href={content.buttons.secondary.href}
+                  href={buttons.secondary.href}
                 >
-                  {content.buttons.secondary.text}
+                  {buttons.secondary.text}
                 </Button>
               )}
             </div>
@@ -105,14 +118,14 @@ const { content, background = 'bg-white' } = Astro.props
       </div>
 
       {
-        content.image.src && (
-          <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+        image.src && (
+          <div class={`${reverse ? 'order-1' : 'order-2'} h-full w-full`}>
             <Image
-              src={content.image.src}
-              alt={content.image.alt}
+              src={image.src}
+              alt={image.alt}
               class={`w-full rounded-3xl object-cover ${
-                content.image.size ? `aspect-${content.image.size}` : 'h-full'
-              } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+                image.size ? `aspect-${image.size}` : 'h-full'
+              } ${image.position === 'middle' ? 'self-center' : 'self-start'}`}
             />
           </div>
         )

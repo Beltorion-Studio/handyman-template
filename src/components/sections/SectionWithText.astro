@@ -2,28 +2,19 @@
 import Heading from '@components/ui/Heading.astro'
 import Badge from '@components/ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
+import type { SectionWithText } from '@schemas/section-schemas'
 
-export type Props = {
-  sectionId: string
-  badge?: string
-  title?: string
-  description?: string
-  className?: string
-  background?: string
+type Props = {
+  content: SectionWithText
 }
 
 const {
-  sectionId,
-  badge,
-  title,
-  description,
-  className,
-  background = 'bg-white',
+  content: { sectionId, title, description, badge, className },
 } = Astro.props as Props
 ---
 
 <section
-  class={`tablet:py-28 py-10 ${background} ${className}`}
+  class={`tablet:py-28 py-10 bg-white ${className}`}
   aria-label="Get in touch section"
   id={sectionId}
 >

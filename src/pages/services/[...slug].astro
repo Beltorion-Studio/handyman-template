@@ -53,9 +53,11 @@ const services = allServices.filter((service) => service.data.featured)
   />
 
   <SectionWithText
-    title="Service Overview"
-    description="We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively."
-    sectionId="ServiceOverview"
+    content={{
+      sectionId: 'ServiceOverview',
+      title: 'Service Overview',
+      description: 'We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively.',
+    }}
   />
 
   <SectionRegular
