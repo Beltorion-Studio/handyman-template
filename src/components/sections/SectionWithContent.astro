@@ -8,10 +8,14 @@ import type { SectionContent } from '@types/section'
 
 type Props = {
   content: SectionContent
+  additionalContent?: {
+    heading?: string
+    description?: string
+  }
   background?: string
 }
 
-const { content, background = 'bg-white' } = Astro.props
+const { content, background = 'bg-white', additionalContent } = Astro.props
 ---
 
 <section
@@ -45,16 +49,16 @@ const { content, background = 'bg-white' } = Astro.props
         </div>
 
         {
-          content.additionalContent && (
+          additionalContent && (
             <div class="mb-8 w-full">
-              {content.additionalContent.heading && (
+              {additionalContent.heading && (
                 <h3 class="text-text-primary mb-4 text-xl font-semibold">
-                  {content.additionalContent.heading}
+                  {additionalContent.heading}
                 </h3>
               )}
-              {content.additionalContent.description && (
+              {additionalContent.description && (
                 <p class="text-text-primary text-base leading-relaxed">
-                  {content.additionalContent.description}
+                  {additionalContent.description}
                 </p>
               )}
             </div>

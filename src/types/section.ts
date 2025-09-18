@@ -1,6 +1,8 @@
+import { z } from 'zod'
 export type SectionContent = {
   sectionId: string
   title: string
+  background?: string
   paragraphs: Record<string, string>
   badge?: string
   reverse?: boolean
@@ -20,10 +22,6 @@ export type SectionContent = {
     alt: string
     size?: 'video' | 'square' | 'full'
     position?: 'middle' | 'top'
-  }
-  additionalContent?: {
-    heading?: string
-    description?: string
   }
 }
 
@@ -39,48 +37,8 @@ export type SectionWithIconsContent = SectionContent & {
   }>
 }
 
-export type SectionWithTrustStatsContent = {
-  sectionId: string
-  title: string
-  paragraphs: Record<string, string>
-  badge?: string
-  reverse?: boolean
-  justifyContent?: 'start' | 'center'
-  buttons?: {
-    primary?: {
-      text: string
-      href?: string
-    }
-  }
-  trustStats: Array<{
-    value: string
-    label: string
-  }>
-}
 
-export type SectionWithCardsContent = {
-  sectionId: string
-  title: string
-  paragraphs: Record<string, string>
-  badge?: string
-  reverse?: boolean
-  justifyContent?: 'start' | 'center'
-  buttons?: {
-    primary?: {
-      text: string
-      href?: string
-    }
-    secondary?: {
-      text: string
-      href?: string
-    }
-  }
-  image: {
-    src: ImageMetadata
-    alt: string
-    size?: 'video' | 'square' | 'full'
-    position?: 'middle' | 'top'
-  }
+export type SectionWithCardsContent = SectionContent & {
   cards: Array<{
     title: string
     description: string
@@ -90,29 +48,7 @@ export type SectionWithCardsContent = {
   cardLayout?: 'grid' | 'list' | 'horizontal'
 }
 
-export type SectionWithFeaturesContent = {
-  sectionId: string
-  title: string
-  paragraphs: Record<string, string>
-  badge?: string
-  reverse?: boolean
-  justifyContent?: 'start' | 'center'
-  buttons?: {
-    primary?: {
-      text: string
-      href?: string
-    }
-    secondary?: {
-      text: string
-      href?: string
-    }
-  }
-  image: {
-    src: ImageMetadata
-    alt: string
-    size?: 'video' | 'square' | 'full'
-    position?: 'middle' | 'top'
-  }
+export type SectionWithFeaturesContent = SectionContent & {
   features: Array<{
     title: string
     description: string

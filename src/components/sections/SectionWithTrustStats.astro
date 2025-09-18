@@ -1,59 +1,66 @@
 ---
 import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
-import Badge from '../ui/Badge.astro'
+import Badge from '@components/ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionWithTrustStatsContent } from '@types/section'
+import { SectionWithTrustStatsSchema } from '@schemas/section-schemas'
 
-export type Props = {
-  content: SectionWithTrustStatsContent
-  background?: string
-}
-
-const { content, background = 'text-text-white from-brand to-primary-dark bg-gradient-to-br' } =
-  Astro.props
+const { content } = Astro.props
+const safe = SectionWithTrustStatsSchema.parse(content)
+const {
+  sectionId,
+  title,
+  background,
+  statsTextSize,
+  paragraphs,
+  badge,
+  reverse,
+  justifyContent,
+  buttons,
+  trustStats,
+} = safe
 ---
 
 <section
   class={`${background} tablet:py-28 py-10`}
   aria-label="Why homeowners trust us section container"
-  id={content.sectionId}
+  id={sectionId}
 >
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
-          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
-        } ${content.reverse ? 'order-2' : 'order-1'}`}
+          justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${reverse ? 'order-2' : 'order-1'}`}
       >
         {
-          content.badge && (
+          badge && (
             <Badge intent="primary" roundness="sm" size="base">
-              {content.badge}
+              {badge}
             </Badge>
           )
         }
 
-        <Heading tag="h2" size="h2">{content.title}</Heading>
+        <Heading tag="h2" size="h2">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
-            Object.entries(content.paragraphs).map(([key, text]) => {
+            Object.entries(paragraphs).map(([key, text]) => {
               void key
               return <p class="text-text-white mt-4" set:html={formatText(text)} />
             })
           }
         </div>
         {
-          content.buttons && (
+          buttons && (
             <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
-              {content.buttons.primary && (
+              {buttons.primary && (
                 <Button
                   intent="secondary"
                   size="medium"
                   borderRadius="corner"
-                  href={content.buttons.primary.href}
+                  href={buttons.primary.href}
                 >
-                  {content.buttons.primary.text}
+                  {buttons.primary.text}
                 </Button>
               )}
             </div>
@@ -62,16 +69,16 @@ const { content, background = 'text-text-white from-brand to-primary-dark bg-gra
       </div>
 
       <div
-        class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full flex items-center justify-center`}
+        class={`${reverse ? 'order-1' : 'order-2'} h-full w-full flex items-center justify-center`}
       >
-        <div class="grid h-[316px] grid-cols-2 gap-8">
+        <div class="grid  grid-cols-2 gap-8">
           {
-            content.trustStats.map((stat, index) => (
+            trustStats.map((stat, index) => (
               <div class="flex flex-col items-start justify-start">
-                <div class="text-text-secondary text-6xl leading-normal font-bold">
+                <div class={`text-text-secondary ${statsTextSize} leading-normal font-bold`}>
                   {stat.value}
                 </div>
-                <div class="text-text-white text-lg leading-[1.4] font-medium">{stat.label}</div>
+                <div class="text-text-white text-lg  font-medium">{stat.label}</div>
               </div>
             ))
           }
