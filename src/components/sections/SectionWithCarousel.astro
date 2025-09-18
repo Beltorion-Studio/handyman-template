@@ -5,12 +5,10 @@ import Heading from '@components/ui/Heading.astro'
 import Badge from '../ui/Badge.astro'
 import { Icon } from 'astro-icon/components'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionContent } from '@types/section'
+import type { SectionContent } from '@schemas/section-schemas'
 
 type Props = {
   content: SectionContent
-  background?: string
-  sectionId: string
   carouselImages: Array<{
     src: ImageMetadata
     alt: string
@@ -18,11 +16,9 @@ type Props = {
 }
 
 const {
-  content,
-  background = 'bg-white',
-  sectionId = 'section-with-carousel',
+  content: { sectionId, title, background, paragraphs, badge, reverse, justifyContent, buttons },
   carouselImages,
-} = Astro.props
+} = Astro.props as Props
 ---
 
 <section
@@ -31,40 +27,40 @@ const {
   id={sectionId}
 >
   <div class="container">
-    <div class="desktop:grid-cols-2 grid items-strech justify-items-stretch gap-20">
+    <div class="desktop:grid-cols-2 items-strech grid justify-items-stretch gap-20">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
-          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
-        } ${content.reverse ? 'order-2' : 'order-1'}`}
+          justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${reverse ? 'order-2' : 'order-1'}`}
       >
         {
-          content.badge && (
+          badge && (
             <Badge intent="secondary" roundness="sm" size="base">
-              {content.badge}
+              {badge}
             </Badge>
           )
         }
 
-        <Heading tag="h2">{content.title}</Heading>
+        <Heading tag="h2">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
-            Object.entries(content.paragraphs).map(([key, text]) => {
+            Object.entries(paragraphs).map(([key, text]) => {
               void key
               return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
           }
         </div>
         {
-          content.buttons && (
+          buttons && (
             <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
-              {content.buttons.primary && (
+              {buttons.primary && (
                 <Button
                   intent="primary"
                   size="medium"
                   borderRadius="corner"
-                  href={content.buttons.primary.href}
+                  href={buttons.primary.href}
                 >
-                  {content.buttons.primary.text}
+                  {buttons.primary.text}
                 </Button>
               )}
             </div>
@@ -72,12 +68,9 @@ const {
         }
       </div>
 
-      <div class={`${content.reverse ? 'order-1' : 'order-2'} w-full aspect-square`}>
-        <div
-          class="relative w-full h-full overflow-hidden rounded-3xl"
-          data-carousel-container
-        >
-          <div class="relative w-full h-full">
+      <div class={`${reverse ? 'order-1' : 'order-2'} w-full aspect-square`}>
+        <div class="relative h-full w-full overflow-hidden rounded-3xl" data-carousel-container>
+          <div class="relative h-full w-full">
             {
               carouselImages.map((image, index) => (
                 <Image
@@ -97,7 +90,7 @@ const {
             carouselImages.length > 1 && (
               <div class="absolute right-4 bottom-4 flex gap-12">
                 <button
-                  class="cursor-pointer border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
+                  class="border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
                   tabindex="0"
                   aria-label="Previous image"
                   data-carousel-prev
@@ -105,7 +98,7 @@ const {
                   <Icon name="quill:chevron-left" class="h-6 w-6" />
                 </button>
                 <button
-                  class="cursor-pointer border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
+                  class="border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
                   tabindex="0"
                   aria-label="Next image"
                   data-carousel-next

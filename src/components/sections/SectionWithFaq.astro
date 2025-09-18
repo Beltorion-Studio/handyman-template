@@ -3,7 +3,7 @@ import { Image } from 'astro:assets'
 import Heading from '@components/ui/Heading.astro'
 import { Icon } from 'astro-icon/components'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionContent } from '@types/section'
+import type { SectionContent } from '@schemas/section-schemas'
 
 type FaqItem = {
   question: string
@@ -14,9 +14,7 @@ type FaqItem = {
 }
 
 type Props = {
-  sectionId: string
   content: SectionContent
-  background?: string
   faqItems: FaqItem[]
   image: {
     src: ImageMetadata
@@ -25,12 +23,10 @@ type Props = {
 }
 
 const {
-  content,
-  background = 'bg-white',
-  sectionId = 'section-with-faq',
+  content: { sectionId, title, background, paragraphs, badge, reverse, justifyContent, buttons },
   faqItems,
   image,
-} = Astro.props
+} = Astro.props as Props
 ---
 
 <section class={`py-10 tablet:py-28 ${background}`} aria-label="FAQ section" id={sectionId}>
@@ -38,10 +34,10 @@ const {
     <div class="desktop:grid-cols-2 grid items-start gap-20">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
-          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
-        } ${content.reverse ? 'order-2' : 'order-1'}`}
+          justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${reverse ? 'order-2' : 'order-1'}`}
       >
-        <Heading tag="h2" class="mb-8">{content.title}</Heading>
+        <Heading tag="h2" class="mb-8">{title}</Heading>
 
         <div class="w-full space-y-2" data-accordion>
           {
@@ -60,15 +56,14 @@ const {
                   <Icon name="quill:chevron-down" class="text-brand h-6 w-6" />
                 </button>
 
-                <div
-                  class="border-brand border-t px-4"
-                  data-accordion-answer
-                  aria-hidden="true"
-                >
+                <div class="border-brand border-t px-4" data-accordion-answer aria-hidden="true">
                   <div class="space-y-4 pt-4">
                     {faq.items.map((item) => (
                       <div class="flex items-start gap-4">
-                        <Icon name="quill:chevron-up" class="text-brand mt-0.5 h-6 w-6 flex-shrink-0" />
+                        <Icon
+                          name="quill:chevron-up"
+                          class="text-brand mt-0.5 h-6 w-6 flex-shrink-0"
+                        />
                         <span class="text-text-primary text-lg leading-relaxed">{item.text}</span>
                       </div>
                     ))}
@@ -80,7 +75,7 @@ const {
         </div>
       </div>
 
-      <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+      <div class={`${reverse ? 'order-1' : 'order-2'} h-full w-full`}>
         <div class="relative h-[600px] w-full overflow-hidden rounded-3xl">
           <Image src={image.src} alt={image.alt} class="h-full w-full object-cover" />
         </div>
