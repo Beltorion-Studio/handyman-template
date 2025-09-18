@@ -3,22 +3,26 @@ import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 import Badge from '@components/ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import { SectionWithTrustStatsSchema } from '@schemas/section-schemas'
+import type { SectionWithTrustStats } from '@schemas/section-schemas'
 
-const { content } = Astro.props
-const safe = SectionWithTrustStatsSchema.parse(content)
+type Props = {
+  content: SectionWithTrustStats
+}
+
 const {
-  sectionId,
-  title,
-  background,
-  statsTextSize,
-  paragraphs,
-  badge,
-  reverse,
-  justifyContent,
-  buttons,
-  trustStats,
-} = safe
+  content: {
+    sectionId,
+    title,
+    background,
+    statsTextSize,
+    paragraphs,
+    badge,
+    reverse,
+    justifyContent,
+    buttons,
+    trustStats,
+  },
+} = Astro.props as Props
 ---
 
 <section
@@ -71,14 +75,14 @@ const {
       <div
         class={`${reverse ? 'order-1' : 'order-2'} h-full w-full flex items-center justify-center`}
       >
-        <div class="grid  grid-cols-2 gap-8">
+        <div class="grid grid-cols-2 gap-8">
           {
             trustStats.map((stat, index) => (
               <div class="flex flex-col items-start justify-start">
                 <div class={`text-text-secondary ${statsTextSize} leading-normal font-bold`}>
                   {stat.value}
                 </div>
-                <div class="text-text-white text-lg  font-medium">{stat.label}</div>
+                <div class="text-text-white text-lg font-medium">{stat.label}</div>
               </div>
             ))
           }

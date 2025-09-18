@@ -4,53 +4,63 @@ import Button from '@components/ui/Button.astro'
 import Heading from '@components/ui/Heading.astro'
 import Badge from '../ui/Badge.astro'
 import { formatText } from '@lib/utils/textFormatting'
-import type { SectionContent } from '@types/section'
+import type { SectionContent } from '@schemas/section-schemas'
 
 type Props = {
   content: SectionContent
-  
-  background?: string
 }
 
-const { content, background = 'bg-white' } = Astro.props
+const {
+  content: {
+    sectionId,
+    title,
+    background,
+    paragraphs,
+    badge,
+    reverse,
+    justifyContent,
+    buttons,
+    image,
+  },
+} = Astro.props as Props
 ---
 
-<section class={`py-10 tablet:py-28 ${background}`} aria-label="Hero section container">
+<section class={`py-10 tablet:py-28 ${background}`} aria-label="Hero section container" id={sectionId}>
   <div class="container">
     <div class="desktop:grid-cols-2 grid items-center gap-20">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
-          content.justifyContent === 'center' ? 'justify-center' : 'justify-start'
-        } ${content.reverse ? 'order-2' : 'order-1'}`}
+          justifyContent === 'center' ? 'justify-center' : 'justify-start'
+        } ${reverse ? 'order-2' : 'order-1'}`}
       >
         {
-          content.badge && (
+          badge && (
             <Badge intent="secondary" roundness="sm" size="base">
-              {content.badge}
+              {badge}
             </Badge>
           )
         }
 
-        <Heading tag="h2">{content.title}</Heading>
+        <Heading tag="h2">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
-            Object.entries(content.paragraphs).map(([key, text]) => {
+            Object.entries(paragraphs).map(([key, text]) => {
               void key
               return <p class="text-text-primary mt-4" set:html={formatText(text)} />
             })
           }
         </div>
         {
-          content.buttons && (
+          buttons && (
             <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
-              {content.buttons.primary && (
+              {buttons.primary && (
                 <Button
                   intent="primary"
                   size="medium"
                   borderRadius="corner"
-                  href={content.buttons.primary.href}
+                  href={buttons.primary.href}
                 >
-                  {content.buttons.primary.text}
+                  {buttons.primary.text}
                 </Button>
               )}
             </div>
@@ -58,14 +68,14 @@ const { content, background = 'bg-white' } = Astro.props
         }
       </div>
       {
-        content.image.src && (
-          <div class={`${content.reverse ? 'order-1' : 'order-2'} h-full w-full`}>
+        image.src && (
+          <div class={`${reverse ? 'order-1' : 'order-2'} h-full w-full`}>
             <Image
-              src={content.image.src}
-              alt={content.image.alt}
+              src={image.src}
+              alt={image.alt}
               class={`w-full rounded-3xl object-cover ${
-                content.image.size ? `aspect-${content.image.size}` : 'h-full'
-              } ${content.image.position === 'middle' ? 'self-center' : 'self-start'}`}
+                image.size ? `aspect-${image.size}` : 'h-full'
+              } ${image.position === 'middle' ? 'self-center' : 'self-start'}`}
             />
           </div>
         )
