@@ -49,7 +49,7 @@ const services = allServices.filter((service) => service.data.featured)
     title={service.data.title}
     subheading={service.data.description}
     primaryButtonText="Get Free Quote"
-    primaryButtonHref="#contact"
+    primaryButtonHref="/contact"
   />
 
   <SectionWithText
@@ -63,6 +63,7 @@ const services = allServices.filter((service) => service.data.featured)
   <SectionRegular
     content={{
       sectionId: 'service-1',
+      background: 'from-primary-light/5 to-brand/5 overflow-x-clip bg-gradient-to-br',
       justifyContent: 'center',
       title: 'Emergency Plumbing Repairs',
       paragraphs: {
@@ -104,6 +105,7 @@ const services = allServices.filter((service) => service.data.featured)
   <SectionRegular
     content={{
       sectionId: 'service-3',
+      background: 'from-primary-light/5 to-brand/5 overflow-x-clip bg-gradient-to-br',
       justifyContent: 'center',
       title: 'Fixture Installation & Repair',
       paragraphs: {
@@ -151,6 +153,7 @@ const services = allServices.filter((service) => service.data.featured)
   <SectionRegular
     content={{
       sectionId: 'service-5',
+      background: 'from-primary-light/5 to-brand/5 overflow-x-clip bg-gradient-to-br',
       justifyContent: 'center',
       title: 'Water Heater Services',
       paragraphs: {
@@ -178,6 +181,7 @@ const services = allServices.filter((service) => service.data.featured)
   <SectionWithBullets
     content={{
       sectionId: 'service-4',
+      background: 'from-primary-light/5 to-brand/5 overflow-x-clip bg-gradient-to-br',
       justifyContent: 'center',
       reverse: true,
       title: 'Pipe Services',
@@ -205,6 +209,15 @@ const services = allServices.filter((service) => service.data.featured)
     cards={service.data.common.cards}
   />
 
+  <CTA
+    sectionId="service-cta"
+    title={`Ready to Get Started with ${service.data.title}?`}
+    description="Contact us today for a free consultation and estimate. We're here to help bring your vision to life."
+    primaryButtonText="Get Free Quote"
+    primaryButtonHref="#contact"
+    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+
   <SectionWithThreeColumns
     sectionId="three-columns-section"
     title={service.data.threeColumnsSection.title}
@@ -227,17 +240,10 @@ const services = allServices.filter((service) => service.data.featured)
     ]}
   />
 
-  <CTA
-    sectionId="service-cta"
-    title={`Ready to Get Started with ${service.data.title}?`}
-    description="Contact us today for a free consultation and estimate. We're here to help bring your vision to life."
-    primaryButtonText="Get Free Quote"
-    primaryButtonHref="#contact"
-    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
-  />
   <SectionWithTrustStats
     content={{
       sectionId: 'trust-stats-section',
+      background:'bg-gradient-to-br from-brand to-primary-dark',
       title: 'Service Areas & Scheduling',
       statsTextSize: 'text-2xl',
       paragraphs: {

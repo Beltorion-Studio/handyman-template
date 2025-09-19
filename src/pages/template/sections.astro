@@ -47,38 +47,18 @@ const sections = [
   { id: 'content-section', title: 'Section With Content', component: 'SectionWithContent' },
   { id: 'bullets-section', title: 'Section With Bullets', component: 'SectionWithBullets' },
   { id: 'icons-section', title: 'Section With Icons', component: 'SectionWithIcons' },
+  { id: 'cards-horizontal-section', title: 'Section With Cards (Horizontal)', component: 'SectionWithCards', },
+  { id: 'features-section', title: 'Section With Features (Vertical)', component: 'SectionWithFeatures', },
   { id: 'cards-section', title: 'Section With Cards (Grid)', component: 'SectionWithCards' },
-  {
-    id: 'features-section',
-    title: 'Section With Features (Vertical)',
-    component: 'SectionWithFeatures',
-  },
-  {
-    id: 'cards-horizontal-section',
-    title: 'Section With Cards (Horizontal)',
-    component: 'SectionWithCards',
-  },
-  {
-    id: 'features-grid-section',
-    title: 'Section With Features (Grid)',
-    component: 'SectionWithFeatures',
-  },
-  {
-    id: 'trust-stats-section',
-    title: 'Section With Trust Stats',
-    component: 'SectionWithTrustStats',
-  },
+  { id: 'features-grid-section', title: 'Section With Features (Grid)', component: 'SectionWithFeatures', },
   { id: 'carousel-section', title: 'Section With Carousel', component: 'SectionWithCarousel' },
   { id: 'faq-section', title: 'Section With FAQ', component: 'SectionWithFaq' },
+  { id: 'trust-stats-section', title: 'Section With Trust Stats', component: 'SectionWithTrustStats', },
   { id: 'featured-blog-section', title: 'Featured Blog Section', component: 'FeaturedBlogSection' },
   { id: 'posts-section', title: 'Posts Section', component: 'PostsSection' },
   { id: 'services-section', title: 'Services Section', component: 'Services' },
   { id: 'team-section', title: 'Team Section', component: 'TeamSection' },
-  {
-    id: 'three-columns-section',
-    title: 'Section With Three Columns',
-    component: 'SectionWithThreeColumns',
-  },
+  { id: 'three-columns-section', title: 'Section With Three Columns', component: 'SectionWithThreeColumns', },
   { id: 'contact-new', title: 'Contact Section New', component: 'ContactSectionNew' },
 ]
 ---
@@ -321,6 +301,7 @@ const sections = [
             <SectionWithIcons
               content={{
                 sectionId: 'icons-section',
+                reverse: true,
                 badge: 'Services',
                 title: 'What We Offer',
                 paragraphs: {
@@ -355,127 +336,6 @@ const sections = [
                     text: 'Painting and refinishing',
                   },
                 ],
-              }}
-            />
-          </div>
-        </div>
-
-        <!-- Section With Cards Example -->
-        <div
-          id="cards-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Cards (Grid)</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithCards</p>
-          </div>
-          <div class="p-0">
-            <SectionWithCards
-              content={{
-                sectionId: 'cards-section',
-                badge: 'Services',
-                title: 'Our Service Cards',
-                reverse: true,
-                paragraphs: {
-                  p1: 'Here are some of our key services displayed as cards with icons and descriptions.',
-                  p2: 'Each card represents a different service we offer to our customers.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'View All Services',
-                    href: '/services',
-                  },
-                  secondary: {
-                    text: 'Contact Us',
-                    href: '/contact',
-                  },
-                },
-                image: {
-                  src: serviceImage,
-                  alt: 'Handyman services',
-                },
-                cards: [
-                  {
-                    title: 'Plumbing Repairs',
-                    description: 'Fix leaks, unclog drains, and repair plumbing fixtures',
-                    icon: 'plumber-wrench',
-                  },
-                  {
-                    title: 'Electrical Work',
-                    description: 'Install outlets, fix lighting, and electrical maintenance',
-                    icon: 'energy-electric-plug',
-                  },
-                  {
-                    title: 'Carpentry',
-                    description: 'Custom woodwork, repairs, and furniture assembly',
-                    icon: 'home-repair-hammer',
-                  },
-                  {
-                    title: 'Painting',
-                    description: 'Interior and exterior painting services',
-                    icon: 'home-repair-paint-brush',
-                  },
-                ],
-                cardLayout: 'grid',
-              }}
-            />
-          </div>
-        </div>
-
-        <!-- Section With Features Example -->
-        <div
-          id="features-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Features (Vertical)</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithFeatures</p>
-          </div>
-          <div class="p-0">
-            <SectionWithFeatures
-              content={{
-                sectionId: 'features-section',
-                badge: 'Features',
-                title: 'Why Choose Our Services',
-                paragraphs: {
-                  p1: 'We provide exceptional handyman services with these key features.',
-                  p2: 'Our team is committed to delivering quality work and customer satisfaction.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'Get Started',
-                    href: '/contact',
-                  },
-                },
-                image: {
-                  src: testImage,
-                  alt: 'Professional handyman work',
-                },
-                features: [
-                  {
-                    title: 'Licensed & Insured',
-                    description:
-                      'All our technicians are fully licensed and insured for your peace of mind.',
-                    icon: 'security-shield',
-                    highlight: true,
-                  },
-                  {
-                    title: 'Same Day Service',
-                    description: 'Most repairs can be completed the same day you call us.',
-                    icon: 'energy-light-bulb',
-                  },
-                  {
-                    title: 'Quality Guarantee',
-                    description: 'We stand behind our work with a comprehensive quality guarantee.',
-                    icon: 'security-badge',
-                  },
-                  {
-                    title: 'Fair Pricing',
-                    description: 'Transparent, upfront pricing with no hidden fees or surprises.',
-                    icon: 'home-repair-toolbox',
-                  },
-                ],
-                featureLayout: 'vertical',
               }}
             />
           </div>
@@ -529,6 +389,127 @@ const sections = [
                   },
                 ],
                 cardLayout: 'horizontal',
+              }}
+            />
+          </div>
+        </div>
+
+        <!-- Section With Features Example -->
+        <div
+          id="features-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Features (Vertical)</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithFeatures</p>
+          </div>
+          <div class="p-0">
+            <SectionWithFeatures
+              content={{
+                sectionId: 'features-section',
+                reverse: true,
+                badge: 'Features',
+                title: 'Why Choose Our Services',
+                paragraphs: {
+                  p1: 'We provide exceptional handyman services with these key features.',
+                  p2: 'Our team is committed to delivering quality work and customer satisfaction.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'Get Started',
+                    href: '/contact',
+                  },
+                },
+                image: {
+                  src: testImage,
+                  alt: 'Professional handyman work',
+                },
+                features: [
+                  {
+                    title: 'Licensed & Insured',
+                    description:
+                      'All our technicians are fully licensed and insured for your peace of mind.',
+                    icon: 'security-shield',
+                    highlight: true,
+                  },
+                  {
+                    title: 'Same Day Service',
+                    description: 'Most repairs can be completed the same day you call us.',
+                    icon: 'energy-light-bulb',
+                  },
+                  {
+                    title: 'Quality Guarantee',
+                    description: 'We stand behind our work with a comprehensive quality guarantee.',
+                    icon: 'security-badge',
+                  },
+                  {
+                    title: 'Fair Pricing',
+                    description: 'Transparent, upfront pricing with no hidden fees or surprises.',
+                    icon: 'home-repair-toolbox',
+                  },
+                ],
+                featureLayout: 'vertical',
+              }}
+            />
+          </div>
+        </div>
+
+        <!-- Section With Cards Example -->
+        <div
+          id="cards-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Cards (Grid)</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithCards</p>
+          </div>
+          <div class="p-0">
+            <SectionWithCards
+              content={{
+                sectionId: 'cards-section',
+                badge: 'Services',
+                title: 'Our Service Cards',
+                paragraphs: {
+                  p1: 'Here are some of our key services displayed as cards with icons and descriptions.',
+                  p2: 'Each card represents a different service we offer to our customers.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'View All Services',
+                    href: '/services',
+                  },
+                  secondary: {
+                    text: 'Contact Us',
+                    href: '/contact',
+                  },
+                },
+                image: {
+                  src: serviceImage,
+                  alt: 'Handyman services',
+                },
+                cards: [
+                  {
+                    title: 'Plumbing Repairs',
+                    description: 'Fix leaks, unclog drains, and repair plumbing fixtures',
+                    icon: 'plumber-wrench',
+                  },
+                  {
+                    title: 'Electrical Work',
+                    description: 'Install outlets, fix lighting, and electrical maintenance',
+                    icon: 'energy-electric-plug',
+                  },
+                  {
+                    title: 'Carpentry',
+                    description: 'Custom woodwork, repairs, and furniture assembly',
+                    icon: 'home-repair-hammer',
+                  },
+                  {
+                    title: 'Painting',
+                    description: 'Interior and exterior painting services',
+                    icon: 'home-repair-paint-brush',
+                  },
+                ],
+                cardLayout: 'grid',
               }}
             />
           </div>
@@ -596,54 +577,6 @@ const sections = [
           </div>
         </div>
 
-        <!-- Section With Trust Stats Example -->
-        <div
-          id="trust-stats-section"
-          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
-        >
-          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
-            <h3 class="text-lg font-semibold text-gray-900">Section With Trust Stats</h3>
-            <p class="text-sm text-gray-600">Component: SectionWithTrustStats</p>
-          </div>
-          <div class="p-0">
-            <SectionWithTrustStats
-              content={{
-                sectionId: 'trust-stats-section',
-                badge: 'Trust',
-                title: 'Why Homeowners Trust Us',
-                paragraphs: {
-                  p1: 'Our track record speaks for itself with satisfied customers and quality work.',
-                  p2: 'We are committed to excellence in every project we undertake.',
-                },
-                buttons: {
-                  primary: {
-                    text: 'Join Our Happy Customers',
-                    href: '/contact',
-                  },
-                },
-                trustStats: [
-                  {
-                    value: '500+',
-                    label: 'Happy Customers',
-                  },
-                  {
-                    value: '15+',
-                    label: 'Years Experience',
-                  },
-                  {
-                    value: '24/7',
-                    label: 'Emergency Service',
-                  },
-                  {
-                    value: '100%',
-                    label: 'Satisfaction Guaranteed',
-                  },
-                ],
-              }}
-            />
-          </div>
-        </div>
-
         <!-- Section With Carousel Example -->
         <div
           id="carousel-section"
@@ -706,6 +639,7 @@ const sections = [
             <SectionWithFaq
               content={{
                 sectionId: 'faq-section',
+                reverse: true,
                 title: 'What We Install & Repair',
                 badge: 'FAQ',
                 paragraphs: {},
@@ -775,6 +709,54 @@ const sections = [
                 alt: 'Professional plumbing services',
               }}
               sectionId="faq-section"
+            />
+          </div>
+        </div>
+
+        <!-- Section With Trust Stats Example -->
+        <div
+          id="trust-stats-section"
+          class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md"
+        >
+          <div class="border-b border-gray-200 bg-gray-100 px-6 py-3">
+            <h3 class="text-lg font-semibold text-gray-900">Section With Trust Stats</h3>
+            <p class="text-sm text-gray-600">Component: SectionWithTrustStats</p>
+          </div>
+          <div class="p-0">
+            <SectionWithTrustStats
+              content={{
+                sectionId: 'trust-stats-section',
+                badge: 'Trust',
+                title: 'Why Homeowners Trust Us',
+                paragraphs: {
+                  p1: 'Our track record speaks for itself with satisfied customers and quality work.',
+                  p2: 'We are committed to excellence in every project we undertake.',
+                },
+                buttons: {
+                  primary: {
+                    text: 'Join Our Happy Customers',
+                    href: '/contact',
+                  },
+                },
+                trustStats: [
+                  {
+                    value: '500+',
+                    label: 'Happy Customers',
+                  },
+                  {
+                    value: '15+',
+                    label: 'Years Experience',
+                  },
+                  {
+                    value: '24/7',
+                    label: 'Emergency Service',
+                  },
+                  {
+                    value: '100%',
+                    label: 'Satisfaction Guaranteed',
+                  },
+                ],
+              }}
             />
           </div>
         </div>

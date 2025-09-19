@@ -1,14 +1,19 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import CTA from '@components/CTA.astro'
-import ContactUs from '@components/ContactUs.astro'
-import heroImage from '@assets/images/electrician-in-safety-helmet.jpg'
-import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
+import heroImage from '@assets/images/electrician-in-safety-helmet.jpg'
+import PostsSection from '@components/sections/PostsSection.astro'
+import CTA from '@components/CTA.astro'
+import Testimonial from '@components/Testimonial.astro'
+import ContactUs from '@components/ContactUs.astro'
+import { getCollection } from 'astro:content'
 
 // Get all services from content collection
 const allServices = await getCollection('services')
 const services = allServices.filter((service) => service.data.featured)
+
+// Get testimonials from content collection
+const testimonials = await getCollection('testimonial')
 ---
 
 <Layout title="Home">
@@ -18,6 +23,12 @@ const services = allServices.filter((service) => service.data.featured)
     title="@@Services@@ for Every Home"
   />
 
+  <PostsSection
+    posts={services}
+    postType="services"
+    sectionId="otherServices"
+  />
+
   <CTA
     sectionId="Call to action"
     title="Ready to Fix It Today?"
@@ -25,6 +36,16 @@ const services = allServices.filter((service) => service.data.featured)
     primaryButtonText="Get Your Free Quote"
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
+  />
+
+  <Testimonial
+    badgeText="Testimonials"
+    ,
+    title="What Our Clients Say"
+    ,
+    sectionId="testimonials"
+    ,
+    testimonials={testimonials}
   />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />

@@ -1,11 +1,19 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import CTA from '@components/CTA.astro'
-import heroImage from '@assets/images/modern-library-1.jpg'
-import { getCollection } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
-import SectionRegular from '@components/sections/SectionRegular.astro'
-import Library1 from '@assets/images/modern-library-1.jpg'
+import heroImage from '@assets/images/carpenter-wardrobe.jpg'
+import { Image } from 'astro:assets'
+import Gallery1 from '@assets/images/carpenter-wardrobe.jpg'
+import Gallery2 from '@assets/images/carpenter-modern-closet.jpg'
+import Gallery3 from '@assets/images/carpenter-modern-kitchen.jpg'
+import Gallery4 from '@assets/images/electrical-kitchen-lighting.jpg'
+import Gallery5 from '@assets/images/carpenter-modern-bathroom.jpg'
+import Gallery6 from '@assets/images/painting-spacious-room.jpg'
+import Gallery7 from '@assets/images/carpenter-meeting-room.jpg'
+import Gallery8 from '@assets/images/carpenter-wooden-benches.jpg'
+import Gallery9 from '@assets/images/energy-house-with-solar-panel.jpg'
+import CTA from '@components/CTA.astro'
+import { getCollection } from 'astro:content'
 import Testimonial from '@components/Testimonial.astro'
 
 // Get testimonials from content collection
@@ -13,23 +21,84 @@ const testimonials = await getCollection('testimonial')
 ---
 
 <Layout title="Home">
-  <Hero sectionId="hero" heroImage={{ src: heroImage, alt: 'Hero background image' }} title="Our Latest @@Works@@" />
-
-  <SectionRegular
-    content={{
-      sectionId: 'Our Latest Project',
-      badge: 'Our Latest Project',
-      title: 'University Library',
-      paragraphs: {
-        p1: 'Our recent project involved renovating the University Library. We assembled modern furniture, installed parquet flooring, painted walls for a fresh look, and replaced outdated light fixtures.',
-        p2: 'The result? A polished and professional space that balances function and style, giving employees and students a welcoming environment.',
-      },
-      image: {
-        src: Library1,
-        alt: 'managed it services transportation logistics',
-      },
-    }}
+  <Hero
+    sectionId="hero"
+    heroImage={{ src: heroImage, alt: 'Hero background image' }}
+    title="Our @@Works@@"
+    subheading="A picture is worth a thousand words, and our gallery showcases the care, skill, and craftsmanship behind every project we complete."
+    primaryButtonText="Get Started"
+    primaryButtonHref="/contact"
   />
+
+  <section class="tablet:py-28 py-10" id="OurWorksGallery">
+    <div class="container">
+      <div class="desktop:grid-cols-3 tablet:grid-cols-2 grid grid-cols-1 gap-8">
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery1}
+            alt="Gorgeous luxury wardrobe closet with pale pink pastel clothes on hangers and heeled shoes on shelf"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery2}
+            alt="Modern walk-in closet with wooden shelves and vanity mirror"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery3}
+            alt="Modern kitchen interior with a large island and sleek cabinetry"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery4}
+            alt="Grey and white luxury kitchen in modern style"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery5}
+            alt="Modern bathroom furniture"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery6}
+            alt="Spacious room with painted wall decoration"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery7}
+            alt="Business meeting room"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery8}
+            alt="Wooden benches at park"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+        <div class="relative aspect-3/2 w-full overflow-hidden rounded-3xl transition-shadow duration-300 hover:shadow-lg hover:shadow-black/25">
+          <Image
+            src={Gallery9}
+            alt="Residential house with solar panel modules on rooftop"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <CTA
     sectionId="Call to action"
