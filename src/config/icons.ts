@@ -28,12 +28,20 @@ export const icons = {
     email: 'carbon:email',
   },
 
-  // Navigation Icons
-  navigation: {
+  // Caret Icons
+  caret: {
     caretDown: 'carbon:caret-down',
     caretLeft: 'carbon:caret-left',
     caretRight: 'carbon:caret-right',
     caretUp: 'carbon:caret-up',
+  },
+
+  // Chevron Icons
+  chevron: {
+    chevronDown: 'quill:chevron-down',
+    chevronLeft: 'quill:chevron-left',
+    chevronRight: 'quill:chevron-right',
+    chevronUp: 'quill:chevron-up',
   },
 } as const
 
@@ -59,11 +67,17 @@ export const projectIcons = {
   // Communication
   email: icons.communication.email,
 
-  // Navigation arrows
-  arrowDown: icons.navigation.caretDown,
-  arrowLeft: icons.navigation.caretLeft,
-  arrowRight: icons.navigation.caretRight,
-  arrowUp: icons.navigation.caretUp,
+  // Caret arrows
+  arrowDown: icons.caret.caretDown,
+  arrowLeft: icons.caret.caretLeft,
+  arrowRight: icons.caret.caretRight,
+  arrowUp: icons.caret.caretUp,
+
+  // Chevron arrows
+  chevronDown: icons.chevron.chevronDown,
+  chevronLeft: icons.chevron.chevronLeft,
+  chevronRight: icons.chevron.chevronRight,
+  chevronUp: icons.chevron.chevronUp,
 
   // Form elements
   checkbox: icons.checkbox.checkedFilled,

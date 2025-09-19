@@ -1,0 +1,129 @@
+---
+import { z } from 'zod'
+import BlogCTA from './BlogCTA.astro'
+import TableOfContents from './TableOfContents.astro'
+
+const PropsSchema = z.object({
+  sectionId: z.string().optional(),
+  className: z.string().optional(),
+  content: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const { sectionId = 'blog-section', className = '', content = '' } = PropsSchema.parse(Astro.props)
+---
+
+<section class={`py-20 bg-white ${className}`} id={sectionId}>
+  <div class="container mx-auto">
+    <div class="flex items-start gap-20">
+      <!-- Sidebar with TOC and CTA -->
+      <div class="w-80 flex-shrink-0" data-toc-container>
+        <div class="top-80">
+          <!-- Table of Contents -->
+          <TableOfContents content={content} />
+
+          <BlogCTA
+            sectionId="blog-cta"
+            title="Let's Get Your Project Started"
+            buttonText="Contact Us Today"
+            buttonHref="#contact"
+          />
+        </div>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="max-w-3xl flex-1" data-main-content>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+  // Register GSAP plugins
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+
+  // Simple GSAP Sticky TOC
+  const tocContainer = document.querySelector('[data-toc-container]')
+  const mainContent = document.querySelector('[data-main-content]')
+
+  if (tocContainer && mainContent && window.innerWidth >= 1024) {
+    ScrollTrigger.create({
+      trigger: mainContent,
+      start: 'top 90',
+      end: 'bottom bottom',
+      pin: tocContainer,
+      pinSpacing: false,
+    })
+  }
+
+  // TOC Highlighting
+  const tocLinks = document.querySelectorAll('[data-toc] a[href^="#"]')
+  const sections = document.querySelectorAll('[data-main-content] h2[id]')
+
+  if (tocLinks.length > 0 && sections.length > 0) {
+    // Add active class to TOC links
+    tocLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        const targetId = link.getAttribute('href')?.substring(1)
+        if (targetId) {
+          const targetSection = document.getElementById(targetId)
+
+          if (targetSection) {
+            // Smooth scroll to the section
+            gsap.to(window, {
+              duration: 1,
+              scrollTo: {
+                y: targetSection,
+                offsetY: 100,
+              },
+              ease: 'power2.out',
+            })
+          }
+
+          // Remove active class from all links
+          tocLinks.forEach((l) => l.classList.remove('active'))
+          // Add active class to clicked link
+          link.classList.add('active')
+        }
+      })
+    })
+
+    // Create ScrollTriggers for each section
+    sections.forEach((section, index) => {
+      const sectionId = section.getAttribute('id')
+      const correspondingLink = document.querySelector(`[data-toc] a[href="#${sectionId}"]`)
+
+      if (correspondingLink) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 20%',
+          end: 'bottom 20%',
+          onEnter: () => {
+            // Remove active class from all links
+            tocLinks.forEach((link) => {
+              link.classList.remove('active')
+            })
+            // Add active class to current section's link
+            correspondingLink.classList.add('active')
+          },
+          onEnterBack: () => {
+            // Remove active class from all links
+            tocLinks.forEach((link) => {
+              link.classList.remove('active')
+            })
+            // Add active class to current section's link
+            correspondingLink.classList.add('active')
+          },
+        })
+      }
+    })
+  }
+</script>

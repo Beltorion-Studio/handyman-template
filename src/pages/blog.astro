@@ -7,7 +7,7 @@ import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 
 // Get blog posts from content collection
-const allBlogPosts = await getCollection('blog')
+const allBlogPosts = await getCollection('blogs')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
@@ -15,6 +15,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
   <Hero
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="Blog"
+    sectionId="hero-section"
   />
 
   <!-- Featured Blog Section Example -->

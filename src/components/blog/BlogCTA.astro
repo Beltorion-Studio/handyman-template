@@ -1,0 +1,51 @@
+---
+import { z } from 'zod'
+import Button from '@components/ui/Button.astro'
+import { config } from '@config'
+import Heading from '@components/ui/Heading.astro'
+
+const PropsSchema = z.object({
+  sectionId: z.string(),
+  className: z.string().optional(),
+  title: z.string().optional(),
+  buttonText: z.string().optional(),
+  buttonHref: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const {
+  sectionId = 'blog-cta',
+  className = '',
+  title = "Let's Get Your Project Started",
+  buttonText = 'Contact Us Today',
+  buttonHref = '#contact',
+} = PropsSchema.parse(Astro.props)
+---
+
+<div
+  class={`bg-brand rounded-3xl mt-12 p-8 text-center ${className}`}
+  id={sectionId}
+  aria-label="Call to action"
+>
+  <Heading
+    tag="h3"
+    size="h3"
+    variant="white"
+    class="mb-8"
+  >
+    {title}
+  </Heading>
+
+
+  <Button
+    intent="secondary"
+    size="small"
+    borderRadius="corner"
+    href={buttonHref}
+    class="w-full"
+    
+  >
+    {buttonText}
+  </Button>
+</div>

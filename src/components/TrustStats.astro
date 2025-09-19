@@ -27,8 +27,8 @@ const { sectionId, stats } = PropsSchema.parse(Astro.props)
           <div class="text-brand w-full shrink-0 desktop:text-6xl tablet:text-3xl text-2xl font-bold">
             <p class="leading-normal">{stat.value}</p>
           </div>
-          <div class="text-text-primary w-full shrink-0 dexktop:text-lg tablet:text-base text-xs font-normal">
-            <p class="leading-[1.4]">{stat.label}</p>
+          <div class=" w-full shrink-0 ">
+            <p class="text-text-primary desktop:text-lg tablet:text-base text-lg font-normal">{stat.label}</p>
           </div>
         </div>
       ))

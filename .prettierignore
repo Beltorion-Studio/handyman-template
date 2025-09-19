@@ -1,0 +1,7 @@
+# Ignore Prose component to maintain readable formatting
+src/components/Prose.astro
+
+# Other files to ignore (optional)
+# dist/
+# node_modules/
+# .astro/

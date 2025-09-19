@@ -1,0 +1,32 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import Layout from '@layouts/Layout.astro'
+import BlogSection from '@components/blog/BlogSection.astro'
+import Prose from '@components/blog/Prose.astro'
+
+type Props = {
+  blog: CollectionEntry<'blogs'>
+}
+
+export const getStaticPaths = (async () => {
+  const blogs = await getCollection('blogs', (blog) => blog.data.draft !== true)
+
+  return blogs.map((blog) => ({ params: { slug: blog.id }, props: { blog } }))
+}) satisfies GetStaticPaths
+
+const { blog } = Astro.props
+const { Content } = await render(blog)
+
+// Get the raw markdown content for TOC extraction
+const rawContent = blog.body
+---
+
+<Layout title={blog.data.title}>
+  <BlogSection sectionId="blog-section" content={rawContent}>
+    <Prose>
+      <Content />
+    </Prose>
+  </BlogSection>
+</Layout>

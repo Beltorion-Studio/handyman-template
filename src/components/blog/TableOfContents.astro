@@ -1,0 +1,70 @@
+---
+import Heading from '@components/ui/Heading.astro'
+import { projectIcons } from '@config/icons'
+import { Icon } from 'astro-icon/components'
+import { z } from 'zod'
+
+const PropsSchema = z.object({
+  sectionId: z.string().optional(),
+  className: z.string().optional(),
+  content: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const {
+  sectionId = 'table-of-contents',
+  className = '',
+  content = '',
+} = PropsSchema.parse(Astro.props)
+
+// Extract headings from the content
+function extractHeadings(markdownContent: string): Array<{ id: string; title: string }> {
+  const headingRegex = /^##\s+(.+)$/gm
+  const headings: Array<{ id: string; title: string }> = []
+
+  let match
+  while ((match = headingRegex.exec(markdownContent)) !== null) {
+    const title = match[1].trim()
+    // Generate ID from title (same logic as rehype-slug)
+    const id = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single
+      .trim()
+
+    headings.push({ id, title })
+  }
+
+  return headings
+}
+
+const tocItems = content ? extractHeadings(content) : []
+console.log('tocItems', tocItems)
+---
+
+<nav class={`${className}`} id={sectionId} aria-label="Table of contents" data-toc>
+  <Heading tag="h3" size="h3" variant="primary" class="mb-8"> Table of Contents </Heading>
+  {
+    tocItems.length > 0 && (
+      <ul class="space-y-3">
+        {tocItems.map((item) => (
+          <li>
+            <a
+              href={`#${item.id}`}
+              class="group flex items-center gap-3 text-lg font-bold text-brand underline transition-colors duration-200 hover:text-brand/85"
+              aria-label={`Jump to ${item.title}`}
+            >
+              <span class="flex-1">{item.title}</span>
+              <Icon
+                name={projectIcons.chevronRight}
+                class="h-6 w-6 transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</nav>

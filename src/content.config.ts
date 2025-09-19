@@ -30,7 +30,7 @@ const services = defineCollection({
       }),
 
       services: z.object({
-        service1: z.object({         
+        service1: z.object({
           title: z.string(),
           paragraphs: z.record(z.string(), z.string()),
           image: z.object({ src: image(), alt: z.string() }),
@@ -121,7 +121,7 @@ const services = defineCollection({
     }),
 })
 
-const blog = defineCollection({
+const blogs = defineCollection({
   loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) =>
     z.object({
@@ -135,6 +135,7 @@ const blog = defineCollection({
       category: z.string(),
       tags: z.array(z.string()).default([]),
       featured: z.boolean().default(false),
+      draft: z.boolean().default(false),
     }),
 })
 
@@ -163,4 +164,4 @@ const team = defineCollection({
     }),
 })
 
-export const collections = { services, testimonial, blog, team }
+export const collections = { services, testimonial, blogs, team }
