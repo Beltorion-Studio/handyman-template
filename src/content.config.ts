@@ -19,6 +19,7 @@ const services = defineCollection({
       duration: z.string(),
       features: z.array(z.string()),
       order: z.number(),
+      draft: z.boolean().default(false),
 
       mainTitle: z.string(),
       mainDescription: z.string(),
@@ -29,30 +30,32 @@ const services = defineCollection({
       }),
 
       services: z.object({
-        service1: z.object({
+        service1: z.object({         
           title: z.string(),
-          paragraph1: z.string(),
-          paragraph2: z.string(),
+          paragraphs: z.record(z.string(), z.string()),
+          image: z.object({ src: image(), alt: z.string() }),
         }),
         service2: z.object({
           title: z.string(),
-          paragraph1: z.string(),
-          bullets: z.array(z.string()),
+          paragraphs: z.record(z.string(), z.string()),
+          bulletPoints: z.array(z.string()),
+          image: z.object({ src: image(), alt: z.string() }),
         }),
         service3: z.object({
           title: z.string(),
-          paragraph1: z.string(),
-          paragraph2: z.string(),
+          paragraphs: z.record(z.string(), z.string()),
+          image: z.object({ src: image(), alt: z.string() }),
         }),
         service4: z.object({
           title: z.string(),
-          paragraph1: z.string(),
-          bullets: z.array(z.string()),
+          paragraphs: z.record(z.string(), z.string()),
+          bulletPoints: z.array(z.string()),
+          image: z.object({ src: image(), alt: z.string() }),
         }),
         service5: z.object({
           title: z.string(),
-          paragraph1: z.string(),
-          paragraph2: z.string(),
+          paragraphs: z.record(z.string(), z.string()),
+          image: z.object({ src: image(), alt: z.string() }),
         }),
       }),
 

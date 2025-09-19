@@ -34,3 +34,12 @@ export function formatText(text: string, styles?: TextStyle): string {
 
   return formattedText
 }
+
+/**
+ * Converts a string to a URL-friendly slug by converting to lowercase and replacing spaces with hyphens
+ * @param text - The text to convert to a slug
+ * @returns A URL-friendly slug string
+ */
+export function slugify(text: string): string {
+  return text.toLowerCase().replace(/\s+/g, '-')
+}
