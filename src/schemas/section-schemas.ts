@@ -82,10 +82,6 @@ export const SectionWithTextContentSchema = z.object({
 export const SectionWithTrustStatsSchema = z.object({
   sectionId: z.string(),
   title: z.string(),
-  background: z
-    .string()
-    .default('text-text-white from-brand to-primary-dark bg-gradient-to-br')
-    .optional(),
   statsTextSize: z.string().default('text-6xl').optional(),
   paragraphs: z.record(z.string(), z.string()),
   badge: z.string().optional(),
