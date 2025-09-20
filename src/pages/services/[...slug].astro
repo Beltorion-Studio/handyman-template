@@ -36,7 +36,7 @@ const { service } = Astro.props
 const pageTitle = `${service.data.title} | ${config.site.name}`
 
 // Get collections for PostsSection, Services, and TeamSection
-const allBlogPosts = await getCollection('blog')
+const allBlogPosts = await getCollection('blogs')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 
 const allServices = await getCollection('services')

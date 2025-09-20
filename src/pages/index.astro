@@ -26,7 +26,7 @@ const services = allServices.filter((service) => service.data.featured)
 const testimonials = await getCollection('testimonial')
 
 // Get blog posts from content collection
-const allBlogPosts = await getCollection('blog')
+const allBlogPosts = await getCollection('blogs')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
@@ -39,7 +39,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     primaryButtonHref="/contact"
     secondaryButtonText="Learn More"
     secondaryButtonHref="/services"
-    sectionId='Handyman Home'
+    sectionId="Handyman Home"
   />
 
   <Services sectionId="services" title="Our Services" services={services} />
@@ -174,7 +174,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     postType="blog"
     maxPosts={3}
     sectionId="latest-blog-posts"
-    background='bg-gradient-to-br from-primary-light/5 to-brand/5'
+    background="bg-gradient-to-br from-primary-light/5 to-brand/5"
   />
 
   <ContactUs sectionId="contact-us" title="Let's Talk About Your Needs" />

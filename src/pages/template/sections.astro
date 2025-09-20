@@ -30,7 +30,7 @@ import carouselImage3 from '@assets/images/locksmith.jpg'
 import { getCollection } from 'astro:content'
 
 // Get collections for PostsSection, Services, and TeamSection
-const allBlogPosts = await getCollection('blog')
+const allBlogPosts = await getCollection('blogs')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 
 const allServices = await getCollection('services')
@@ -47,18 +47,38 @@ const sections = [
   { id: 'content-section', title: 'Section With Content', component: 'SectionWithContent' },
   { id: 'bullets-section', title: 'Section With Bullets', component: 'SectionWithBullets' },
   { id: 'icons-section', title: 'Section With Icons', component: 'SectionWithIcons' },
-  { id: 'cards-horizontal-section', title: 'Section With Cards (Horizontal)', component: 'SectionWithCards', },
-  { id: 'features-section', title: 'Section With Features (Vertical)', component: 'SectionWithFeatures', },
+  {
+    id: 'cards-horizontal-section',
+    title: 'Section With Cards (Horizontal)',
+    component: 'SectionWithCards',
+  },
+  {
+    id: 'features-section',
+    title: 'Section With Features (Vertical)',
+    component: 'SectionWithFeatures',
+  },
   { id: 'cards-section', title: 'Section With Cards (Grid)', component: 'SectionWithCards' },
-  { id: 'features-grid-section', title: 'Section With Features (Grid)', component: 'SectionWithFeatures', },
+  {
+    id: 'features-grid-section',
+    title: 'Section With Features (Grid)',
+    component: 'SectionWithFeatures',
+  },
   { id: 'carousel-section', title: 'Section With Carousel', component: 'SectionWithCarousel' },
   { id: 'faq-section', title: 'Section With FAQ', component: 'SectionWithFaq' },
-  { id: 'trust-stats-section', title: 'Section With Trust Stats', component: 'SectionWithTrustStats', },
+  {
+    id: 'trust-stats-section',
+    title: 'Section With Trust Stats',
+    component: 'SectionWithTrustStats',
+  },
   { id: 'featured-blog-section', title: 'Featured Blog Section', component: 'FeaturedBlogSection' },
   { id: 'posts-section', title: 'Posts Section', component: 'PostsSection' },
   { id: 'services-section', title: 'Services Section', component: 'Services' },
   { id: 'team-section', title: 'Team Section', component: 'TeamSection' },
-  { id: 'three-columns-section', title: 'Section With Three Columns', component: 'SectionWithThreeColumns', },
+  {
+    id: 'three-columns-section',
+    title: 'Section With Three Columns',
+    component: 'SectionWithThreeColumns',
+  },
   { id: 'contact-new', title: 'Contact Section New', component: 'ContactSectionNew' },
 ]
 ---
@@ -162,7 +182,8 @@ const sections = [
                 sectionId: 'get-in-touch-section',
                 badge: 'Get in Touch Today',
                 title: 'Simple Steps to Your Next Project',
-                description: 'Reaching out is the easiest way to start turning your ideas into reality. Whether it\'s a small repair, a fresh coat of paint, or a full renovation, we\'re here to listen and help. Every project begins with a conversation—one where your needs, timeline, and budget are understood from the start. With clear communication and a straightforward process, we make it stress-free to get the support you need. Fill out the form below and let us handle the rest with professionalism and care.',
+                description:
+                  "Reaching out is the easiest way to start turning your ideas into reality. Whether it's a small repair, a fresh coat of paint, or a full renovation, we're here to listen and help. Every project begins with a conversation—one where your needs, timeline, and budget are understood from the start. With clear communication and a straightforward process, we make it stress-free to get the support you need. Fill out the form below and let us handle the rest with professionalism and care.",
               }}
             />
           </div>

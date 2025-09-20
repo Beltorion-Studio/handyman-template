@@ -2,13 +2,21 @@
 import Layout from '@layouts/Layout.astro'
 import heroImage from '@assets/images/locksmith.jpg'
 import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import Hero from '@components/sections/Hero.astro'
 import FeaturedBlogSection from '@components/sections/FeaturedBlogSection.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 
 // Get blog posts from content collection
 const allBlogPosts = await getCollection('blogs')
-const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+const featuredPosts = allBlogPosts.filter((post: CollectionEntry<'blogs'>) => post.data.featured)
+const nonFeaturedPosts = allBlogPosts.filter(
+  (post: CollectionEntry<'blogs'>) => !post.data.featured
+)
+const sortedNonFeaturedPosts = nonFeaturedPosts.sort(
+  (a: CollectionEntry<'blogs'>, b: CollectionEntry<'blogs'>) =>
+    b.data.pubDate.getTime() - a.data.pubDate.getTime()
+)
 ---
 
 <Layout title="Home">
@@ -19,17 +27,21 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
   />
 
   <!-- Featured Blog Section Example -->
-  <FeaturedBlogSection
-    sectionId="featured-blog-section"
-    post={blogPosts[0]}
-    postType="blog"
-    readMoreText="Read more"
-  />
+  {
+    featuredPosts.length > 0 && (
+      <FeaturedBlogSection
+        sectionId="featured-blog-section"
+        post={featuredPosts[0]}
+        postType="blog"
+        readMoreText="Read more"
+      />
+    )
+  }
 
   <PostsSection
-    posts={blogPosts}
+    posts={sortedNonFeaturedPosts}
     postType="blog"
     sectionId="blog-posts"
+    background="bg-gradient-to-br from-primary-light/5 to-brand/5"
   />
- 
 </Layout>
