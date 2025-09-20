@@ -52,9 +52,14 @@ export const navigationConfig = {
         },
       ],
     },
+    {
+      href: '/works/',
+      text: 'Works',
+      ariaLabel: 'View all our works',
+    },
 
     {
-      href: '/blog',
+      href: '/blogs',
       text: 'Blog',
       ariaLabel: 'Visit our blog for the latest updates and articles',
     },

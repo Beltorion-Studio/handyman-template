@@ -8,7 +8,6 @@ import Hero from '@components/sections/Hero.astro'
 import SectionWithText from '@components/sections/SectionWithText.astro'
 import PostsSection from '@components/sections/PostsSection.astro'
 
-
 // Get all services from content collection
 const allServices = await getCollection('services')
 const services = allServices.filter((service) => service.data.featured)
@@ -23,17 +22,21 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
 
 <Layout title="Home">
   <Hero
+    sectionId="hero-section"
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
     title="@@Plumbing@@ Services"
-    subheading='Professional plumbing repairs, installations, and maintenance for your home. From leaky faucets to complete bathroom renovations, we handle it all with expertise and reliability.'
-    primaryButtonText='Get in Touch'
-    primaryButtonHref='#contact'
+    subheading="Professional plumbing repairs, installations, and maintenance for your home. From leaky faucets to complete bathroom renovations, we handle it all with expertise and reliability."
+    primaryButtonText="Get in Touch"
+    primaryButtonHref="#contact"
   />
 
   <SectionWithText
-    title="Service Overview"
-    description="We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively."
-    sectionId="serviceOverview"
+    content={{
+      sectionId: 'serviceOverview',
+      title: 'Service Overview',
+      description:
+        'We deliver professional plumbing services with a focus on quality workmanship, reliable solutions, and customer satisfaction. Our team is equipped with the latest tools and techniques to handle any plumbing challenge efficiently and effectively.',
+    }}
   />
 
   <CTA
@@ -51,7 +54,7 @@ const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.
     buttonText="View All Services"
     buttonHref="/services"
     posts={services}
-    postType="service"
+    postType="services"
     maxPosts={3}
     sectionId="otherServices"
   />
