@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import Heading from '@components/ui/Heading.astro'
 import Link from '@components/ui/Link.astro'
+import { projectIcons } from '@config/icons'
 
 export type Props = {
   image: ImageMetadata
@@ -80,7 +81,7 @@ const { image, imageAlt, date, title, description, readMoreText = 'Read More', h
       >
         <span>{readMoreText}</span>
         <Icon
-          name="quill:chevron-right"
+          name={projectIcons.chevronRight}
           class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
         />
       </Link>

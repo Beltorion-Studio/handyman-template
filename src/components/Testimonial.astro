@@ -4,6 +4,7 @@ import Badge from '@components/ui/Badge.astro'
 import Heading from '@components/ui/Heading.astro'
 import { Icon } from 'astro-icon/components'
 import QuotationMark from '@assets/images/quotation-mark-white.svg'
+import { projectIcons } from '@config/icons'
 
 export type Props = {
   title: string
@@ -104,7 +105,7 @@ const {
             aria-label="Previous testimonial"
             data-slider-prev
           >
-            <Icon name="quill:chevron-left" class="h-6 w-6" />
+            <Icon name={projectIcons.chevronLeft} class="h-6 w-6" />
           </button>
           <button
             class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300"
@@ -112,7 +113,7 @@ const {
             aria-label="Next testimonial"
             data-slider-next
           >
-            <Icon name="quill:chevron-right" class="h-6 w-6" />
+            <Icon name={projectIcons.chevronRight} class="h-6 w-6" />
           </button>
         </div>
       </div>

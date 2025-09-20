@@ -6,6 +6,7 @@ import Badge from '../ui/Badge.astro'
 import { Icon } from 'astro-icon/components'
 import { formatText } from '@lib/utils/textFormatting'
 import type { SectionContent } from '@schemas/section-schemas'
+import { projectIcons } from '@config/icons'
 
 type Props = {
   content: SectionContent
@@ -95,7 +96,7 @@ const {
                   aria-label="Previous image"
                   data-carousel-prev
                 >
-                  <Icon name="quill:chevron-left" class="h-6 w-6" />
+                  <Icon name={projectIcons.chevronLeft} class="h-6 w-6" />
                 </button>
                 <button
                   class="border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
@@ -103,7 +104,7 @@ const {
                   aria-label="Next image"
                   data-carousel-next
                 >
-                  <Icon name="quill:chevron-right" class="h-6 w-6" />
+                  <Icon name={projectIcons.chevronRight} class="h-6 w-6" />
                 </button>
               </div>
             )

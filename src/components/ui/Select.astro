@@ -1,5 +1,8 @@
 ---
 import { z } from 'zod'
+import { Icon } from 'astro-icon/components'
+import { projectIcons } from '@config/icons'
+
 
 const OptionSchema = z.object({
   value: z.string(),
@@ -81,16 +84,8 @@ const hasError = Boolean(error)
 
     <!-- Custom dropdown arrow -->
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-      <svg
-        class="h-5 w-5 text-text-brand"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"
-        ></path>
-      </svg>
+      <Icon name={projectIcons.chevronDown} class="h-5 w-5 text-text-brand" />
+
     </div>
 
     {

@@ -65,17 +65,21 @@ export const navigationConfig = {
     },
     { href: '/about', text: 'About', ariaLabel: 'Go to about page' },
     { href: '/contact', text: 'Contact', ariaLabel: 'Go to contact page' },
-    {
-      text: 'Template',
-      ariaLabel: 'View our services',
-      items: [
-        {
-          href: '/template/sections',
-          text: 'Sections',
-          ariaLabel: 'View our sections',
-        },
-      ],
-    },
+    ...(import.meta.env.DEV
+      ? [
+          {
+            text: 'Template',
+            ariaLabel: 'View our services',
+            items: [
+              {
+                href: '/template/sections',
+                text: 'Sections',
+                ariaLabel: 'View our sections',
+              },
+            ],
+          },
+        ]
+      : []),
   ],
   footer: [
     { href: '/about', text: 'About' },

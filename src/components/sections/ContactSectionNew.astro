@@ -5,6 +5,7 @@ import Link from '@components/ui/Link.astro'
 import ContactForm from '@components/ContactForm.astro'
 import Badge from '@components/ui/Badge.astro'
 import { contactConfig } from '@config/contact'
+import { projectIcons } from '@config/icons'
 
 export type Props = {
   sectionId: string
@@ -65,7 +66,7 @@ const { company } = contactConfig
             <!-- Email -->
             <div class="flex items-center gap-3">
               <div class="flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:email" class="text-brand h-8 w-8" />
+                <Icon name={projectIcons.email} class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-xl font-medium">
                 <Link
@@ -82,7 +83,7 @@ const { company } = contactConfig
             <!-- Phone -->
             <div class="flex items-center gap-3">
               <div class="flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:phone" class="text-brand h-8 w-8" />
+                <Icon name={projectIcons.phone} class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-xl font-medium">
                 <Link
@@ -99,7 +100,7 @@ const { company } = contactConfig
             <!-- Address -->
             <div class="flex items-start gap-3">
               <div class="mt-1 flex h-8 w-8 items-center justify-center">
-                <Icon name="carbon:location" class="text-brand h-8 w-8" />
+                <Icon name={projectIcons.location} class="text-brand h-8 w-8" />
               </div>
               <div class="text-text-primary text-lg font-medium">
                 <div>

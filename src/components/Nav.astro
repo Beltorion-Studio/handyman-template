@@ -3,6 +3,7 @@ import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import Button from '@components/ui/Button.astro'
 import Link from '@components/ui/Link.astro'
+import { projectIcons } from '@config/icons'
 
 import { navigationConfig, siteConfig } from '@config'
 
@@ -38,7 +39,7 @@ You need add the 'fixed classes to the mobile menu
                   >
                     <span class="text-text-secondary flex cursor-pointer items-center gap-1 text-lg font-bold">
                       {item.text}
-                      <Icon name="quill:chevron-down" class="text-text-secondary h-4 w-4" />
+                      <Icon name={projectIcons.chevronDown} class="text-text-secondary h-4 w-4" />
                     </span>
                     <div
                       class={`pointer-events-none absolute top-full left-1/2 -translate-x-1/2 transform rounded-md bg-white py-2 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100 ${item.items.length > 4 ? 'column-fill-auto w-max columns-2 gap-4' : 'w-max'}`}

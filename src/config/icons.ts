@@ -26,6 +26,8 @@ export const icons = {
   // Communication Icons
   communication: {
     email: 'carbon:email',
+    phone: 'carbon:phone',
+    location: 'carbon:location',
   },
 
   // Caret Icons
@@ -66,6 +68,8 @@ export const projectIcons = {
 
   // Communication
   email: icons.communication.email,
+  phone: icons.communication.phone,
+  location: icons.communication.location,
 
   // Caret arrows
   arrowDown: icons.caret.caretDown,
