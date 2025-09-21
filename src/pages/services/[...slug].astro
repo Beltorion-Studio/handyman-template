@@ -16,7 +16,6 @@ import { config } from '@config'
 import { slugify } from '@lib/utils/textFormatting'
 import type { CollectionEntry } from 'astro:content'
 
-import testImage from '@assets/images/installer-holding-shelf-w2000.jpg'
 
 export async function getStaticPaths() {
   const services = await getCollection('services')

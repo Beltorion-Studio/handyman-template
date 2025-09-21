@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import type { ImageMetadata } from 'astro'
 
 export const RegularSectionSchema = z.object({
   sectionId: z.string(),

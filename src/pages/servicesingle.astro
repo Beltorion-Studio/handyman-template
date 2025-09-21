@@ -12,11 +12,13 @@ const allServices = await getCollection('services')
 const services = allServices.filter((service) => service.data.featured)
 
 // Get testimonials from content collection
-const testimonials = await getCollection('testimonial')
 
 // Get blog posts from content collection
 const allBlogPosts = await getCollection('blogs')
+/*
+const testimonials = await getCollection('testimonial')
 const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+*/
 ---
 
 <Layout title="Home">

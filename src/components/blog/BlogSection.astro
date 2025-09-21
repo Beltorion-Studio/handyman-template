@@ -97,7 +97,7 @@ const { sectionId = 'blog-section', className = '', content = '' } = PropsSchema
     })
 
     // Create ScrollTriggers for each section
-    sections.forEach((section, index) => {
+    sections.forEach((section) => {
       const sectionId = section.getAttribute('id')
       const correspondingLink = document.querySelector(`[data-toc] a[href="#${sectionId}"]`)
 

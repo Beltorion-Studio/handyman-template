@@ -34,13 +34,7 @@ export async function getServicesSorted(): Promise<Service[]> {
   return services.sort((a, b) => a.data.order - b.data.order)
 }
 
-/**
- * Get a single service by slug
- */
-export async function getServiceBySlug(slug: string): Promise<Service | undefined> {
-  const services = await getAllServices()
-  return services.find((service) => service.slug === slug)
-}
+
 
 /**
  * Get service categories

@@ -2,7 +2,6 @@
 import { cva } from 'cva'
 import { z } from 'zod'
 import { Icon } from 'astro-icon/components'
-import type { IconName } from '@lib/icons'
 import Heading from '@components/ui/Heading.astro'
 
 const card = cva('bg-white relative rounded-3xl size-full', {
@@ -43,7 +42,6 @@ const PropsSchema = z
     href: z.string().optional(),
     ariaLabel: z.string().optional(),
   })
-  .passthrough() // Allow additional props
 
 export type Props = z.infer<typeof PropsSchema>
 
@@ -88,7 +86,7 @@ const Element = href ? 'a' : 'div'
       {
         title && (
           <div class="relative w-full shrink-0">
-            <Heading tag="h3" size="h3" variant="default" text={title} align="left" bottomSpacing="tight" />
+            <Heading tag="h3" size="h3" variant="primary" text={title} align="left" bottomSpacing="tight" />
           </div>
         )
       }
