@@ -54,7 +54,7 @@ const filteredPosts = posts
 
 // Generate post URLs based on type
 const getPostUrl = (id: string, type: string) => {
-  return type === 'blog' ? `/blog/${id}` : `/services/${id}`
+  return type === 'blog' ? `/blogs/${id}` : `/services/${id}`
 }
 
 // Format date for display
