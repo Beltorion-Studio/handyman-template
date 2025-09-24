@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets'
+import Heading from '@components/ui/Heading.astro'
+
+export type Props = {
+  sectionId: string
+  heroImage: {
+    src: ImageMetadata
+    alt: string
+  }
+  title: string
+  description: string
+  author?: string
+  date: string
+  subheading?: string
+  className?: string
+}
+
+const {
+  sectionId = 'hero',
+  heroImage,
+  title,
+  description,
+  author,
+  date,
+  subheading,
+  className = '',
+} = Astro.props
+---
+
+<section
+  id={sectionId}
+  class={`relative mb-20 ${className}`}
+  aria-label="Hero section"
+>
+  <!-- Clipped Hero Wrapper -->
+  <div class="relative overflow-clip bg-black/60 tablet:rounded-bl-[96px] tablet:rounded-br-[96px] rounded-bl-[36px] rounded-br-[36px]">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <Image
+        src={heroImage.src}
+        alt={heroImage.alt}
+        class="h-full w-full object-cover object-center"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="desktop:pt-20 pb-32 relative z-10 container mx-auto px-4 pt-40 ">
+      <div class="flex flex-col items-center justify-center gap-16">
+        <!-- Hero Content -->
+        <div class="flex w-full max-w-5xl mx-auto items-center justify-center">
+          <div class="flex w-full flex-col items-center justify-center">
+            <!-- Hero Title -->
+
+            <Heading tag="h1" size="h1" variant="white" text={title} align="center" />
+            <div class="flex flex-row items-center justify-center gap-4">
+            {author && <p class="text-text-white text-lg italic">{author}</p>
+          <p class="text-text-white text-lg">|</p>
+          }
+            {date && <p class="text-text-white  text-lg italic">{date}</p>}
+            </div>
+            <!-- Hero Text and Actions -->
+            <div class="flex w-full flex-col items-start justify-start gap-6">
+              {subheading && <p class="text-text-white text-2xl/snug font-bold">{subheading}</p>}
+      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Overlapping Card -->
+  <div class="bg-white p-12 w-1/2 mx-auto rounded-3xl absolute bottom-0 left-0 right-0 translate-y-1/2 border border-brand z-50">
+    <p class="text-text-black text-lg text-center">{description}</p>
+  </div>
+</section>

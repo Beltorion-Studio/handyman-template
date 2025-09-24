@@ -5,6 +5,7 @@ import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
 import BlogSection from '@components/blog/BlogSection.astro'
 import Prose from '@components/blog/Prose.astro'
+import BlogHero from '@components/blog/BlogHero.astro'
 
 type Props = {
   blog: CollectionEntry<'blogs'>
@@ -24,6 +25,14 @@ const rawContent = blog.body
 ---
 
 <Layout title={blog.data.title}>
+  <BlogHero
+    sectionId="hero"
+    author={blog.data.author}
+    date={blog.data.pubDate.toLocaleDateString()}
+    heroImage={{ src: blog.data.heroImage, alt: blog.data.imageAlt }}
+    title={blog.data.title}
+    description={blog.data.description}
+  />
   <BlogSection sectionId="blog-section" content={rawContent}>
     <Prose>
       <Content />

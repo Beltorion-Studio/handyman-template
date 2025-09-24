@@ -41,7 +41,6 @@ function extractHeadings(markdownContent: string): Array<{ id: string; title: st
 }
 
 const tocItems = content ? extractHeadings(content) : []
-console.log('tocItems', tocItems)
 ---
 
 <nav class={`${className}`} id={sectionId} aria-label="Table of contents" data-toc>
