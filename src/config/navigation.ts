@@ -89,7 +89,6 @@ export const navigationConfig = {
   ],
   legal: [
     { href: '/privacy-policy', text: 'Privacy Policy' },
-    { href: '/terms-conditions', text: 'Terms & Conditions' },
     { href: '/cookie-policy', text: 'Cookie Policy' },
   ],
   cta: {
