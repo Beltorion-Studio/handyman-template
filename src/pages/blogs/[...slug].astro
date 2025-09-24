@@ -6,6 +6,7 @@ import Layout from '@layouts/Layout.astro'
 import BlogSection from '@components/blog/BlogSection.astro'
 import Prose from '@components/blog/Prose.astro'
 import BlogHero from '@components/blog/BlogHero.astro'
+import PostsSection from '@components/sections/PostsSection.astro'
 
 type Props = {
   blog: CollectionEntry<'blogs'>
@@ -22,6 +23,9 @@ const { Content } = await render(blog)
 
 // Get the raw markdown content for TOC extraction
 const rawContent = blog.body
+
+const allBlogPosts = await getCollection('blogs')
+const blogPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 ---
 
 <Layout title={blog.data.title}>
@@ -38,4 +42,15 @@ const rawContent = blog.body
       <Content />
     </Prose>
   </BlogSection>
+  <PostsSection
+  badge="Blog"
+  title="Latest Blog Posts"
+  buttonText="View All Posts"
+  buttonHref="/blog"
+  posts={blogPosts}
+  postType="blog"
+  maxPosts={3}
+  sectionId="latest-blog-posts"
+  background="bg-gradient-to-br from-primary-light/5 to-brand/5"
+/>
 </Layout>

@@ -23,27 +23,20 @@ const {
 ---
 
 <div
-  class={`bg-brand rounded-3xl mt-12 p-8 text-center ${className}`}
+  class={`not-prose rounded-3xl bg-gradient-to-br from-brand to-primary-dark text-text-white p-6 tablet:p-8 flex flex-col items-center gap-4 my-12 ${className}`}
   id={sectionId}
   aria-label="Call to action"
 >
-  <Heading
-    tag="h3"
-    size="h3"
-    variant="white"
-    class="mb-8"
-  >
+  <Heading tag="h3" size="h3" variant="white" class="!mt-0">
     {title}
   </Heading>
-
 
   <Button
     intent="secondary"
     size="small"
     borderRadius="corner"
     href={buttonHref}
-    class="w-full"
-    
+    class="!text-decoration-none !hover:text-decoration-none w-full md:w-3/4"
   >
     {buttonText}
   </Button>

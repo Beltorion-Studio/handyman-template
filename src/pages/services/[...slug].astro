@@ -174,11 +174,12 @@ const services = allServices.filter((service) => service.data.featured)
     cards={service.data.common.cards}
   />
 
+
   <CTA
-    sectionId="service-cta"
-    title={`Ready to Get Started with ${service.data.title}?`}
-    description="Contact us today for a free consultation and estimate. We're here to help bring your vision to life."
-    primaryButtonText="Get Free Quote"
+    sectionId={slugify(service.data.cta.title)}
+    title={service.data.cta.title}
+    description={service.data.cta.content}
+    primaryButtonText={service.data.cta.button}
     primaryButtonHref="#contact"
     backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
   />
@@ -205,14 +206,6 @@ const services = allServices.filter((service) => service.data.featured)
     ]}
   />
 
-  <CTA
-    sectionId={slugify(service.data.cta.title)}
-    title={service.data.cta.title}
-    description={service.data.cta.content}
-    primaryButtonText={service.data.cta.button}
-    primaryButtonHref="#contact"
-    backgroundClass="bg-gradient-to-br from-brand to-primary-dark"
-  />
   <SectionWithTrustStats
     content={{
       sectionId: slugify(service.data.serviceAreas.title),

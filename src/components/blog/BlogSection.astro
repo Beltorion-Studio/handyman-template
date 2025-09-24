@@ -18,18 +18,9 @@ const { sectionId = 'blog-section', className = '', content = '' } = PropsSchema
   <div class="container mx-auto">
     <div class="flex items-start gap-20">
       <!-- Sidebar with TOC and CTA -->
-      <div class="w-80 flex-shrink-0" data-toc-container>
-        <div class="top-80">
+      <div class="w-80 flex-shrink-0 mb-40" data-toc-container>    
           <!-- Table of Contents -->
-          <TableOfContents content={content} />
-
-          <BlogCTA
-            sectionId="blog-cta"
-            title="Let's Get Your Project Started"
-            buttonText="Contact Us Today"
-            buttonHref="#contact"
-          />
-        </div>
+          <TableOfContents content={content} />    
       </div>
 
       <!-- Main Content Area -->
