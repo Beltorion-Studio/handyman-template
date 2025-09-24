@@ -1,25 +1,44 @@
-<div
-  class="prose prose-custom dark:prose-invert max-w-none
-    prose-headings:font-bold
-    prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h1:border-b prose-h1:pb-4
-    prose-h2:text-3xl prose-h2:mb-4 prose-h2:mt-6
-    prose-h3:text-3xl prose-h3:mb-3 prose-h3:mt-5
-    prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4
-    prose-p:mb-4 prose-p:leading-relaxed prose-p:text-xl
-    prose-a:no-underline prose-a:hover:underline prose-a:font-medium
-    prose-strong:font-semibold
-    prose-ul:mb-4 prose-ul:pl-6 prose-ul:text-xl
-    prose-ol:mb-4 prose-ol:pl-6 prose-ol:text-xl
-    prose-li:mb-2 prose-li:leading-relaxed prose-li:text-xl
-    prose-blockquote:border-l-4 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-6
-    prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
-    prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:my-6
-    prose-pre-code:bg-transparent prose-pre-code:p-0 prose-pre-code:rounded-none
-    prose-img:rounded-xl prose-img:shadow-lg prose-img:my-6
-    prose-table:text-lg prose-table:my-6
-    prose-th:px-4 prose-th:py-2 prose-th:font-semibold
-    prose-td:px-4 prose-td:py-2
-    prose-hr:my-8"
->
+---
+import { z } from 'zod'
+
+const PropsSchema = z.object({
+  class: z.string().optional(),
+  className: z.string().optional(),
+  h2Class: z.string().optional(),
+})
+
+export type Props = z.infer<typeof PropsSchema>
+
+const { class: classAttr = '', className = '', h2Class = '' } = PropsSchema.parse(Astro.props)
+
+const baseClasses = `prose prose-custom dark:prose-invert max-w-none
+  prose-headings:font-bold
+  prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h1:border-b prose-h1:pb-4
+  prose-h2:text-4xl prose-h2:mb-4 prose-h2:mt-6
+  prose-h3:text-2xl prose-h3:mb-3 prose-h3:mt-5
+  prose-h4:text-xl prose-h4:mb-2 prose-h4:mt-4
+  prose-p:mb-4 prose-p:leading-relaxed prose-p:text-xl
+  prose-a:no-underline prose-a:hover:underline prose-a:font-medium
+  prose-strong:font-semibold
+  prose-ul:mb-4 prose-ul:pl-6 prose-ul:text-xl
+  prose-ol:mb-4 prose-ol:pl-6 prose-ol:text-xl
+  prose-li:mb-2 prose-li:leading-relaxed prose-li:text-xl
+  prose-blockquote:border-l-4 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:my-6
+  prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
+  prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:my-6
+  prose-pre-code:bg-transparent prose-pre-code:p-0 prose-pre-code:rounded-none
+  prose-img:rounded-xl prose-img:shadow-lg prose-img:my-6
+  prose-table:text-lg prose-table:my-6
+  prose-th:px-4 prose-th:py-2 prose-th:font-semibold
+  prose-td:px-4 prose-td:py-2
+  prose-hr:my-8`
+
+const headingLevel2Utility = h2Class ? ` prose-h2:${h2Class}` : ''
+const providedClass = className || classAttr
+const extraClasses = providedClass ? ` ${providedClass}` : ''
+const resolvedClasses = `${baseClasses}${headingLevel2Utility}${extraClasses}`
+---
+
+<div class={resolvedClasses}>
   <slot />
 </div>
