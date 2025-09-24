@@ -1,5 +1,4 @@
 ---
-import type { HTMLTag } from 'astro/types'
 import { cva, type VariantProps } from 'cva'
 import { formatText, type TextStyle } from '@lib/utils/textFormatting'
 
@@ -73,10 +72,10 @@ const headingVariants = cva(
 )
 
 export type Props = VariantProps<typeof headingVariants> & {
-  tag: HTMLTag
+  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   class?: string
   id?: string
-  text?: string
+  formattedText?: string
   textStyles?: TextStyle
   enableTextFormatting?: boolean
 }
@@ -91,19 +90,20 @@ const {
   maxWidth,
   class: className,
   id,
-  text,
+  formattedText,
   textStyles,
   enableTextFormatting = true,
   ...props
 } = Astro.props as Props
 
 // If size is not provided, default to the tag name as size
-const headingSize = size || (tag as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6')
+const headingSize = size || tag
 
 const Tag = tag
 
 // Process text formatting if enabled and text is provided
-const processedText = text && enableTextFormatting ? formatText(text, textStyles) : text
+const processedText =
+  formattedText && enableTextFormatting ? formatText(formattedText, textStyles) : formattedText
 ---
 
 <Tag
@@ -122,5 +122,5 @@ const processedText = text && enableTextFormatting ? formatText(text, textStyles
   ]}
   set:html={processedText}
 >
-  {!text && <slot />}
+  {!formattedText && <slot />}
 </Tag>
