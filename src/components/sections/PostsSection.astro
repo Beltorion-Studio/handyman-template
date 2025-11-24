@@ -85,7 +85,7 @@ const formatDate = (date: Date | undefined) => {
         </Heading>
         {description && <p class="text-text-primary mt-4 max-w-2xl text-lg">{description}</p>}
       </div>
-      <div class="flex h-full flex-col items-end">
+      <div class="md:flex hidden h-full flex-col items-end">
         {
           buttonText && buttonHref && (
             <Button intent="primary" size="medium" borderRadius="corner" href={buttonHref}>
@@ -114,10 +114,20 @@ const formatDate = (date: Date | undefined) => {
             </div>
           ))}
         </div>
+        <div class="flex h-full flex-col items-stretch md:hidden">
+        {
+          buttonText && buttonHref && (
+            <Button intent="primary" size="medium" borderRadius="corner" href={buttonHref}>
+              {buttonText}
+            </Button>
+          )
+        }
+      </div>
       ) : (
         <div class="py-12 text-center">
           <p class="text-text-primary text-lg">No {postType} posts available at the moment.</p>
         </div>
+        
       )
     }
   </div>
