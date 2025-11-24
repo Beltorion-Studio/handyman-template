@@ -1,0 +1,27 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Button from '@components/ui/Button.astro'
+import Heading from '@components/ui/Heading.astro'
+---
+
+<Layout title="404">
+  <section class="tablet:py-20 bg-background-darkest min-h-screen py-10">
+    <div class="container">
+      <div class="flex flex-col items-end text-text-white">
+        <div class="w-1/2 mx-auto flex flex-col items-center justify-center">
+            <Heading tag="h1" align="center" variant="brand">404</Heading>
+            <Heading tag="h2" align="center">Oops! The Page Not Found</Heading>
+            <p class="mb-8 text-center">
+              We apologize for the inconvenience. You can use our search bar to find what you're looking
+              for, or contact us for further assistance.
+            </p>
+            <div>
+                <Button href="/" intent="secondary" size="large" borderRadius="corner" ariaLabel="Home">
+                  Back to Home
+                </Button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
