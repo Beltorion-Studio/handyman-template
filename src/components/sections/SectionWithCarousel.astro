@@ -28,7 +28,7 @@ const {
   id={sectionId}
 >
   <div class="container">
-    <div class="desktop:grid-cols-2 items-strech grid justify-items-stretch gap-20">
+    <div class="desktop:grid-cols-2 items-strech grid justify-items-stretch tablet:gap-20 gap-12">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
           justifyContent === 'center' ? 'justify-center' : 'justify-start'
@@ -42,7 +42,7 @@ const {
           )
         }
 
-        <Heading tag="h2">{title}</Heading>
+        <Heading tag="h2" size="h2" variant="primary" class="desktop:text-left text-center">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
             Object.entries(paragraphs).map(([key, text]) => {
@@ -89,7 +89,7 @@ const {
 
           {
             carouselImages.length > 1 && (
-              <div class="absolute right-4 bottom-4 flex gap-12">
+              <div class="absolute right-4 bottom-4 flex tablet:gap-12 gap-6">
                 <button
                   class="border-brand text-brand hover:bg-brand relative z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-2 bg-white transition duration-300 hover:text-white"
                   tabindex="0"

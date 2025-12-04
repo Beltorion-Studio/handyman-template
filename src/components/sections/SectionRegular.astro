@@ -27,9 +27,9 @@ const {
 
 <section class={`py-10 tablet:py-28 ${background}`} aria-label="Hero section container" id={sectionId}>
   <div class="container">
-    <div class="desktop:grid-cols-2 grid items-center gap-20">
+    <div class="desktop:grid-cols-2 grid items-center tablet:gap-20 gap-12">
       <div
-        class={`desktop:items-start h-full text-left flex flex-col items-center ${
+        class={`desktop:items-start h-full flex flex-col items-center ${
           justifyContent === 'center' ? 'justify-center' : 'justify-start'
         } ${reverse ? 'order-2' : 'order-1'}`}
       >
@@ -41,8 +41,8 @@ const {
           )
         }
 
-        <Heading tag="h2">{title}</Heading>
-        <div class="mb-8 flex flex-col">
+        <Heading tag="h2" size="h2" variant="primary" class="text-center! desktop:text-left!">{title}</Heading>
+        <div class="flex flex-col">
           {
             Object.entries(paragraphs).map(([key, text]) => {
               void key
@@ -52,7 +52,7 @@ const {
         </div>
         {
           buttons && (
-            <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4">
+            <div class="tablet:flex-row desktop:justify-start flex w-full flex-col justify-center gap-4 mt-8">
               {buttons.primary && (
                 <Button
                   intent="primary"

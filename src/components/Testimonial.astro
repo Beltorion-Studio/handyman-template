@@ -54,7 +54,7 @@ const {
         variant="primary"
         formattedText={title}
         align="center"
-        class="tablet:text-5xl mb-20 text-3xl font-bold"
+        class="tablet:mb-20 mb-12"
       />
     </div>
     <div
@@ -86,11 +86,11 @@ const {
                   data-slider-item
                   data-index={index}
                 >
-                  <p class="tablet:text-lg tablet:mb-6 text-text-primary text-base font-medium">
+                  <p class="tablet:text-lg tablet:mb-6 mb-2 text-text-primary text-base font-medium">
                     "{testimonial.data.testimonial}"
                   </p>
                   <p class="text-text-primary font-bold">{testimonial.data.name}</p>
-                  <p class="text-text-primary mb-6">
+                  <p class="text-text-primary text-base tablet:mb-6">
                     {testimonial.data.position} • {testimonial.data.company}
                   </p>
                 </div>
@@ -100,7 +100,7 @@ const {
         </div>
         <div class="tablet:gap-10 tablet:my-8 my-6 flex flex-row items-center gap-6">
           <button
-            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300"
+            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300 cursor-pointer"
             tabindex="0"
             aria-label="Previous testimonial"
             data-slider-prev
@@ -108,7 +108,7 @@ const {
             <Icon name={projectIcons.chevronLeft} class="h-6 w-6" />
           </button>
           <button
-            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300"
+            class="tablet:w-12 border-brand text-text-brand hover:bg-brand hover:text-text-white relative z-10 flex aspect-square w-10 items-center justify-center rounded-full border p-2 transition duration-300 cursor-pointer"
             tabindex="0"
             aria-label="Next testimonial"
             data-slider-next

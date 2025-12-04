@@ -84,7 +84,7 @@ export const navigationConfig = {
   footer: [
     { href: '/about', text: 'About' },
     { href: '/services', text: 'Services' },
-    { href: '/blog', text: 'Blog' },
+    { href: '/blogs', text: 'Blog' },
     { href: '/contact', text: 'Contact' },
   ],
   legal: [
