@@ -14,7 +14,7 @@ const testimonials = await getCollection('testimonial')
 const teamMembers = await getCollection('team')
 ---
 
-<Layout title="Home">
+<Layout title="About">
   <Hero
     sectionId="hero"
     heroImage={{ src: heroImage, alt: 'Hero background image' }}
@@ -45,6 +45,7 @@ const teamMembers = await getCollection('team')
       sectionId: 'why-trust-us',
       badge: 'Offer',
       title: 'Why Homeowners Trust Us',
+      statsTextSize: 'text-5xl',
       paragraphs: {
         p1: 'Choosing the right handyman service makes all the difference. We understand that homeowners value reliability, efficiency, and clear communication.',
         p2: "Our team's reputation is built on trust, experience, and happy customers who return again and again. With transparent pricing, punctual service, and a friendly approach, we turn everyday fixes into stress-free solutions.",

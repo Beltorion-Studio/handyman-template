@@ -22,16 +22,16 @@ const { company } = contactConfig
 
 <section id={sectionId} class={`relative tablet:py-28 py-10 ${className}`} aria-label="Contact section">
   <!-- Gradient Background -->
-  <div class="to-brand absolute inset-0 bg-gradient-to-r from-white from-50% to-50%"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-white from-50% desktop:to-brand to-white to-50%"></div>
 
   <!-- Content -->
   <div class="relative z-10 container mx-auto px-4">
     <div class="mx-auto max-w-[1280px]">
-      <div class="grid grid-cols-1 gap-20 lg:grid-cols-2">
+      <div class="grid grid-cols-1 tablet:gap-20 gap-12 lg:grid-cols-2">
         <!-- Left Column - Contact Information -->
-        <div class="flex flex-col gap-8">
+        <div class="flex flex-col">
           <!-- Section Heading -->
-          <div class="flex flex-col gap-6">
+          <div class="flex flex-col desktop:items-start items-center">
             {
               badge && (
                 <Badge intent="secondary" roundness="sm" size="base" class="mb-0">
@@ -45,8 +45,7 @@ const { company } = contactConfig
                   tag="h2"
                   size="h2"
                   variant="primary"
-                  align="left"
-                  class="text-4xl leading-normal font-bold lg:text-[44px]"
+                  class="text-center! desktop:text-left!"
                 >
                   {title}
                 </Heading>
@@ -57,12 +56,12 @@ const { company } = contactConfig
           <!-- Description -->
           {
             description && (
-              <div class="text-text-primary text-lg leading-relaxed">{description}</div>
+              <div class="text-text-primary tablet:text-2xl text-lg leading-relaxed mt-4">{description}</div>
             )
           }
 
           <!-- Contact Info -->
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 mt-8">
             <!-- Email -->
             <div class="flex items-center gap-3">
               <div class="flex h-8 w-8 items-center justify-center">
@@ -118,7 +117,7 @@ const { company } = contactConfig
 
         <!-- Right Column - Contact Form -->
         <div class="flex flex-col">
-          <ContactForm formId="contact-form-new" className="bg-black/25 backdrop-blur-sm" />
+          <ContactForm formId="contact-form-new" className="desktop:bg-black/25 bg-brand backdrop-blur-sm" />
         </div>
       </div>
     </div>

@@ -30,7 +30,7 @@ const serviceOptions = [
 
 <form
   id={formId}
-  class={`backdrop-blur backdrop-filter bg-black/25 p-8 rounded-3xl flex flex-col gap-4 ${className}`}
+  class={`backdrop-blur backdrop-filter bg-black/25 tablet:p-8 p-6 rounded-3xl flex flex-col gap-4 ${className}`}
   method="POST"
   action="/contact"
   aria-label="Contact form"
@@ -49,7 +49,7 @@ const serviceOptions = [
   </div>
 
   <!-- Phone and Email Row -->
-  <div class="flex w-full gap-4">
+  <div class="flex tablet:flex-row flex-col w-full gap-4">
     <div class="flex-1">
       <Input
         type="tel"

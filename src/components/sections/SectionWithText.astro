@@ -19,8 +19,8 @@ const {
   id={sectionId}
 >
   <div class="container">
-    <div class="flex flex-col items-center justify-start gap-8 px-4">
-      <div class="flex flex-col items-center justify-start gap-2 text-center">
+    <div class="flex flex-col items-center justify-start">
+      <div class="flex flex-col items-center justify-start text-center">
         {
           badge && (
             <Badge intent="secondary" roundness="sm" size="base" class="mb-0">
@@ -36,7 +36,6 @@ const {
               size="h2"
               variant="primary"
               align="center"
-              class="text-text-primary whitespace-pre-wrap"
               formattedText={title}
             />
           )
@@ -47,7 +46,7 @@ const {
         description && (
           <div class="w-full max-w-[900px]">
             <p
-              class="text-text-primary text-lg leading-[1.4] font-normal"
+              class="text-text-primary tablet:text-2xl text-lg leading-[1.4] font-normal tablet:text-center text-left mt-4"
               set:html={formatText(description)}
             />
           </div>

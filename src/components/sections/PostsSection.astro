@@ -72,7 +72,7 @@ const formatDate = (date: Date | undefined) => {
   <div class="container mx-auto flex flex-col gap-12">
     <!-- Section Header -->
     <div class="flex items-end justify-between">
-      <div class="flex flex-col items-start">
+      <div class="flex flex-col tablet:items-start items-center tablet:w-auto w-full">
         {
           badge && (
             <Badge intent="secondary" roundness="sm" size="base" class="mb-4">
@@ -80,7 +80,7 @@ const formatDate = (date: Date | undefined) => {
             </Badge>
           )
         }
-        <Heading tag="h2" size="h2" variant="primary" align="left" bottomSpacing="none">
+        <Heading tag="h2" size="h2" variant="primary" class="text-center! tablet:text-left!" bottomSpacing="none">
           {title}
         </Heading>
         {description && <p class="text-text-primary mt-4 max-w-2xl text-lg">{description}</p>}

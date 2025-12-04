@@ -30,7 +30,7 @@ const {
   id={sectionId}
 >
   <div class="container">
-    <div class="desktop:grid-cols-2 grid items-center gap-20">
+    <div class="desktop:grid-cols-2 grid items-center tablet:gap-20 gap-12">
       <div
         class={`desktop:items-start h-full text-left flex flex-col items-center ${
           justifyContent === 'center' ? 'justify-center' : 'justify-start'
@@ -44,7 +44,7 @@ const {
           )
         }
 
-        <Heading tag="h2" size="h2" class='text-text-white'>{title}</Heading>
+        <Heading tag="h2" size="h2" variant="white" class="text-center! desktop:text-left!">{title}</Heading>
         <div class="mb-8 flex flex-col">
           {
             Object.entries(paragraphs).map(([key, text]) => {
